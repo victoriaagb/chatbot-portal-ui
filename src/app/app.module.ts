@@ -4,15 +4,23 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
+import { AppRoutingModule } from './/app-routing.module';
+import { BotDashboardComponent } from './bot-dashboard/bot-dashboard.component';
+import { BotConfigComponent } from './bot-config/bot-config.component';
+import { LandingComponent } from './landing/landing.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent
+    HeaderComponent,
+    BotDashboardComponent,
+    BotConfigComponent,
+    LandingComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
