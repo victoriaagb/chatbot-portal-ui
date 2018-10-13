@@ -8,6 +8,7 @@ import { AppRoutingModule } from './/app-routing.module';
 import { BotDashboardComponent } from './bot-dashboard/bot-dashboard.component';
 import { BotConfigComponent } from './bot-config/bot-config.component';
 import { LandingComponent } from './landing/landing.component';
+import { MenuComponent } from './shared-components/menu/menu.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { LandingComponent } from './landing/landing.component';
     HeaderComponent,
     BotDashboardComponent,
     BotConfigComponent,
-    LandingComponent
+    LandingComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,
