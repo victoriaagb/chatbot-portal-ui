@@ -1,7 +1,24 @@
+/* Override the padding from bootstrap . So that each of the lis gets the full height */
+
+@media only screen and (min-width: 992px) {
+    .navbar {
+        padding: 0 0 !important;
+        li {
+            padding : .5em 1em; 
+        }
+    }
+}
+
 .navbar-nav {
     .nav-item {
         a {
             color: white !important;
+        }
+    }
+    li {
+        &:hover {
+            background-color: #037ba8;
+            border-radius: 3px;
         }
     }
 }
@@ -9,10 +26,30 @@
 .navbar-brand {
     color: rgba(0, 0, 0, 0.9);
     background-color: #0e7ea8;
-    padding: .1em .3em;
+    padding: .3em .6em;
     border-radius: 3px;
+    margin-left: 1em;
     i {
         color: white !important;
     }
 }
 
+.chat-nav-item {
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+.nav-link {
+    &::after {
+        padding-left: .5em;
+        content: '\f078';
+        font: normal normal normal 8px/1 FontAwesome;
+        display: inline-block;
+        text-rendering: auto;
+    }
+}
+
+.down {
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+}
