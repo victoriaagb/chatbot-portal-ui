@@ -1,3 +1,5 @@
-<p>
-  menu works!
-</p>
+<ul>
+    <li *ngFor="let menuItem of menuItems ; let i = index" [class.selected] ="i === activeIndex" (click)="selectMenuItem(i)">
+        {{menuItem.displayName}}
+     </li>
+</ul>

@@ -1,0 +1,23 @@
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0px 20px;
+    overflow: hidden;
+    background-color:white;
+}
+
+li {
+    float: left;
+    margin : 0px 10px;
+    padding : 10px 0px;
+    cursor: pointer;
+    
+    &.publish-button {
+        padding-left : 1em;
+        border-bottom : none;
+    }
+    &.selected {
+        border-bottom : 2px solid #00aeef; 
+    }
+}

@@ -5,11 +5,17 @@ $fa-font-path: "../node_modules/@fortawesome/fontawesome-free/webfonts";
 @import "_variables.scss";
 .chatbot-header {
     background-color: $menu-item !important;
+    background: linear-gradient(45deg,blue red);
 }
 
 body {
     font-family: 'Source Sans Pro Regular', sans-serif;
     h1 {
         font-family: 'Source Sans Pro Semibold', sans-serif;
+    }
+    background-color: #dbdbdb;
+    .container-fluid {
+        padding-right : 0px !important;
+        padding-left : 0px !important;
     }
 }
