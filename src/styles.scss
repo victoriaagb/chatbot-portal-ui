@@ -14,4 +14,8 @@ body {
         font-family: 'Source Sans Pro Semibold', sans-serif;
     }
     background-color: #dbdbdb;
+    .container-fluid {
+        padding-right : 0px !important;
+        padding-left : 0px !important;
+    }
 }
