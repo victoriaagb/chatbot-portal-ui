@@ -8,10 +8,15 @@ import { Component, OnInit , Input } from '@angular/core';
 export class MenuComponent implements OnInit {
 
   @Input() menuItems: any;
+  activeIndex=0;
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  selectMenuItem(newActive: number){
+    this.activeIndex=newActive;
   }
 
 }

@@ -11,9 +11,13 @@ li {
     float: left;
     margin : 0px 10px;
     padding : 10px 0px;
-    border-bottom : 2px solid #00aeef; 
+    cursor: pointer;
+    
     &.publish-button {
         padding-left : 1em;
         border-bottom : none;
+    }
+    &.selected {
+        border-bottom : 2px solid #00aeef; 
     }
 }

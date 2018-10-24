@@ -14,13 +14,15 @@ export class BotConfigComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log("The whole JSON in bot config");
-    console.log (menu);
+    this.step = 'CREATE_BOT';
     this.botConfigMenu = [];
 
     //Construct an array of menu items for the bot config object
     Object.keys(menu.CREATE_NEW_BOT).forEach(key =>{
       this.botConfigMenu.push(menu.CREATE_NEW_BOT[key]);
+      if (key === this.step){
+        menu.CREATE_NEW_BOT[key]['active'] =true;
+      }
     });
   }
 
