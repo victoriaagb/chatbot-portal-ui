@@ -19,17 +19,17 @@ export const menu = {
     CREATE_NEW_BOT: {
         CREATE_BOT: {
             displayName: 'Name Your Bot',
-            routerLink: '',
+            routerLink: 'bot-name',
             type: 'link'
         },
         CREATE_TOPIC: {
             displayName: 'Create Topic',
-            routerLink: '',
+            routerLink: 'topic-config',
             type: 'link'
         },
         DESIGN: {
             displayName: 'Design',
-            routerLink: '',
+            routerLink: 'bot-design',
             type: 'link'
         },
         PUBLISH: {

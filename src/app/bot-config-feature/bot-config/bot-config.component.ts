@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { menu } from '../constants/menu.constants';
+import { menu } from '../../constants/menu.constants';
 
 @Component({
   selector: 'bot-config',
