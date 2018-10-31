@@ -8,7 +8,7 @@ import { BotDesignComponent } from './bot-design/bot-design.component';
 
 @NgModule({
   imports: [
-    SharedModule,
+    SharedModule.forRoot(),
     BotConfigRoutingModule
   ],
   declarations: [
