@@ -1,7 +1,8 @@
-import { NgModule } from '@angular/core';
+import { NgModule , ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { MenuComponent } from './menu/menu.component';
+import { SharedService } from './shared.service';
 
 @NgModule({
   imports: [
@@ -15,4 +16,13 @@ import { MenuComponent } from './menu/menu.component';
     MenuComponent
   ]
 })
-export class SharedModule { }
+export class SharedModule {
+
+  static forRoot(): ModuleWithProviders {
+    return {
+      ngModule: SharedModule,
+      providers: [ SharedService ]
+    };
+  }
+
+}

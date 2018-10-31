@@ -20,7 +20,7 @@ import { LandingComponent } from './landing/landing.component';
     BotConfigModule,
     BrowserModule,
     AppRoutingModule,
-    SharedModule
+    SharedModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
