@@ -14,4 +14,8 @@ export class HeaderComponent implements OnInit {
     console.log("Testing screen size" + this.sharedService.getScreenWidth());
   }
 
+  isMobile(){
+    return (this.sharedService.getScreenWidth() < 992);
+  }
+
 }
