@@ -4,7 +4,7 @@
     .navbar {
         padding: 0 0 !important;
         li {
-            padding : .5em 1em; 
+            padding : .5em 1em;
         }
     }
 }
@@ -41,11 +41,17 @@
 
 .nav-link {
     &::after {
-        padding-left: .5em;
-        content: '\f078';
-        font: normal normal normal 8px/1 FontAwesome;
-        display: inline-block;
-        text-rendering: auto;
+      content: '';
+
+      border: 5px solid transparent;
+      border-top: 5px solid white;
+      margin-left: 3px;
+      margin-bottom: 3px;
+      display: inline-block;
+      vertical-align: bottom;
+    }
+    .selected {
+
     }
 }
 
