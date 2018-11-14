@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AppService } from '../app.service';
 import { menu } from '../constants/menu.constants';
 
 @Component({
@@ -11,7 +12,7 @@ export class BotDashboardComponent implements OnInit {
   public botDashboardMenu : Array<any>;
   public step : string;
 
-  constructor() { }
+  constructor(private appService: AppService) { }
 
   ngOnInit() {
     this.step = 'ALL_BOTS';
@@ -22,6 +23,22 @@ export class BotDashboardComponent implements OnInit {
       }
       this.botDashboardMenu.push(menu.YOUR_BOTS[key]);
     })
+    this.getBotConfigList();
+  }
+  getBotConfigList() {
+    this.appService.getBotConfigList().subscribe(
+      data => {
+        console.log(data);
+        // this.botConfigList.forEach(function (entry) {
+        //   console.log("entry" + entry);
+        //   let string = JSON.stringify(entry.value);
+        //   let temp =JSON.parse(string);
+        //   let value = JSON.parse(temp);
+        //   entry.value = value;
+        // });
+      },
+      error => console.log("ERROR ::" + error)
+    );
   }
 
 }

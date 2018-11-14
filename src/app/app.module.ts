@@ -7,6 +7,8 @@ import { BotDashboardComponent } from './bot-dashboard/bot-dashboard.component';
 import { BotConfigModule } from './bot-config-feature/bot-config.module';
 import { SharedModule } from './shared/shared.module';
 import { LandingComponent } from './landing/landing.component';
+import { AppService } from './app.service'
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -20,9 +22,10 @@ import { LandingComponent } from './landing/landing.component';
     BotConfigModule,
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     SharedModule.forRoot()
   ],
-  providers: [],
+  providers: [AppService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
