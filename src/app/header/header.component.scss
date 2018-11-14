@@ -4,8 +4,10 @@
     .navbar {
         padding: 0 0 !important;
         li {
-            padding : .5em 1em;
-        }
+          a {
+            padding : 1em 1em;
+          }
+      }
     }
 }
 
@@ -17,8 +19,12 @@
     }
     li {
         &:hover {
-            background-color: #037ba8;
+            background-color: #0992c6;
             border-radius: 3px;
+        }
+        &.selected {
+          background-color: #037ba8;
+          border-radius: 3px;
         }
     }
 }
@@ -34,11 +40,6 @@
     }
 }
 
-.chat-nav-item {
-    padding-left: 1em;
-    padding-right: 1em;
-}
-
 .nav-link {
     &::after {
       content: '';
@@ -49,9 +50,6 @@
       margin-bottom: 3px;
       display: inline-block;
       vertical-align: bottom;
-    }
-    .selected {
-
     }
 }
 
