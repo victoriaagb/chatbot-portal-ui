@@ -5,6 +5,7 @@ menu {
 
 .bot-dashboard-container {
     padding: 1em 1em;
+    
     ul {
         list-style-type: none;
         margin: 0;
@@ -16,19 +17,33 @@ menu {
             background-color: white;
             float: left;
             border-radius: 5px;
+            border : 1px solid #EDEDF1;
+            box-shadow: 2px 2px #EDEDF1;
+            
             .bot-header {
                 text-align: center;
                 height: 2em;
-                background-color: rgb(233, 227, 227)
+                border-top-left-radius: 5px;
+                border-top-right-radius: 5px;
+                background-color:#F5F6FA;
+                border-bottom : 1px solid #EDEDF1;
+                color : #393C3e;
+                background-image: linear-gradient(to bottom, #FFFFFF , #EDEDF1);
             }
             .bot-body {
                 height: 3em;
                 margin: 0em 1em;
+                padding-top :1em;
                 border-bottom: 1px solid rgb(226, 225, 225);
+                color : #393C3e;
                 span {
                     display: block;
                     &.small-text{
                         font-size : 12px;
+                    }
+                    &.bold-text{
+                        font-size : 18px;
+                        font-weight : bold;
                     }
                 }
             }
@@ -41,16 +56,42 @@ menu {
         padding: 1em 2em;
         ul {
             li {
-                width: 12em;
-                height: 10em;
+                width: 17em;
+                height: 13em;
                 .bot-header {
-                    height: 2.5em;
+                    text-align : left;
+                    height: 3.5em;
+
+                    font-size : 14px;
+                    font-weight : bold;
+                    .header-text{
+                        padding-top:1em;
+                        padding-left:1em;
+                    }
                 }
                 .bot-body {
-                    height: 5em;
+                    height: 6.5em;
                 }
                 .bot-footer {
-                    height: 2.5em;
+                    .icon-container{
+                        padding-left : 1em;
+                        padding-top : 1em;
+                        color: rgb(221, 50, 221);
+                        background: linear-gradient(linear, left top, left bottom, from(#ff5db1), to(#9e0c58));
+                        .icon{
+                            padding-right : 1em;
+                        }
+                        .edit-icon{
+                            padding-left : 1em;
+                        }
+                        .delete-icon  {
+                            
+                             -webkit-background-clip: text;
+                             background-clip: text;
+                        //     -webkit-text-fill-color: transparent;
+                             display: initial;
+                         }
+                    }
                 }
             }
         }

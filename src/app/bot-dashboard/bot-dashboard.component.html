@@ -5,13 +5,28 @@
     </div>
     <ul>
         <li *ngFor="let botConfig of botConfigList">
-            <div class="bot-header">{{botConfig.value.name.botName}}</div>
+            <div class="bot-header">
+                <div class="header-text">{{botConfig.value.name.botName}}</div>
+            </div>
             <div class="bot-body">
-                <span>280 Chats</span>
+                <span class="bold-text">280 Chats</span>
                 <span class="small-text">Last Updated</span>
                 <span class="small-text">Category</span>
             </div>
-            <div class="bot-footer"></div>
+            <div class="bot-footer">
+                <div class="icon-container">
+                    <span class="icon edit-icon">
+                            <i class="fas fa-pencil-alt"></i>
+                    </span>
+                    <span class="icon copy-icon">
+                            <i class="far fa-copy"></i>
+                    </span>
+                    <span class="icon delete-icon">
+                        <i class="far fa-trash-alt"></i>
+                    </span>
+                </div>
+
+            </div>
         </li>
     </ul>
 </div>
