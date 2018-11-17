@@ -1,4 +1,58 @@
 menu {
-    margin : 0em 0em;
-    padding : 0em 0em;
+    margin: 0em 0em;
+    padding: 0em 0em;
+}
+
+.bot-dashboard-container {
+    padding: 1em 1em;
+    ul {
+        list-style-type: none;
+        margin: 0;
+        overflow: hidden;
+        li {
+            width: 7em;
+            height: 7em;
+            margin: 1em;
+            background-color: white;
+            float: left;
+            border-radius: 5px;
+            .bot-header {
+                text-align: center;
+                height: 2em;
+                background-color: rgb(233, 227, 227)
+            }
+            .bot-body {
+                height: 3em;
+                margin: 0em 1em;
+                border-bottom: 1px solid rgb(226, 225, 225);
+                span {
+                    display: block;
+                    &.small-text{
+                        font-size : 12px;
+                    }
+                }
+            }
+            .bot-footer {
+                height: 2em;
+            }
+        }
+    }
+    @media only screen and (min-width: 992px) {
+        padding: 1em 2em;
+        ul {
+            li {
+                width: 12em;
+                height: 10em;
+                .bot-header {
+                    height: 2.5em;
+                }
+                .bot-body {
+                    height: 5em;
+                }
+                .bot-footer {
+                    height: 2.5em;
+                }
+            }
+        }
+    }
 }
