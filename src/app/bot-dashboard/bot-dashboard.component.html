@@ -1,45 +1,17 @@
 <menu [menuItems]="botDashboardMenu"></menu>
 <div class="bot-dashboard-container">
     <div class="bot-dashboard-heading">
-        <h6>68 Chat bots active</h6>
+        <h6>{{botConfigList?.length}} Chat bots active</h6>
     </div>
     <ul>
-        <li>
-            <div class="bot-header">test</div>
+        <li *ngFor="let botConfig of botConfigList">
+            <div class="bot-header">{{botConfig.value.name.botName}}</div>
             <div class="bot-body">
                 <span>280 Chats</span>
                 <span class="small-text">Last Updated</span>
                 <span class="small-text">Category</span>
             </div>
             <div class="bot-footer"></div>
-        </li>
-           
-        <li>
-
-        </li>
-        <li>
-
-        </li>
-        <li>
-
-        </li>
-        <li>
-
-        </li>
-        <li>
-
-        </li>
-        <li>
-
-        </li>
-        <li>
-
-        </li>
-        <li>
-
-        </li>
-        <li>
-
         </li>
     </ul>
 </div>
