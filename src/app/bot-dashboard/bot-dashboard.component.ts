@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AppService } from '../app.service';
 import { menu } from '../constants/menu.constants';
+import { BotConfigRepository } from '../shared/model/bot-config-repository.model'
 
 @Component({
   selector: 'bot-dashboard',
@@ -11,6 +12,7 @@ export class BotDashboardComponent implements OnInit {
 
   public botDashboardMenu : Array<any>;
   public step : string;
+  public botConfigList : Array<BotConfigRepository>;
 
   constructor(private appService: AppService) { }
 
@@ -29,6 +31,7 @@ export class BotDashboardComponent implements OnInit {
     this.appService.getBotConfigList().subscribe(
       data => {
         console.log(data);
+        this.botConfigList = data;
         // this.botConfigList.forEach(function (entry) {
         //   console.log("entry" + entry);
         //   let string = JSON.stringify(entry.value);
