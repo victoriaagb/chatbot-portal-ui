@@ -8,8 +8,8 @@ import { menu } from '../../constants/menu.constants';
 })
 export class BotConfigComponent implements OnInit {
 
-  public botConfigMenu : Array<any>;
-  public step : string;
+  public botConfigMenu: Array<any>;
+  public step: string;
 
   constructor() { }
 
@@ -17,11 +17,11 @@ export class BotConfigComponent implements OnInit {
     this.step = 'CREATE_BOT';
     this.botConfigMenu = [];
 
-    //Construct an array of menu items for the bot config object
-    Object.keys(menu.CREATE_NEW_BOT).forEach(key =>{
+    // Construct an array of menu items for the bot config object
+    Object.keys(menu.CREATE_NEW_BOT).forEach(key => {
       this.botConfigMenu.push(menu.CREATE_NEW_BOT[key]);
-      if (key === this.step){
-        menu.CREATE_NEW_BOT[key]['active'] =true;
+      if (key === this.step) {
+        menu.CREATE_NEW_BOT[key]['active'] = true;
       }
     });
   }

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { HostListener } from "@angular/core";
-import { SharedService } from "./shared/shared.service";
+import { HostListener } from '@angular/core';
+import { SharedService } from './shared/shared.service';
 
 @Component({
   selector: 'chatbot-portal-ui',
@@ -20,7 +20,7 @@ export class AppComponent {
     this.sharedService.setScreenWidth(this.screenWidth);
   }
 
-  constructor(private sharedService : SharedService ) {
+  constructor(private sharedService: SharedService ) {
     this.onResize();
   }
 }

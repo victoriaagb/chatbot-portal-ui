@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AppService } from '../app.service';
 import { menu } from '../constants/menu.constants';
-import { BotConfigRepository } from '../shared/model/bot-config-repository.model'
+import { BotConfigRepository } from '../shared/model/bot-config-repository.model';
 
 @Component({
   selector: 'bot-dashboard',
@@ -10,9 +10,9 @@ import { BotConfigRepository } from '../shared/model/bot-config-repository.model
 })
 export class BotDashboardComponent implements OnInit {
 
-  public botDashboardMenu : Array<any>;
-  public step : string;
-  public botConfigList : Array<BotConfigRepository>;
+  public botDashboardMenu: Array<any>;
+  public step: string;
+  public botConfigList: Array<BotConfigRepository>;
 
   constructor(private appService: AppService) { }
 
@@ -20,11 +20,11 @@ export class BotDashboardComponent implements OnInit {
     this.step = 'ALL_BOTS';
     this.botDashboardMenu = [];
     Object.keys(menu.YOUR_BOTS).forEach(key => {
-      if (key === this.step){
-        menu.YOUR_BOTS[key]['active'] =true;
+      if (key === this.step) {
+        menu.YOUR_BOTS[key]['active'] = true;
       }
       this.botDashboardMenu.push(menu.YOUR_BOTS[key]);
-    })
+    });
     this.getBotConfigList();
   }
   getBotConfigList() {
@@ -40,7 +40,7 @@ export class BotDashboardComponent implements OnInit {
         //   entry.value = value;
         // });
       },
-      error => console.log("ERROR ::" + error)
+      error => console.log('ERROR ::' + error)
     );
   }
 
