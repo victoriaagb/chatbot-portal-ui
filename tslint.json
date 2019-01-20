@@ -124,9 +124,9 @@
       "camelCase"
     ],
     "component-selector": [
-      false,
+      true,
       "element",
-      "app",
+     // "app",
       "kebab-case"
     ],
     "no-output-on-prefix": true,
