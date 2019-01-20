@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { SharedService } from "../shared/shared.service";
-import { Router, ActivatedRoute } from "@angular/router";
+import { SharedService } from '../shared/shared.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'chat-portal-header',
@@ -8,20 +8,20 @@ import { Router, ActivatedRoute } from "@angular/router";
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  activeIndex = 0
-  constructor(private sharedService : SharedService,
-              private router : Router,
+  activeIndex = 0;
+  constructor(private sharedService: SharedService,
+              private router: Router,
               private route: ActivatedRoute) { }
 
   ngOnInit() {
-    console.log("Testing screen size" + this.sharedService.getScreenWidth());
+    console.log('Testing screen size' + this.sharedService.getScreenWidth());
 
   }
 
-  selectHeaderItem(index){
+  selectHeaderItem(index) {
     this.activeIndex = index;
   }
-  isMobile(){
+  isMobile() {
     return (this.sharedService.getScreenWidth() < 992);
   }
 

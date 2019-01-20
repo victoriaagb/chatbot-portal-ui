@@ -1,5 +1,5 @@
 import { Component, OnInit , Input } from '@angular/core';
-import { Router, ActivatedRoute } from "@angular/router";
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'menu',
@@ -9,7 +9,7 @@ import { Router, ActivatedRoute } from "@angular/router";
 export class MenuComponent implements OnInit {
 
   @Input() menuItems: any;
-  activeIndex=0;
+  activeIndex = 0;
 
   constructor(private router: Router,
               private route: ActivatedRoute) { }
@@ -17,8 +17,8 @@ export class MenuComponent implements OnInit {
   ngOnInit() {
   }
 
-  selectMenuItem(newActive: number){
-    this.activeIndex=newActive;
+  selectMenuItem(newActive: number) {
+    this.activeIndex = newActive;
     this.router.navigate(['./', this.menuItems[newActive].routerLink], { relativeTo: this.route });
   }
 

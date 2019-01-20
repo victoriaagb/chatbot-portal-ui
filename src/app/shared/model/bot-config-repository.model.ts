@@ -1,4 +1,4 @@
-import { BotConfig } from "./bot-config.model";
+import { BotConfig } from './bot-config.model';
 
 export interface BotConfigRepository {
   id?: string;
