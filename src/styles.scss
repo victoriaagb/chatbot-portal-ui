@@ -3,19 +3,215 @@
 $fa-font-path: "../node_modules/@fortawesome/fontawesome-free/webfonts";
 @import "../node_modules/@fortawesome/fontawesome-free/css/all.css";
 @import "_variables.scss";
-.chatbot-header {
-    background-color: $menu-item !important;
-    background: linear-gradient(45deg,blue red);
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    src: url('./assets/fonts/source-sans-pro-v11-latin-regular.eot');
+    /* IE9 Compat Modes */
+    src: local('Source Sans Pro Regular'), local('SourceSansPro-Regular'), url('./assets/fonts/source-sans-pro-v11-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('./assets/fonts/source-sans-pro-v11-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+    url('./assets/fonts/source-sans-pro-v11-latin-regular.woff') format('woff'), /* Modern Browsers */
+    url('./assets/fonts/source-sans-pro-v11-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+    url('./assets/fonts/source-sans-pro-v11-latin-regular.svg#SourceSansPro') format('svg');
+    /* Legacy iOS */
+}
+
+// .chatbot-header {
+//     background-color: $menu-item !important;
+//     background: linear-gradient(45deg, blue red);
+// }
+
+html {
+    height: 100%;
 }
 
 body {
-    font-family: 'Source Sans Pro Regular', sans-serif;
-    h1 {
-        font-family: 'Source Sans Pro Semibold', sans-serif;
+    font-family: 'Source Sans Pro';
+    background: #eff3f6;
+    min-height: 100%;
+    position: relative;
+}
+
+// body {
+//     background-color: #F0F3F6;
+//     .container-fluid {
+//         padding-right : 0px !important;
+//         padding-left : 0px !important;
+//     }
+// }
+body::after {
+    content: '';
+    display: block;
+    height: 100px;
+}
+
+.font12 {
+    font-size: 12px;
+}
+
+.font14 {
+    font-size: 14px;
+}
+
+.bg-darker {
+    background-color: #222c3c;
+}
+
+@media only screen and (max-width: 1200px) {
+    nav .container {
+        margin: 0 !important;
+        padding: 0 !important;
     }
-    background-color: #dbdbdb;
-    .container-fluid {
-        padding-right : 0px !important;
-        padding-left : 0px !important;
+    .navbar-nav .nav-link {
+        margin: 0 !important;
     }
+}
+
+.navbar-nav .nav-link {
+    color: #7f8fa4 !important;
+    padding: 15px 0px;
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+    margin: 0 20px;
+    font-size: 14px;
+    font-weight: 550;
+    transition: 0.2s ease-in-out;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #fff !important;
+    border-bottom: 5px solid #1a92eb;
+    transition: 0.2s ease-in-out
+}
+
+.navbar-nav .nav-link.active {
+    color: #fff !important;
+    border-bottom: 5px solid #1a92eb;
+}
+
+.no-hover:hover {
+    border-bottom: 0 !important;
+}
+
+.navbar-nav button {
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.icon-top {
+    width: 35px;
+}
+
+.back-link-nav-color {
+    color: #1a92eb !important;
+}
+
+.col-box-asla {
+    background: #fff;
+    border: 1px solid #dfe2e5;
+    min-height: 400px
+}
+
+.col-box-asla input,
+.col-box-asla textarea {
+    border: 1px solid #adadad;
+    color: #354052;
+    font-size: 13px;
+}
+
+.col-box-asla .form-control:focus {
+    outline: none;
+    box-shadow: none;
+    border-color: #adadad;
+}
+
+.col-8-box form label,
+.col-8-box form em {
+    font-size: 11px;
+    color: #68768c;
+}
+
+.col-8-box form label {
+    text-shadow: 0px 0px 0.5px #787f8a;
+}
+
+.col-8-box form textarea {
+    min-height: 150px;
+    max-height: 200px;
+}
+
+.col-4-box p {
+    color: #354052;
+    line-height: 1.3em;
+    text-shadow: 0px 0px 0.5px #787f8a;
+}
+
+.col-4-box {
+    border: 1px solid #dfe2e5;
+    border-radius: 5px;
+    box-shadow: 0px 0px 1px 2px #e6e8ea;
+}
+
+.col-4-box .inner-box {
+    box-shadow: 0px 1px 0 0 #e6eaee;
+}
+
+.inner-box-second {
+    height: 300px;
+}
+
+.border-raduis {
+    border-radius: 5px;
+}
+
+.border {
+    border: 1px solid #d4d7da !important;
+    border-left: 0 !important
+}
+
+.reply-text input {
+    font-size: 14px;
+    color: #77869b;
+    font-size: 14px;
+    border: 1px solid #dfe3e9;
+}
+
+.reply-text .form-control:focus {
+    outline: none;
+    box-shadow: none;
+    border-color: #dfe3e9;
+}
+
+.reply-text button i {
+    color: #707e93
+}
+
+.create-bot-heading {
+    color: #354052;
+    font-size: 16px
+}
+
+footer {
+    background: #fff;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+}
+
+footer p {
+    color: #a8a8a8
+}
+
+/*////////////////////////////////*/
+
+.bot-name {
+    color: #68768c;
+    font-size: 11px;
+}
+
+.store-hour {
+    font-size: 14px;
+    font-weight: 600;
 }
