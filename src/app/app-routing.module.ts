@@ -5,7 +5,8 @@ import { LandingComponent } from './landing/landing.component';
 import { BotDashboardComponent } from './bot-dashboard/bot-dashboard.component';
 
 const routes: Routes = [
-  { path: '', component: LandingComponent, pathMatch: 'full' },
+  { path: '', component: BotDashboardComponent },
+  { path: 'landing', component: LandingComponent, pathMatch: 'full' },
   { path: 'bot-dashboard', component: BotDashboardComponent }
 ];
 
