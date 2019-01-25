@@ -23,17 +23,14 @@
             <div class="collapse navbar-collapse" id="collapsibleNavbar">
                 <div class="container">
                     <ul class="navbar-nav secondnav">
-                        <li class="nav-item" [class.selected]="activeIndex === 0">
-                          <a class="nav-link" href="#" routerLink="/bot-dashboard" (click)="selectHeaderItem(0)">Your Bots <span class="sr-only">(current)</span></a>
+                        <li class="nav-item">
+                          <a class="nav-link" [class.active]="activeIndex === 0" href="#" routerLink="/bot-dashboard" (click)="selectHeaderItem(0)">Your Bots <span class="sr-only">(current)</span></a>
                         </li>
-                        <li class="nav-item"  [class.selected]="activeIndex === 1">
-                          <a class="nav-link" href="#" routerLink="/bot-config" (click)="selectHeaderItem(1)">Create New Bot</a>
-                        </li>
-                        <li class="nav-item" [class.selected]="activeIndex === 2">
-                            <a class="nav-link" href="#">Error</a>
+                        <li class="nav-item" >
+                          <a class="nav-link" [class.active]="activeIndex === 1" href="#" routerLink="/bot-config" (click)="selectHeaderItem(1)">Create Bot</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="#">Create Bot</a>
+                            <a class="nav-link" [class.active]="activeIndex === 2" href="#">Error</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link " href="#">Create Topic</a>

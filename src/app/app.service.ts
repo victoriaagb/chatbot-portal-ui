@@ -8,7 +8,7 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class AppService {
 
-  private botConfigURL = 'https://botz.chat/smart-chat-portal-0.0.1/botconfig';
+  private botConfigURL = 'http://18.223.226.83:8080/smart-chat-portal-0.0.1/botconfig';
     constructor(private http: HttpClient) { }
 
     createBotConfig(configInput: BotConfigRepository): Observable<BotConfigRepository> {
