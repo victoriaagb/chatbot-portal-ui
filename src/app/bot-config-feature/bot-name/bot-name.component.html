@@ -3,23 +3,23 @@
       <div class="col-md-12">
           <div class="col-md-12">
               <div class="pt-3">
-                  
+
                   <img class="float-left mr-2 icon-top" src="./assets/images/icon@3x.png">
                   <h6 class="float-left mt-2 create-bot-heading"><strong>Create New Bot</strong></h6>
-                  
+
               </div>
           </div>
       </div>
       <div class="col-md-12">
           <div class="pt-3">
               <div class="col-md-12 col-lg-8 float-left">
-                  
+
                   <div class="p-3 col-8-box col-box-asla">
                       <form>
                           <div class="col-md-5">
                               <div class="form-group">
-                                  <label class="text-uppercase">enter new bot name</label>
-                                  <input type="text" name="" class="form-control" placeholder="Sore Working Hours">
+                                  <label class="text-uppercase">Bot Name</label>
+                                  <input type="text" name="" class="form-control" [value]="currentBot.value.name.botName" placeholder="Enter new bot name">
                                   <div class="col-md-12">
                                       <div class="mt-1">
                                           <em>some hit text will go here</em>
@@ -29,8 +29,8 @@
                           </div>
                           <div class="col-md-9">
                               <div class="form-group">
-                                  <label class="text-uppercase">Discription</label>
-                                  <textarea type="text" name="" class="form-control" placeholder="Sore Working Hours">We’re reaching out because we wanted you to be the first to know that our brand-new product, Adobe Portfolio, is now officially open for business. As one of Behance’s top members, we’d love for you to try it.  Adobe Portfolio, is now officially open for business. As one of Behance’s top members, we’d love for you to try it.</textarea>
+                                  <label class="text-uppercase">Description</label>
+                                  <textarea type="text" name="" class="form-control" [value]="currentBot.value.name.botDescription" placeholder="Enter bot description">We’re reaching out because we wanted you to be the first to know that our brand-new product, Adobe Portfolio, is now officially open for business. As one of Behance’s top members, we’d love for you to try it.  Adobe Portfolio, is now officially open for business. As one of Behance’s top members, we’d love for you to try it.</textarea>
                               </div>
                           </div>
                           <div class="col-md-10">
@@ -39,19 +39,19 @@
                               </div>
                           </div>
                       </form>
-                      
+
                   </div>
               </div>
               <div class="col-md-12 col-lg-4 float-left">
                   <div class="mt-4 mt-sm-4 mt-md-4 mt-lg-0">
-                      
+
                       <div class="col-4-box">
                           <div class="bg-white border-raduis">
                               <div class="pr-4 pl-4 pt-2 pb-2 inner-box">
                                   <p class="mb-0 font14">Chat Bot Simulator</p>
                                   <p class="mt-0 mb-0 font12">Not Active</p>
                               </div>
-                              
+
                           </div>
                           <div class="pr-4 pl-4 pt-2 pb-1 inner-box-second"></div>
                           <div class="bg-white">
