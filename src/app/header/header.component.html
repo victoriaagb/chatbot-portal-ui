@@ -27,9 +27,9 @@
                           <a class="nav-link" [class.active]="activeIndex === 0" href="#" routerLink="/bot-dashboard" (click)="selectHeaderItem(0)">Your Bots <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item" >
-                          <a class="nav-link" [class.active]="activeIndex === 1" href="#" routerLink="/bot-config" (click)="selectHeaderItem(1)">Create Bot</a>
+                          <a class="nav-link" [class.active]="activeIndex === 1" (click)="createBot()">Create Bot</a>
                         </li>
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a class="nav-link" [class.active]="activeIndex === 2" href="#">Error</a>
                         </li>
                         <li class="nav-item">
@@ -37,7 +37,7 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Ask a Question</a>
-                        </li>
+                        </li> -->
                         <li class="nav-item">
                             <a class="nav-link" href="#">Design</a>
                         </li>
@@ -46,6 +46,9 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Analytics</a>
+                        </li>
+                        <li *ngIf="currentBot" class="nav-item" >
+                          <a class="nav-link" [class.active]="activeIndex === 3">{{currentBot.value.name.botName}}</a>
                         </li>
                         <form class="form-inline my-0 ml-xl-auto ml-lg-0 ml-md-0">
                             <button class="btn btn-default my-2 my-sm-0 pl-4 pr-4" type="button">Build</button>
