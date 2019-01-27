@@ -34,9 +34,12 @@
                               </div>
                           </div>
                           <div class="col-md-10">
-                              <div class="form-group">
-                                  <button class="btn btn-success pr-3 pl-3">Configure Chat Bot </button>
+                              <div *ngIf="currentBot.status; else initialize" class="form-group">
+                                  <button class="btn btn-success pr-3 pl-3">Edit Chat Bot</button>
                               </div>
+                              <ng-template #initialize>
+                                <button class="btn btn-success pr-3 pl-3">Configure Chat Bot</button>
+                              </ng-template>
                           </div>
                       </form>
 

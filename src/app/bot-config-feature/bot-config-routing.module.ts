@@ -9,10 +9,10 @@ const routes: Routes = [
   { path: 'bot-config',
     component: BotConfigComponent,
     children: [
-      { path: '', component: BotNameComponent},
-      { path: 'bot-name', component: BotNameComponent },
-      { path: ':botName', component: BotNameComponent },
+      { path: '', component: BotNameComponent },
       { path: 'topic-config', component: TopicConfigComponent },
+      { path: 'bot-name', component: BotNameComponent },
+      // { path: ':botName', component: BotNameComponent },
       { path: 'bot-design', component: BotDesignComponent },
     ]
   }

@@ -21,6 +21,8 @@ export class AppService {
       .get<BotConfigRepository[]>(this.botConfigURL)
       .map(result => result);
     }
+
+    // TODO: Hard delete make into soft delete
     deleteBotConfig(botConfig: BotConfigRepository): Observable<number> {
       return this.http
       .put<number>(this.botConfigURL + '/delete', botConfig)
