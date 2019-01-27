@@ -21,6 +21,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
       this.currentBot = data.botconfig;
       if (this.currentBot) {
         this.activeIndex = 3;
+      } else {
+        this.activeIndex = 1;
       }
       console.log(this.currentBot);
     });

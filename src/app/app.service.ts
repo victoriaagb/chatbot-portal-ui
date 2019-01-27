@@ -11,11 +11,6 @@ export class AppService {
   private botConfigURL = 'http://18.223.226.83:8080/smart-chat-portal-0.0.1/botconfig';
     constructor(private http: HttpClient) { }
 
-    createBotConfig(configInput: BotConfigRepository): Observable<BotConfigRepository> {
-      return this.http
-        .post<BotConfigRepository>(this.botConfigURL, configInput)
-        .map(result => result);
-    }
     getBotConfigList(): Observable<BotConfigRepository[]> {
       return this.http
       .get<BotConfigRepository[]>(this.botConfigURL)
