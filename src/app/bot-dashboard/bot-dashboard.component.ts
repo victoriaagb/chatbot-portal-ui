@@ -54,7 +54,8 @@ export class BotDashboardComponent implements OnInit {
     console.log('route to edit');
     this.updateCurrentBot(botConfig);
     const botName = botConfig.value.name.botName.split(' ').join('-');
-    this.router.navigate(['/bot-config', botName]);
+    // this.router.navigate(['/bot-config', botName]);
+    this.router.navigate(['/bot-config']);
   }
 
   updateCurrentBot(botConfig): void {
