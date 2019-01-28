@@ -9,7 +9,7 @@ const routes: Routes = [
   { path: 'bot-config',
     component: BotConfigComponent,
     children: [
-      { path: '', component: BotNameComponent },
+      { path: '', pathMatch: 'prefix', redirectTo: 'bot-name'},
       { path: 'topic-config', component: TopicConfigComponent },
       { path: 'bot-name', component: BotNameComponent },
       // { path: ':botName', component: BotNameComponent },

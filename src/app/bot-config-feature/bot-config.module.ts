@@ -5,6 +5,7 @@ import { SharedModule } from '../shared/shared.module';
 import { TopicConfigComponent } from './topic-config/topic-config.component';
 import { BotNameComponent } from './bot-name/bot-name.component';
 import { BotDesignComponent } from './bot-design/bot-design.component';
+import { BotConfigService } from './bot-config.service';
 
 @NgModule({
   imports: [
@@ -16,6 +17,9 @@ import { BotDesignComponent } from './bot-design/bot-design.component';
     TopicConfigComponent,
     BotNameComponent,
     BotDesignComponent,
+  ],
+  providers: [
+    BotConfigService
   ]
 })
 export class BotConfigModule { }
