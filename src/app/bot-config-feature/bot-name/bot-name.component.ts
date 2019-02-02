@@ -7,6 +7,7 @@ import { BotConfig } from '../../shared/model/bot-config.model';
 import { BotStatus } from '../../shared/model/bot-status.enum';
 import { Router, Route, ActivatedRoute } from '@angular/router';
 import { BotConfigService } from '../bot-config.service';
+import { BotStepConfig } from '../../shared/model/bot-step-config.enum';
 
 @Component({
   selector: 'app-bot-name',
@@ -38,6 +39,8 @@ export class BotNameComponent implements OnInit, OnDestroy {
   initialize() {
     if (_.isNull(this.sharedService.currentBot)) {
       this.sharedService.currentBot = <BotConfigRepository>{};
+      this.sharedService.currentBot.botId = '1';
+      this.sharedService.currentBot.stepConfig = BotStepConfig.NAME;
       this.sharedService.currentBot.value = <BotConfig>{
         name: {
           botName: '',
@@ -51,7 +54,12 @@ export class BotNameComponent implements OnInit, OnDestroy {
   saveName() {
     if (_.isUndefined(this.currentBot.status)) {
       this.currentBot.status = BotStatus.INITIALIZED;
-      // this.botConfigService.createBotConfig(this.currentBot);
+      this.botConfigService.createBotConfig(this.currentBot).subscribe(
+        data => {
+          console.log('Create Bot Message :: ' + data);
+        },
+        error => console.log('ERROR ::' + error)
+      );
     }
     this.sharedService.sendCurrentBot(this.currentBot);
     this.router.navigate(['../topic-config'], {relativeTo: this.route});

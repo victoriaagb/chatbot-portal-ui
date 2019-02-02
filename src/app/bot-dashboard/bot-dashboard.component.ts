@@ -62,6 +62,18 @@ export class BotDashboardComponent implements OnInit {
     this.sharedService.sendCurrentBot(botConfig);
   }
 
+  deleteBot(botConfig): void {
+    this.appService.deleteBotConfig(botConfig).subscribe(
+      data => {
+        if (data >= 1) {
+          this.getBotConfigList();
+        }
+        console.log('Deleted: ' + JSON.stringify(data));
+      },
+      error => console.log('ERROR ::' + error)
+    );
+  }
+
   clearMessage(): void {
     this.sharedService.clearMessage();
   }
