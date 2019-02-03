@@ -6,6 +6,7 @@ import { TopicConfigComponent } from './topic-config/topic-config.component';
 import { BotNameComponent } from './bot-name/bot-name.component';
 import { BotDesignComponent } from './bot-design/bot-design.component';
 import { BotConfigService } from './bot-config.service';
+import { TopicQuestionsComponent } from './topic-questions/topic-questions.component';
 
 @NgModule({
   imports: [
@@ -17,6 +18,7 @@ import { BotConfigService } from './bot-config.service';
     TopicConfigComponent,
     BotNameComponent,
     BotDesignComponent,
+    TopicQuestionsComponent,
   ],
   providers: [
     BotConfigService
