@@ -5,10 +5,13 @@ import { FormsModule } from '@angular/forms';
 import { MenuComponent } from './menu/menu.component';
 import { SharedService } from './shared.service';
 
+import { StorageServiceModule} from 'angular-webstorage-service';
+
 @NgModule({
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    StorageServiceModule
   ],
   declarations: [
     MenuComponent
@@ -16,7 +19,8 @@ import { SharedService } from './shared.service';
   exports: [
     CommonModule,
     FormsModule,
-    MenuComponent
+    MenuComponent,
+    StorageServiceModule
   ]
 })
 export class SharedModule {
