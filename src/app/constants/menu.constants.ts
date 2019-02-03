@@ -23,13 +23,8 @@ export const menu = {
             type: 'link'
         },
         CREATE_TOPIC: {
-            displayName: 'Create Topic',
+            displayName: 'Configure Topics',
             routerLink: 'topic-config',
-            type: 'link'
-        },
-        DESIGN: {
-            displayName: 'Design',
-            routerLink: 'bot-design',
             type: 'link'
         },
         PUBLISH: {
