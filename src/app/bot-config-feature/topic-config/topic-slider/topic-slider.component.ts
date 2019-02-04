@@ -37,6 +37,7 @@ export class TopicSliderComponent implements OnInit {
   }
   editQuestion(topic: Topic) {
     this.sharedService.currentTopic = topic;
+    this.sharedService.storeSessionData('currentTopic', topic);
     this.router.navigate(['./topic-questions'], {relativeTo: this.route});
   }
 

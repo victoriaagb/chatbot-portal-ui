@@ -24,11 +24,13 @@ export class SharedService {
   retrieveSessionData() {
     this.currentBot = this.sessionData.get('currentBot');
     this.currentPage = this.sessionData.get('currentPage');
+    this.currentTopic = this.sessionData.get('currentTopic');
   }
 
   removeSessionData() {
     this.sessionData.remove('currentBot');
     this.sessionData.remove('currentPage');
+    this.sessionData.remove('currentTopic');
   }
 
   // Message Events for Current Bot
