@@ -19,6 +19,6 @@ export class TopicNameComponent implements OnInit {
   }
 
   createNewTopic() {
-    this.router.navigate(['../topic-questions'], {relativeTo: this.route});
+    this.router.navigate(['/topic-questions'], {relativeTo: this.route});
    }
 }

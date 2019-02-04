@@ -3,6 +3,7 @@ import {SESSION_STORAGE, WebStorageService} from 'angular-webstorage-service';
 import { BotConfigRepository } from './model/bot-config-repository.model';
 import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
+import { Topic } from './model/topic.model';
 
 @Injectable()
 export class SharedService {
@@ -10,6 +11,7 @@ export class SharedService {
   private _botSubject = new Subject<any>();
   screenWidth: number;
   currentBot: BotConfigRepository;
+  currentTopic: Topic;
   currentPage: number;
 
   constructor(@Inject(SESSION_STORAGE) private sessionData: WebStorageService) {}

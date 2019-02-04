@@ -3,8 +3,8 @@
   <div class="row">
     <div class="col-md-12 ">
       <div class="col-md-12 ">
-        <div class=" mb-3 row">
-          <div id="slidermaintop" class="p-2 bg-white top-slide-open col-md-12">
+        <div id="slider-wrapper" class=" mb-3 row">
+          <div *ngIf="slideOut" [@slideInOut] id="slidermaintop" class="p-2 bg-white top-slide-open col-md-12">
             <div class="wrappertop light-olive">
               <div class="row">
                 <div class="col-md-12 contenttop">
@@ -20,15 +20,15 @@
                       </div>
                     </div>
                   </div>
-                  <div class=" col-md-2 text-center inner-boxes-slider border-top-slider-plane bangni-color">
+                  <div *ngFor="let topic of topicList" class="col-md-2 text-center inner-boxes-slider border-top-slider-plane bangni-color">
                     <div class="row">
                       <div class="col-md-12 text-left">
                         <div class="row">
                           <div class="col-d-10 col-x-10 col-p-10  ">
                             <div class="p-2">
-                              <p class="text-white mb-0">MENU</p>
+                              <p class="text-white mb-0">{{topic.name}}</p>
                               <p class="mb-0 ">
-                                <a class="colordadada font12" href="">Edit Question</a>
+                                <a class="colordadada font12" (click)="editQuestion(topic)" [routerLink]="">Edit Question</a>
                               </p>
                               <p class="mb-0 ">
                                 <a class="colordadada font12" href="">Edit Answer</a>
@@ -55,55 +55,17 @@
                     <div class="row p-2">
                     </div>
                   </div>
-                  <div class="col-md-2 text-center inner-boxes-slider border-top-slider-dashed ">
-                    <div class="row p-2">
-                    </div>
-                  </div>
-                  <div class="col-md-2 text-center inner-boxes-slider border-top-slider-dashed ">
-                    <div class="row p-2">
-                    </div>
-                  </div>
-                  <div class="col-md-2 text-center inner-boxes-slider border-top-slider-dashed ">
-                    <div class="row p-2">
-                    </div>
-                  </div>
-                  <div class="col-md-2 text-center inner-boxes-slider border-top-slider-dashed ">
-                    <div class="row p-2">
-                    </div>
-                  </div>
-                  <div class="col-md-2 text-center inner-boxes-slider border-top-slider-dashed ">
-                    <div class="row p-2">
-                    </div>
-                  </div>
-                  <div class="col-md-2 text-center inner-boxes-slider border-top-slider-dashed ">
-                    <div class="row p-2">
-                    </div>
-                  </div>
-                  <div class="col-md-2 text-center inner-boxes-slider border-top-slider-dashed ">
-                    <div class="row p-2">
-                    </div>
-                  </div>
-                  <div class="col-md-2 text-center inner-boxes-slider border-top-slider-dashed ">
-                    <div class="row p-2">
-                    </div>
-                  </div>
-                  <div class="col-md-2 text-center inner-boxes-slider border-top-slider-dashed ">
-                    <div class="row p-2">
-                    </div>
-                  </div>
-                  <div class="col-md-2 text-center inner-boxes-slider border-top-slider-dashed ">
-                    <div class="row p-2">
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>
           </div>
-          <div class="col-md-12">
-            <button id="closeslider" class="cross-button-collapse color354052 font12" type="">
+          <div id="slider-buttons"class="col-md-12">
+            <button *ngIf="slideOut; else viewButton"(click)="toggleSlideOut()" id="closeslider" class="cross-button-collapse color354052 font12" type="">
               <i class="fas fa-times mr-2"></i> Close</button>
-            <button id="openslider" class="cross-button-collapse color354052 font12" type="">
+            <ng-template #viewButton>
+              <button (click)="toggleSlideOut()" id="openslider" class="cross-button-collapse color354052 font12" type="">
               <i class="fas fa-bars mr-2"></i> view all topics</button>
+            </ng-template>
           </div>
         </div>
       </div>

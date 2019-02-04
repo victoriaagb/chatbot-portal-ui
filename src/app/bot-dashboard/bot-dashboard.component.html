@@ -31,13 +31,13 @@
                                                 <div class="card-footer bg-white pb-0">
                                                     <div class="card-title d-flex ">
                                                         <div (click)="editBotConfig(botConfig)" class="col-md-3 col-4  t-align p-r-d p-r-m t-align-left">
-                                                            <a><img class="" src="./assets/images/edit.png"></a>
+                                                            <a [routerLink]=""><img class="" src="./assets/images/edit.png"></a>
                                                         </div>
                                                         <div class="col-md-3 col-4  t-align p-r-d p-r-m">
-                                                            <a href=""> <img class="" src="./assets/images/2.png"></a>
+                                                            <a [routerLink]=""> <img class="" src="./assets/images/2.png"></a>
                                                         </div>
                                                         <div (click)="deleteBot(botConfig)" class="col-md-3 col-4  t-align p-r-d p-r-m t-align-right">
-                                                            <a> <img class="" src="./assets/images/forma-1.png"></a>
+                                                            <a [routerLink]=""> <img class="" src="./assets/images/forma-1.png"></a>
                                                         </div>
                                                     </div>
                                                 </div>

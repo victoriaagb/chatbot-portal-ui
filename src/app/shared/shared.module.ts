@@ -1,6 +1,7 @@
 import { NgModule , ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MenuComponent } from './menu/menu.component';
 import { SharedService } from './shared.service';
@@ -11,7 +12,8 @@ import { StorageServiceModule} from 'angular-webstorage-service';
   imports: [
     CommonModule,
     FormsModule,
-    StorageServiceModule
+    StorageServiceModule,
+    BrowserAnimationsModule
   ],
   declarations: [
     MenuComponent

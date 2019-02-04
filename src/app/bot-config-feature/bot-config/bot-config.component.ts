@@ -4,7 +4,7 @@ import { menu } from '../../constants/menu.constants';
 @Component({
   selector: 'bot-config',
   templateUrl: './bot-config.component.html',
-  styleUrls: ['./bot-config.component.scss']
+  styleUrls: ['./bot-config.component.scss'],
 })
 export class BotConfigComponent implements OnInit {
 
