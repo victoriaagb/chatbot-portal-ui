@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { SharedService } from '../../../shared/shared.service';
 import { Topic } from '../../../shared/model/topic.model';
 import { Router, ActivatedRoute } from '@angular/router';
 import { trigger, state, transition, animate, style } from '@angular/animations';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'topic-slider',
@@ -20,18 +21,28 @@ import { trigger, state, transition, animate, style } from '@angular/animations'
     ])
   ]
 })
-export class TopicSliderComponent implements OnInit {
+export class TopicSliderComponent implements OnInit, OnDestroy {
 
   topicList: Topic[];
   slideOut: boolean;
+  private subscription: Subscription;
   constructor(private sharedService: SharedService,
     private router: Router,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute) {
+      this.subscription = this.sharedService.getCurrentBot().subscribe( data => {
+        this.topicList = data.botconfig.value.topics;
+      });
+    }
 
   ngOnInit() {
     this.topicList = this.sharedService.currentBot.value.topics;
     this.slideOut = true;
   }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
+
   toggleSlideOut() {
     this.slideOut = !this.slideOut;
   }
