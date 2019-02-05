@@ -15,7 +15,8 @@ const routes: Routes = [
       { path: '', pathMatch: 'prefix', redirectTo: 'bot-name'},
       { path: 'topic-config', component: TopicConfigComponent ,
        children: [
-          { path: '', component: TopicNameComponent },
+        { path: '', pathMatch: 'prefix', redirectTo: 'topic-name'},
+          { path: 'topic-name', component: TopicNameComponent },
           { path: 'topic-questions', component: TopicQuestionsComponent },
           { path: 'topic-answers', component: TopicAnswersComponent }
           ] },

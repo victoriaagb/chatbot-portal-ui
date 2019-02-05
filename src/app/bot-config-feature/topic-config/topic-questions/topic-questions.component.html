@@ -2,19 +2,19 @@
   <div class="col-md-12 float-left">
       <div class="pb-3">
           <img class="float-left mr-2 icon-top-form" src="./assets/images/group-5@3x.png">
-          <p class="mb-0 bot-name text-uppercase">topic Name</p>
-          <p class="mt-0 mb-0 store-hour">Sore Hours</p>
+          <p class="mb-0 bot-name text-uppercase">Topic Name</p>
+          <p class="mt-0 mb-0 store-hour">{{topic.name}}</p>
       </div>
   </div>
   <form>
       <div class="col-md-10">
           <div class="input-group">
-              <label class="text-uppercase">enter Question</label>
+              <label class="text-uppercase">Enter Question</label>
           </div>
           <div class="input-group">
-              <input type="text" name="" class="form-control" placeholder="Are You Still Open? ">
+              <input [(ngModel)]="question" type="text" [ngModelOptions]="{standalone: true}" class="form-control" placeholder="Enter your question">
               <span class="input-group-btn">
-              <button class="btn btn-default ml-1" type="button"><b>Submit</b></button>
+              <button (click)="addQuestion()" class="btn btn-default ml-1" type="button"><b>Submit</b></button>
           </span>
               <div class="col-md-12">
                   <div class="mt-1">
@@ -27,25 +27,11 @@
           <div class="form-group">
               <label class="text-uppercase">similar questions</label>
               <div class="questions">
-                  <div>
-                      <strong> Q1.</strong> Are You Still Open?
+                  <div *ngFor="let question of topic.questions; let i = index">
+                      <strong> Q{{i + 1}}.</strong> {{question}}
                       <span class="float-right active">
-                    <a href="#"><img src="./assets/images/edit@3x.png"></a>
-                     <a href="#"><img src="./assets/images/forma-1@3x.png"></a>
-                  </span>
-                  </div>
-                  <div>
-                      <strong> Q2.</strong> What are the hours of operation?
-                      <span class="float-right">
-                     <a href="#"><img src="./assets/images/edit@3x.png"></a>
-                     <a href="#"><img src="./assets/images/forma-1@3x.png"></a>
-                  </span>
-                  </div>
-                  <div>
-                      <strong> Q3.</strong> What are your hours ?
-                      <span class="float-right">
-                     <a href="#"><img src="./assets/images/edit@3x.png"></a>
-                     <a href="#"><img src="./assets/images/forma-1@3x.png"></a>
+                    <a (click)="editQuestion(i, question)" [routerLink]=""><img src="./assets/images/edit@3x.png"></a>
+                    <a (click)="removeQuestion(i)" [routerLink]=""><img src="./assets/images/forma-1@3x.png"></a>
                   </span>
                   </div>
               </div>
