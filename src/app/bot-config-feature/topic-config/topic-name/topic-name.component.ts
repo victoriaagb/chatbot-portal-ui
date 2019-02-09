@@ -31,7 +31,7 @@ export class TopicNameComponent implements OnInit {
         name: this.topicName
       };
 
-      if (_.isNull(currentBot.value.topics)) {
+      if (_.isEmpty(currentBot.value.topics)) {
         currentBot.value.topics = topics;
       }
       currentBot.value.topics.push(topic);
