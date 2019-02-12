@@ -10,6 +10,8 @@ import { TopicQuestionsComponent } from './topic-config/topic-questions/topic-qu
 import { TopicAnswersComponent } from './topic-config/topic-answers/topic-answers.component';
 import { TopicNameComponent } from './topic-config/topic-name/topic-name.component';
 import { TopicSliderComponent } from './topic-config/topic-slider/topic-slider.component';
+import { TopicAnswersHomeComponent } from './topic-config/topic-answers/topic-answers-home/topic-answers-home.component';
+import { TopicAnswersSliderComponent } from './topic-config/topic-answers/topic-answers-slider/topic-answers-slider.component';
 
 @NgModule({
   imports: [
@@ -25,6 +27,8 @@ import { TopicSliderComponent } from './topic-config/topic-slider/topic-slider.c
     TopicAnswersComponent,
     TopicNameComponent,
     TopicSliderComponent,
+    TopicAnswersHomeComponent,
+    TopicAnswersSliderComponent,
   ],
   providers: [
     BotConfigService
