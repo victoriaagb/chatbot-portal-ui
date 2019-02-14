@@ -5,6 +5,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Topic } from '../../../shared/model/topic.model';
 import * as _ from 'lodash';
 import { TopicConfigService } from '../topic-config.service';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-topic-questions',
@@ -15,9 +16,15 @@ export class TopicQuestionsComponent implements OnInit {
 
   topic: Topic;
   question: String;
+  subscription: Subscription;
+
   constructor(private topicConfigService: TopicConfigService,
     private router: Router,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute) {
+      this.subscription = this.topicConfigService.getTopicAction().subscribe (data => {
+        this.topic = this.topicConfigService.currentTopic;
+      });
+    }
 
   ngOnInit() {
     this.question = '';
