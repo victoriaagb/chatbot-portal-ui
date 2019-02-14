@@ -4,6 +4,8 @@ import { BotConfigService } from '../../bot-config.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Topic } from '../../../shared/model/topic.model';
 import * as _ from 'lodash';
+import { TopicConfigService } from '../topic-config.service';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-topic-questions',
@@ -14,14 +16,19 @@ export class TopicQuestionsComponent implements OnInit {
 
   topic: Topic;
   question: String;
-  constructor(private sharedService: SharedService,
-    private botConfigService: BotConfigService,
+  subscription: Subscription;
+
+  constructor(private topicConfigService: TopicConfigService,
     private router: Router,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute) {
+      this.subscription = this.topicConfigService.getTopicAction().subscribe (data => {
+        this.topic = this.topicConfigService.currentTopic;
+      });
+    }
 
   ngOnInit() {
     this.question = '';
-    this.topic = this.sharedService.currentTopic;
+    this.topic = this.topicConfigService.currentTopic;
     if (_.isUndefined(this.topic.questions)) {
       this.topic.questions = [];
     }

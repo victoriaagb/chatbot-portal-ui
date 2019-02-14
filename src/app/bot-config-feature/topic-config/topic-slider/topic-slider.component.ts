@@ -1,9 +1,7 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { SharedService } from '../../../shared/shared.service';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Topic } from '../../../shared/model/topic.model';
 import { Router, ActivatedRoute } from '@angular/router';
 import { trigger, state, transition, animate, style } from '@angular/animations';
-import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'topic-slider',
@@ -21,34 +19,24 @@ import { Subscription } from 'rxjs/Subscription';
     ])
   ]
 })
-export class TopicSliderComponent implements OnInit, OnDestroy {
+export class TopicSliderComponent implements OnInit {
 
-  topicList: Topic[];
+  @Input() topicList: Topic[];
+  @Output() currentTopicEvent = new EventEmitter<Topic>();
   slideOut: boolean;
-  private subscription: Subscription;
-  constructor(private sharedService: SharedService,
+  constructor(
     private router: Router,
-    private route: ActivatedRoute) {
-      this.subscription = this.sharedService.getCurrentBot().subscribe( data => {
-        this.topicList = data.botconfig.value.topics;
-      });
-    }
+    private route: ActivatedRoute) {}
 
   ngOnInit() {
-    this.topicList = this.sharedService.currentBot.value.topics;
     this.slideOut = true;
-  }
-
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
   }
 
   toggleSlideOut() {
     this.slideOut = !this.slideOut;
   }
   editQuestion(topic: Topic) {
-    this.sharedService.currentTopic = topic;
-    this.sharedService.storeSessionData('currentTopic', topic);
+    this.currentTopicEvent.emit(topic);
     this.router.navigate(['./topic-questions'], {relativeTo: this.route});
   }
 
