@@ -12,6 +12,7 @@ import { TopicNameComponent } from './topic-config/topic-name/topic-name.compone
 import { TopicSliderComponent } from './topic-config/topic-slider/topic-slider.component';
 import { TopicAnswersHomeComponent } from './topic-config/topic-answers/topic-answers-home/topic-answers-home.component';
 import { TopicAnswersSliderComponent } from './topic-config/topic-answers/topic-answers-slider/topic-answers-slider.component';
+import { TopicConfigService } from './topic-config/topic-config.service';
 
 @NgModule({
   imports: [
@@ -31,7 +32,8 @@ import { TopicAnswersSliderComponent } from './topic-config/topic-answers/topic-
     TopicAnswersSliderComponent,
   ],
   providers: [
-    BotConfigService
+    BotConfigService,
+    TopicConfigService
   ]
 })
 export class BotConfigModule { }

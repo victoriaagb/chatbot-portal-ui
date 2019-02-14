@@ -1,4 +1,4 @@
-<topic-slider></topic-slider>
+<topic-slider (currentTopicEvent)="updateCurrentTopic($event)" [topicList]="botConfig.value.topics"></topic-slider>
 <div class="container">
   <div class="row justify-content-end align-items-center main-card-topic">
     <div class="col-md-12">

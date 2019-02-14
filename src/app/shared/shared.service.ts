@@ -11,7 +11,6 @@ export class SharedService {
   private _botSubject = new Subject<any>();
   screenWidth: number;
   currentBot: BotConfigRepository;
-  currentTopic: Topic;
   currentPage: number;
 
   constructor(@Inject(SESSION_STORAGE) private sessionData: WebStorageService) {}
@@ -24,13 +23,11 @@ export class SharedService {
   retrieveSessionData() {
     this.currentBot = this.sessionData.get('currentBot');
     this.currentPage = this.sessionData.get('currentPage');
-    this.currentTopic = this.sessionData.get('currentTopic');
   }
 
   removeSessionData() {
     this.sessionData.remove('currentBot');
     this.sessionData.remove('currentPage');
-    this.sessionData.remove('currentTopic');
   }
 
   // Message Events for Current Bot
