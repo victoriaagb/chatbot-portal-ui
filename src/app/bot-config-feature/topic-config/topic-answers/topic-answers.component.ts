@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { TopicConfigService } from '../topic-config.service';
+import { Subscription } from 'rxjs/Subscription';
+import { Topic } from '../../../shared/model/topic.model';
 
 @Component({
   selector: 'app-topic-answers',
@@ -7,9 +10,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TopicAnswersComponent implements OnInit {
 
-  constructor() { }
+  topic: Topic;
+  private subscription: Subscription;
+
+  constructor(private topicConfigService: TopicConfigService) {
+    this.subscription = this.topicConfigService.getTopicAction().subscribe (data => {
+      this.topic = this.topicConfigService.currentTopic;
+    });
+  }
 
   ngOnInit() {
+    this.topic = this.topicConfigService.currentTopic;
   }
 
 }

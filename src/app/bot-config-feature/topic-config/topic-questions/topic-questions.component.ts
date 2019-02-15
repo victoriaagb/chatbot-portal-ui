@@ -27,7 +27,6 @@ export class TopicQuestionsComponent implements OnInit {
     }
 
   ngOnInit() {
-    console.log("topic-questions");
     this.question = '';
     this.topic = this.topicConfigService.currentTopic;
     if (_.isEmpty(this.topic.questions)) {
