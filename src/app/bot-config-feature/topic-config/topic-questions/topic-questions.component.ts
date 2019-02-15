@@ -4,7 +4,7 @@ import { BotConfigService } from '../../bot-config.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Topic } from '../../../shared/model/topic.model';
 import * as _ from 'lodash';
-import { TopicConfigService } from '../topic-config.service';
+import { TopicConfigService, TopicAction } from '../topic-config.service';
 import { Subscription } from 'rxjs/Subscription';
 
 @Component({
@@ -27,9 +27,10 @@ export class TopicQuestionsComponent implements OnInit {
     }
 
   ngOnInit() {
+    console.log("topic-questions");
     this.question = '';
     this.topic = this.topicConfigService.currentTopic;
-    if (_.isUndefined(this.topic.questions)) {
+    if (_.isEmpty(this.topic.questions)) {
       this.topic.questions = [];
     }
   }
@@ -51,6 +52,7 @@ export class TopicQuestionsComponent implements OnInit {
   }
 
   saveQuestions() {
+    this.topicConfigService.sendTopicAction(TopicAction.UPDATE);
     this.router.navigate(['../topic-answers'], {relativeTo: this.route});
   }
 

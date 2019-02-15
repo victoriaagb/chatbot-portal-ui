@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Router, Route, ActivatedRoute } from '@angular/router';
+import { Router, Route, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { SharedService } from '../../shared/shared.service';
 import { BotConfigService } from '../bot-config.service';
 import { BotConfigRepository } from '../../shared/model/bot-config-repository.model';
@@ -19,12 +19,18 @@ export class TopicConfigComponent implements OnInit, OnDestroy {
   currentTopic: Topic;
   botSubscription: Subscription;
   topicSubscription: Subscription;
+  navigationSubscription: Subscription;
 
   constructor(private sharedService: SharedService,
     private botConfigService: BotConfigService,
     private topicConfigService: TopicConfigService,
     private router: Router,
     private route: ActivatedRoute) {
+      this.navigationSubscription = this.router.events.subscribe((e: any) => {
+        if (e instanceof NavigationEnd) {
+          this.topicConfigService.retrieveSessionData();
+        }
+      });
       this.botSubscription = this.sharedService.getCurrentBot().subscribe( data => {
         this.botConfig = this.sharedService.currentBot;
       });
@@ -46,6 +52,7 @@ export class TopicConfigComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.botSubscription.unsubscribe();
     this.topicSubscription.unsubscribe();
+    this.navigationSubscription.unsubscribe();
   }
 
   updateCurrentTopic($event: Topic) {
