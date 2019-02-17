@@ -5,8 +5,3 @@ export interface Button {
     url?: string;
     payload?: string;
 }
-
-export enum ButtonType {
-  PAYLOAD,
-  URL
-}

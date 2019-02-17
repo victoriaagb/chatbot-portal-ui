@@ -1,4 +1,4 @@
-import { Attachment } from './topic/attachment.model';
+import { Attachment } from './topic/old/attachment.model';
 
 export interface Response {
     text?: string;
