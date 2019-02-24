@@ -40,6 +40,11 @@ export class TopicSliderComponent implements OnInit {
     this.router.navigate(['./topic-questions'], {relativeTo: this.route});
   }
 
+  editAnswers(topic: Topic) {
+    this.currentTopicEvent.emit(topic);
+    this.router.navigate(['./topic-answers'], {relativeTo: this.route});
+  }
+
   editAnswer(topic: Topic) {
 
   }
