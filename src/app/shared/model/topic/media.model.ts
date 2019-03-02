@@ -5,6 +5,6 @@ export interface Media {
 }
 
 export enum MediaType {
-  VIDEO,
-  IMAGE
+  VIDEO = 'MEDIA_TYPE_VIDEO',
+  IMAGE = 'MEDIA_TYPE_IMAGE'
 }

@@ -1,4 +1,4 @@
 export enum BotStepConfig {
-  NAME,
-  TOPIC
+  NAME = 'BOT_STEP_NAME',
+  TOPIC = 'BOT_STEP_TOPIC'
 }
