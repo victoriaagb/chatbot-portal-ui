@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Topic } from '../../../shared/model/topic.model';
-import { trigger, state, transition, animate, style } from '@angular/animations';
+import { trigger, transition, animate, style } from '@angular/animations';
 
 @Component({
   selector: 'topic-slider',
@@ -33,11 +33,11 @@ export class TopicSliderComponent implements OnInit {
   toggleSlideOut() {
     this.slideOut = !this.slideOut;
   }
-  editQuestion(topic: Topic) {
+  editQuestions(topic: Topic) {
     this.gotoQuestionEvent.emit(topic);
   }
 
-  editAnswer(topic: Topic) {
+  editAnswers(topic: Topic) {
     this.gotoAnswerEvent.emit(topic);
   }
 }
