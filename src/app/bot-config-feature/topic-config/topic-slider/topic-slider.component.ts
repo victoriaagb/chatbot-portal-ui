@@ -1,6 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Topic } from '../../../shared/model/topic.model';
-import { Router, ActivatedRoute } from '@angular/router';
 import { trigger, state, transition, animate, style } from '@angular/animations';
 
 @Component({
@@ -22,11 +21,10 @@ import { trigger, state, transition, animate, style } from '@angular/animations'
 export class TopicSliderComponent implements OnInit {
 
   @Input() topicList: Topic[];
-  @Output() currentTopicEvent = new EventEmitter<Topic>();
+  @Output() gotoAnswerEvent = new EventEmitter<Topic>();
+  @Output() gotoQuestionEvent = new EventEmitter<Topic>();
   slideOut: boolean;
-  constructor(
-    private router: Router,
-    private route: ActivatedRoute) {}
+  constructor() {}
 
   ngOnInit() {
     this.slideOut = true;
@@ -36,12 +34,10 @@ export class TopicSliderComponent implements OnInit {
     this.slideOut = !this.slideOut;
   }
   editQuestion(topic: Topic) {
-    this.currentTopicEvent.emit(topic);
-    this.router.navigate(['./topic-questions'], {relativeTo: this.route});
+    this.gotoQuestionEvent.emit(topic);
   }
 
   editAnswer(topic: Topic) {
-    this.currentTopicEvent.emit(topic);
-    this.router.navigate(['./topic-answers'], {relativeTo: this.route});
+    this.gotoAnswerEvent.emit(topic);
   }
 }

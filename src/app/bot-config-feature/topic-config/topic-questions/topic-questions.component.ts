@@ -51,6 +51,7 @@ export class TopicQuestionsComponent implements OnInit {
   }
 
   saveQuestions() {
+    this.topicConfigService.currentTopic = this.topic;
     this.topicConfigService.sendTopicAction(TopicAction.UPDATE);
     this.router.navigate(['../topic-answers'], {relativeTo: this.route});
   }

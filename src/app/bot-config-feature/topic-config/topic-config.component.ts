@@ -36,9 +36,12 @@ export class TopicConfigComponent implements OnInit, OnDestroy {
       });
       this.topicSubscription = this.topicConfigService.getTopicAction().subscribe (data => {
         this.currentTopic = this.topicConfigService.currentTopic;
+
         if (data.action === TopicAction.CREATE) {
           this.createNewTopic(this.currentTopic);
         }
+
+        this.updateTopicList();
       });
     }
 
@@ -55,16 +58,31 @@ export class TopicConfigComponent implements OnInit, OnDestroy {
     this.navigationSubscription.unsubscribe();
   }
 
-  updateCurrentTopic($event: Topic) {
+  gotoTopicQuestion($event: Topic) {
     this.currentTopic = $event;
     this.topicConfigService.currentTopic = this.currentTopic;
-    this.topicConfigService.sendTopicAction(TopicAction.UPDATE);
+    this.router.navigate(['./topic-questions'], {relativeTo: this.route});
+  }
+
+  gotoTopicAnswer($event: Topic) {
+    this.currentTopic = $event;
+    this.topicConfigService.currentTopic = this.currentTopic;
+    this.router.navigate(['./topic-answers'], {relativeTo: this.route});
+  }
+
+  updateTopicList() {
+    for (let i = 0; i < this.botConfig.value.topics.length; i++) {
+      if (this.botConfig.value.topics[i].name === this.currentTopic.name) {
+        this.botConfig.value.topics[i] = this.currentTopic;
+        this.sharedService.sendCurrentBot(this.botConfig);
+        return;
+      }
+    }
   }
 
   createNewTopic(topic: Topic) {
-    this.currentTopic = topic;
+    this.topicConfigService.currentTopic = this.currentTopic = topic;
     this.botConfig.value.topics.push(this.currentTopic);
-    this.topicConfigService.currentTopic = this.currentTopic;
   }
 
 }
