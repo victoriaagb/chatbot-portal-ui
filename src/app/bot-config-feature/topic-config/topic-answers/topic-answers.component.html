@@ -1,192 +1,35 @@
 <div class="col-md-12 float-left">
-  <div class="width100 float-left width100">
-      <div class="pt-3 pb-2">
-          <p class="mt-0 mb-0 mr-2 ml-1 store-hour float-left color68768c font12 pb-2">Response</p>
-          <p class="mt-0 mb-0 store-hour float-left color68768c font12 pb-2">1</p>
-      </div>
-  </div>
   <div class="px-0 pt-3 pb-5 px-md-3 px-lg-3 px-xl-3 col-8-box col-box-asla float-left width100">
       <div class="col-md-12">
           <div class="pb-3">
               <img class="float-left mr-2 icon-top-form" src="./assets/images/edit-with-circle@3x.png">
-              <p class="mb-0 bot-name text-uppercase">topic Name</p>
-              <p class="mt-0 mb-0 store-hour color354052">Sore Hours</p>
+              <p class="mb-0 bot-name text-uppercase">Topic Name</p>
+              <p class="mt-0 mb-0 store-hour color354052">{{topic.name}}</p>
           </div>
       </div>
-      <topic-answers-home></topic-answers-home>
+      <div class="col-md-12" [ngSwitch]="currentAnswer?.response_type">
+        <ng-container *ngSwitchCase="TopicResponseType.TEXT">
+          <topic-response-text></topic-response-text>
+        </ng-container>
+        <ng-container *ngSwitchDefault>
+          <topic-answers-home (addResponseEvent)="addResponse($event)"></topic-answers-home>
+        </ng-container>
+      </div>
+
       <topic-answers-slider></topic-answers-slider>
 <!--TODO : Update the styling of buttons in the page-->
 
-    <div class="col-md-12">
-        <div class="form-group mt-2 float-left">
-            <button class="btn btn-success pr-4 pl-4 text-white">Save </button>
-            <button class="btn btn-default pr-4 pl-4">Cancel </button>
+      <div class="col-md-12">
+          <div class="form-group mt-2 float-left">
+              <button class="btn btn-success pr-4 pl-4 text-white">Save </button>
+              <button class="btn btn-default pr-4 pl-4">Cancel </button>
+          </div>
+      </div>
+      <div class="col-d-12 col-x-12 col-p-12 float-left topic-slider-bg-under mt-2">
+        <div class="col-md-12">
+            <p class="mb-0 pt-2 pb-2 color2695ea bottom-text-response-page"><img class="mr-2" src="./assets/images/plus.png" /> CHOOSE ANOTHER RESPONCE TYPE FOR ABOVE QUESTION</p>
         </div>
     </div>
-    <div class="col-d-12 col-x-12 col-p-12 float-left topic-slider-bg-under mt-2">
-      <div class="col-md-12">
-          <p class="mb-0 pt-2 pb-2 color2695ea bottom-text-response-page"><img class="mr-2" src="./assets/images/plus.png" /> CHOOSE ANOTHER RESPONCE TYPE FOR ABOVE QUESTION</p>
-      </div>
-  </div>
   </div>
 </div>
 
-
-<!--TODO : Remove snippets of each response type to its own component-->
-
-
-
-
-
-<div class="col-md-12 float-left">
-                  <!-- Below section goes to the main answers component-- >
-                  <div class="width100 float-left">
-                      <div class="pt-3 pb-2">
-                          <p class="mt-0 mb-0 mr-2 ml-1 store-hour float-left color68768c font12 pb-2">Response</p>
-                          <p class="mt-0 mb-0 store-hour float-left color68768c font12 pb-2">2</p>
-                      </div>
-                  </div>
-
-
-
-                  <!-- Below section goes to the main answers component-- >
-                  <div class="px-0 pt-3 pb-5 px-md-3 px-lg-3 px-xl-3 col-8-box col-box-asla float-left width100">
-                      <div class="col-md-12">
-                          <div class="pb-3">
-                              <div class="row">
-                                  <div class="col-6">
-                                      <img class="float-left mr-2 icon-top-form" src="./assets/images/edit-with-circle@3x.png">
-                                      <p class="mb-0 bot-name text-uppercase">topic Name</p>
-                                      <p class="mt-0 mb-0 store-hour color354052">Sore Hours</p>
-                                  </div>
-                                  <div class="col-6 text-right text-md-right mt-2">
-                                      <a class=" back-link-nav-color no-hover" href="#"><i class="fas fa-arrow-left back-link-nav-color"></i>  Back</a>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                      <div class="col-md-12 ">
-                          <div class="topic-slider-bg float-left width100">
-                              <form>
-                                  <div class="col-md-12">
-                                      <div class="col-d-12">
-                                          <p class="text-uppercase mb-0 font12 color68768c">RESPONCE TYPE </p>
-                                      </div>
-                                      <div class="col-d-12">
-                                          <div class="col-d-6 float-left">
-                                              <p class="color68768c">Text Only
-                                          </div>
-                                      </div>
-                                  </div>
-                                  <div class="col-md-12  float-left">
-                                      <div class="form-group">
-                                          <div class="width100">
-                                              <div class="width100 float-left">
-                                                  <div class="col-p-12 col-d-12 col-x-12 float-left mt-2 mb-2">
-                                                      <div class="border1 float-left width100">
-                                                          <textarea class="width100 height80 p-2 color354052 font16 float-left border-0" name="">We are open  9am - 6pm M - F and 11am - 4pm on Sat.  We are closed on Sunday.</textarea>
-                                                          <div class="width100 p-1 backgrounddadcdd float-left">
-                                                              <div class="col-md-12">
-                                                                  <a href="" class="mr-2"><b class="colorababab">B</b></a>
-                                                                  <a href=""  class="mr-2 ml-2"><b class="colorababab"><i>I</i></b></a>
-                                                                  <a href=""  class="mr-2 ml-2"><b class="colorababab"><u>U</u></b></a>
-                                                                  <a href=""  class="mr-2 ml-2"><b class="colorababab"><i class="far fa-image"></i></b></a>
-                                                                  <a href=""  class="mr-2 ml-2"><b class="colorababab">GIF</b></a>
-                                                                  <a href=""  class="mr-2 ml-2"><b class="colorababab"><i class="fas fa-link"></i></b></a>
-                                                              </div>
-                                                          </div>
-                                                      </div>
-                                                  </div>
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </div>
-                                  <div class="col-md-12  float-left px-0">
-                                      <div class="form-group">
-                                          <div class="width100">
-                                              <div class="width100 float-left">
-                                                  <div class="col-p-12 col-d-12 col-x-12 float-left mt-2 mb-2">
-                                                      <div class="float-left width100 mt-3 mb-3">
-                                                          <div class="width100 px-2 py-3 bg-white float-left">
-                                                              <div class="background-line d-inline-flex justify-content-center-custom flex-nowrap">
-                                                                  <div class="mt-2 mb-2 mr-2 ml-2">
-                                                                      <div class="pr-2">
-                                                                          <button class="bg-white text-center font12 aftertir">
-                                                                              <img class="p-2" src="./assets/images/tcolor.png"  />
-                                                                              </button>
-                                                                      </div>
-                                                                  </div>
-                                                                  <div class="mt-2 mb-2 mr-2 ml-2">
-                                                                      <div class="pr-2">
-                                                                          <button class="bg-white text-center font12 aftertir">
-                                                                              <img class="p-2" src="./assets/images/media.png"  />
-                                                                              </button>
-                                                                      </div>
-                                                                  </div>
-                                                                  <div class="mt-2 mb-2 mr-2 ml-2">
-                                                                      <div class="pr-2">
-                                                                          <button class="bg-white text-center font12 aftertir">
-                                                                              <img class="p-2" src="./assets/images/button.png"  />
-                                                                              </button>
-                                                                      </div>
-                                                                  </div>
-                                                                  <div class="mt-2 mb-2 mr-2 ml-2">
-                                                                      <div class="pr-2">
-                                                                          <button class="bg-white text-center font12 aftertir">
-                                                                              <img class="p-2" src="./assets/images/carousal.png"  />
-                                                                              </button>
-                                                                      </div>
-                                                                  </div>
-                                                                  <div class="mt-2 mb-2 mr-2 ml-2">
-                                                                      <div class="pr-2">
-                                                                          <button class="bg-white text-center font12 aftertir">
-                                                                              <img class="p-2" src="./assets/images/api.png"  />
-                                                                              </button>
-                                                                      </div>
-                                                                  </div>
-                                                                  <div class="mt-2 mb-2 mr-2 ml-2">
-                                                                      <div class="pr-2">
-                                                                          <button class="bg-white text-center font12 aftertir">
-                                                                              <img class="p-2" src="./assets/images/email.png"  />
-                                                                              </button>
-                                                                      </div>
-                                                                  </div>
-                                                                  <div class="mt-2 mb-2 mr-2 ml-2">
-                                                                      <div class="pr-2">
-                                                                          <button class="bg-white text-center font12 aftertir">
-                                                                              <img class="p-2" src="./assets/images/choose-topic.png"  />
-                                                                              </button>
-                                                                      </div>
-                                                                  </div>
-                                                                  <div class="mt-2 mb-2 mr-2 ml-2">
-                                                                      <div class="pr-2">
-                                                                          <button class="bg-white text-center font12">
-                                                                              <img class="p-2" src="./assets/images/follow.png"  />
-                                                                              </button>
-                                                                      </div>
-                                                                  </div>
-                                                              </div>
-                                                          </div>
-                                                      </div>
-                                                  </div>
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </div>
-                                  <div class="col-md-12">
-                                      <div class="form-group mt-2 float-left">
-                                          <button class="btn btn-success pr-4 pl-4 text-white">Save </button>
-                                          <button class="btn btn-default pr-4 pl-4">Cancel </button>
-                                      </div>
-                                  </div>
-                              </form>
-                              <div class="col-d-12 col-x-12 col-p-12 float-left topic-slider-bg-under mt-2">
-                                  <div class="col-md-12">
-                                      <p class="mb-0 pt-2 pb-2 color2695ea bottom-text-response-page"><img class="mr-2" src="./assets/images/plus.png" /> CHOOSE ANOTHER RESPONCE TYPE FOR ABOVE QUESTION</p>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-      <!-- box end -->

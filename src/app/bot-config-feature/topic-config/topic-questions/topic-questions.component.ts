@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { SharedService } from '../../../shared/shared.service';
 import { BotConfigService } from '../../bot-config.service';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -12,7 +12,7 @@ import { Subscription } from 'rxjs/Subscription';
   templateUrl: './topic-questions.component.html',
   styleUrls: ['./topic-questions.component.scss']
 })
-export class TopicQuestionsComponent implements OnInit {
+export class TopicQuestionsComponent implements OnInit, OnDestroy {
 
   topic: Topic;
   question: String;
@@ -34,6 +34,10 @@ export class TopicQuestionsComponent implements OnInit {
     }
   }
 
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
+
   addQuestion() {
     if (!_.isEmpty(this.question)) {
       this.topic.questions.push(this.question);
@@ -51,8 +55,7 @@ export class TopicQuestionsComponent implements OnInit {
   }
 
   saveQuestions() {
-    this.topicConfigService.currentTopic = this.topic;
-    this.topicConfigService.sendTopicAction(TopicAction.UPDATE);
+    this.topicConfigService.sendTopicAction(TopicAction.UPDATE, this.topic);
     this.router.navigate(['../topic-answers'], {relativeTo: this.route});
   }
 

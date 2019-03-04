@@ -36,11 +36,9 @@ export class TopicConfigComponent implements OnInit, OnDestroy {
       });
       this.topicSubscription = this.topicConfigService.getTopicAction().subscribe (data => {
         this.currentTopic = this.topicConfigService.currentTopic;
-
         if (data.action === TopicAction.CREATE) {
           this.createNewTopic(this.currentTopic);
         }
-
         this.updateTopicList();
       });
     }
@@ -60,18 +58,18 @@ export class TopicConfigComponent implements OnInit, OnDestroy {
 
   gotoTopicQuestion($event: Topic) {
     this.currentTopic = $event;
-    this.topicConfigService.currentTopic = this.currentTopic;
+    this.topicConfigService.sendTopicAction(TopicAction.UPDATE,  this.currentTopic);
     this.router.navigate(['./topic-questions'], {relativeTo: this.route});
   }
 
   gotoTopicAnswer($event: Topic) {
     this.currentTopic = $event;
-    this.topicConfigService.currentTopic = this.currentTopic;
+    this.topicConfigService.sendTopicAction(TopicAction.UPDATE, this.currentTopic);
     this.router.navigate(['./topic-answers'], {relativeTo: this.route});
   }
 
   updateTopicList() {
-    for (let i = 0; i < this.botConfig.value.topics.length; i++) {
+    for (let i = 0; i < _.get(this.botConfig, 'value.topics.length', 0); i++) {
       if (this.botConfig.value.topics[i].name === this.currentTopic.name) {
         this.botConfig.value.topics[i] = this.currentTopic;
         this.sharedService.sendCurrentBot(this.botConfig);
