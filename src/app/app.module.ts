@@ -9,6 +9,7 @@ import { SharedModule } from './shared/shared.module';
 import { LandingComponent } from './landing/landing.component';
 import { AppService } from './app.service';
 import { HttpClientModule } from '@angular/common/http';
+import { TopicAnswersBackupComponent } from './topic-answers-backup/topic-answers-backup.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { HttpClientModule } from '@angular/common/http';
     AppComponent,
     HeaderComponent,
     BotDashboardComponent,
-    LandingComponent
+    LandingComponent,
+    TopicAnswersBackupComponent
   ],
   imports: [
     BotConfigModule,
