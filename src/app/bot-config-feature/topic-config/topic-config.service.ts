@@ -25,7 +25,8 @@ export class TopicConfigService {
   }
 
   // Message Events for Current topic
-  sendTopicAction(topicAction: TopicAction) {
+  sendTopicAction(topicAction: TopicAction, topic: Topic) {
+    this.currentTopic = topic;
     this.storeSessionData('currentTopic', this.currentTopic);
     this._topicSubject.next({ action: topicAction });
   }

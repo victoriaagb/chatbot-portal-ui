@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { SharedService } from '../../../shared/shared.service';
 import { BotConfigService } from '../../bot-config.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Topic } from '../../../shared/model/topic.model';
 import * as _ from 'lodash';
-import { TopicConfigService } from '../topic-config.service';
+import { TopicConfigService, TopicAction } from '../topic-config.service';
 import { Subscription } from 'rxjs/Subscription';
 
 @Component({
@@ -12,7 +12,7 @@ import { Subscription } from 'rxjs/Subscription';
   templateUrl: './topic-questions.component.html',
   styleUrls: ['./topic-questions.component.scss']
 })
-export class TopicQuestionsComponent implements OnInit {
+export class TopicQuestionsComponent implements OnInit, OnDestroy {
 
   topic: Topic;
   question: String;
@@ -29,9 +29,13 @@ export class TopicQuestionsComponent implements OnInit {
   ngOnInit() {
     this.question = '';
     this.topic = this.topicConfigService.currentTopic;
-    if (_.isUndefined(this.topic.questions)) {
+    if (_.isEmpty(this.topic.questions)) {
       this.topic.questions = [];
     }
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
   addQuestion() {
@@ -51,6 +55,7 @@ export class TopicQuestionsComponent implements OnInit {
   }
 
   saveQuestions() {
+    this.topicConfigService.sendTopicAction(TopicAction.UPDATE, this.topic);
     this.router.navigate(['../topic-answers'], {relativeTo: this.route});
   }
 

@@ -1,4 +1,3 @@
-<div class="col-md-12">
   <div class="topic-slider-bg pb-2 float-left width100">
       <form>
           <div class="col-md-12">
@@ -18,12 +17,12 @@
           </div>
           <div class="col-md-12 mt-4">
               <div class="form-group">
-                  <label class="text-uppercase font11 m-0">RESPONCE TYPE FOR ABOVE QUESTION</label>
+                  <label class="text-uppercase font11 m-0">RESPONSE TYPE FOR ABOVE QUESTION</label>
                   <div class="col-d-12">
                       <div class="col-d-12 float-left">
                           <div class="col-p-12 col-d-3 col-x-6 float-left mt-2 mb-2">
                               <div class="pr-2">
-                                  <button class="btn-success-custom col-md-12 text-left font12">
+                                  <button (click)="setResponseType(TopicResponseType.TEXT)" class="btn-success-custom col-md-12 text-left font12">
                                       <img class="mr-2" src="./assets/images/t.png"  /> Text Only
                                   </button>
                               </div>
@@ -83,4 +82,3 @@
           </div>
       </form>
   </div>
-</div>

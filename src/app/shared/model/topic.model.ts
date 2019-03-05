@@ -1,5 +1,5 @@
 import { AdditionalDisplay } from './additional-display.model';
-import { Response } from './response.model';
+import { Response } from './topic/response.model';
 
 export interface Topic {
     name: string;
