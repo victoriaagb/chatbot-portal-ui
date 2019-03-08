@@ -7,7 +7,7 @@
               <p class="mt-0 mb-0 store-hour color354052">{{topic.name}}</p>
           </div>
       </div>
-      <div class="col-md-12" [ngSwitch]="currentAnswer?.response_type">
+      <div class="col-md-12" [ngSwitch]="topic?.answers[answerIndex]?.response_type">
         <ng-container *ngSwitchCase="TopicResponseType.TEXT">
           <topic-response-text></topic-response-text>
         </ng-container>
@@ -16,7 +16,7 @@
         </ng-container>
       </div>
 
-      <topic-answers-slider></topic-answers-slider>
+      <topic-answers-slider [answerList]="topic.answers" (selectResponseEvent)="setAnswerIndex($event)"></topic-answers-slider>
 <!--TODO : Update the styling of buttons in the page-->
 
       <div class="col-md-12">

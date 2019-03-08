@@ -6,28 +6,26 @@
                   <div class="float-left width100 mt-3 mb-3">
                       <div class="width100 px-2 py-3 bg-white float-left">
                           <div class="background-line d-inline-flex justify-content-center-custom flex-nowrap">
-                              <div class="mt-2 mb-2 mr-2 ml-2">
-                                  <div class="pr-2">
-                                      <button class="bg-white text-center font12 aftertir">
-                                          <img class="p-2" src="./assets/images/tcolor.png"  />
-                                          </button>
+                              <div (click)="selectResponse(i)" *ngFor="let answer of answerList; let i = index" class="mt-2 mb-2 mr-2 ml-2">
+                                  <div [ngSwitch]="answer.response_type" class="pr-2">
+                                    <ng-container *ngSwitchCase="TopicResponseType.TEXT">
+                                        <button class="bg-white text-center font12 aftertir">
+                                            <img class="p-2" src="./assets/images/tcolor.png"  />
+                                        </button>
+                                    </ng-container>
+                                    <ng-container *ngSwitchCase="TopicResponseType.BUTTON">
+                                        <button class="bg-white text-center font12 aftertir">
+                                            <img class="p-2" src="./assets/images/button.png"  />
+                                        </button>
+                                    </ng-container>
+                                    <ng-container *ngSwitchCase="TopicResponseType.MEDIA">
+                                        <button class="bg-white text-center font12 aftertir">
+                                            <img class="p-2" src="./assets/images/media.png"  />
+                                        </button>
+                                    </ng-container>
                                   </div>
                               </div>
-                              <div class="mt-2 mb-2 mr-2 ml-2">
-                                  <div class="pr-2">
-                                      <button class="bg-white text-center font12 aftertir">
-                                          <img class="p-2" src="./assets/images/media.png"  />
-                                          </button>
-                                  </div>
-                              </div>
-                              <div class="mt-2 mb-2 mr-2 ml-2">
-                                  <div class="pr-2">
-                                      <button class="bg-white text-center font12 aftertir">
-                                          <img class="p-2" src="./assets/images/button.png"  />
-                                          </button>
-                                  </div>
-                              </div>
-                              <div class="mt-2 mb-2 mr-2 ml-2">
+                              <!-- <div class="mt-2 mb-2 mr-2 ml-2">
                                   <div class="pr-2">
                                       <button class="bg-white text-center font12 aftertir">
                                           <img class="p-2" src="./assets/images/carousal.png"  />
@@ -61,7 +59,7 @@
                                           <img class="p-2" src="./assets/images/follow.png"  />
                                           </button>
                                   </div>
-                              </div>
+                              </div> -->
                           </div>
                       </div>
                   </div>

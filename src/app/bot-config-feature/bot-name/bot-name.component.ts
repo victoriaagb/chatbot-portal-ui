@@ -39,7 +39,6 @@ export class BotNameComponent implements OnInit, OnDestroy {
   initialize() {
     if (_.isNull(this.sharedService.currentBot)) {
       this.sharedService.currentBot = <BotConfigRepository>{};
-      this.sharedService.currentBot.botId = '1';
       this.sharedService.currentBot.stepConfig = BotStepConfig.NAME;
       this.sharedService.currentBot.value = <BotConfig>{
         name: {

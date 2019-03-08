@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Response, TopicResponseType } from '../../../../shared/model/topic/response.model';
 
 @Component({
   selector: 'topic-answers-slider',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TopicAnswersSliderComponent implements OnInit {
 
+  TopicResponseType = TopicResponseType;
+  @Input() answerList: Response[];
+  @Output() selectResponseEvent = new EventEmitter<number>();
   constructor() { }
 
   ngOnInit() {
   }
 
+  selectResponse(answerIndex: number) {
+    this.selectResponseEvent.emit(answerIndex);
+  }
 }
