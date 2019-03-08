@@ -45,8 +45,12 @@ export class TopicAnswersComponent implements OnInit {
 
   }
 
-  setAnswerIndex($event: number){
+  setAnswerIndex($event: number) {
     this.answerIndex = $event;
+  }
+
+  resetResponse() {
+    this.answerIndex = undefined;
   }
 
 }
