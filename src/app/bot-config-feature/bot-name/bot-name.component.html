@@ -19,7 +19,7 @@
                           <div class="col-md-5">
                               <div class="form-group">
                                   <label class="text-uppercase">Bot Name</label>
-                                  <input type="text" name="" class="form-control" [(ngModel)]="currentBot.value?.name.botName" [ngModelOptions]="{standalone: true}" placeholder="Enter new bot name">
+                                  <input type="text" name="" class="form-control" [(ngModel)]="currentBot?.value?.name.botName" [ngModelOptions]="{standalone: true}" placeholder="Enter new bot name">
                                   <div class="col-md-12">
                                       <div class="mt-1">
                                           <em>some hit text will go here</em>
@@ -30,15 +30,15 @@
                           <div class="col-md-9">
                               <div class="form-group">
                                   <label class="text-uppercase">Description</label>
-                                  <textarea type="text" name="" class="form-control" [value]="currentBot.value?.name.botDescription" placeholder="Enter bot description">We’re reaching out because we wanted you to be the first to know that our brand-new product, Adobe Portfolio, is now officially open for business. As one of Behance’s top members, we’d love for you to try it.  Adobe Portfolio, is now officially open for business. As one of Behance’s top members, we’d love for you to try it.</textarea>
+                                  <textarea type="text" name="" class="form-control" [(ngModel)]="currentBot?.value?.name.botDescription" [ngModelOptions]="{standalone: true}" placeholder="Enter bot description"></textarea>
                               </div>
                           </div>
                           <div class="col-md-10">
-                              <div *ngIf="currentBot.status; else initialize" class="form-group">
-                                  <button (click)="saveName()" class="btn btn-success pr-3 pl-3">Edit Chat Bot</button>
+                              <div *ngIf="currentBot?.status; else initialize" class="form-group">
+                                  <button (click)="saveName(BotAction.UPDATE)" class="btn btn-success pr-3 pl-3">Edit Chat Bot</button>
                               </div>
                               <ng-template #initialize>
-                                <button (click)="saveName()" class="btn btn-success pr-3 pl-3">Configure Chat Bot</button>
+                                <button (click)="saveName(BotAction.CREATE)" class="btn btn-success pr-3 pl-3">Configure Chat Bot</button>
                               </ng-template>
                           </div>
                       </form>

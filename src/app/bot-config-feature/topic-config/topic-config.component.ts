@@ -1,13 +1,13 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, Route, ActivatedRoute, NavigationEnd } from '@angular/router';
-import { SharedService } from '../../shared/shared.service';
+import { SharedService, BotAction } from '../../shared/shared.service';
 import { BotConfigService } from '../bot-config.service';
 import { BotConfigRepository } from '../../shared/model/bot-config-repository.model';
 import { Topic } from '../../shared/model/topic.model';
 import { TopicConfigService, TopicAction } from './topic-config.service';
 import { Subscription } from 'rxjs/Subscription';
 import * as _ from 'lodash';
-import { toPublicName } from '@angular/compiler/src/i18n/serializers/xmb';
+
 @Component({
   selector: 'app-topic-config',
   templateUrl: './topic-config.component.html',
@@ -31,7 +31,7 @@ export class TopicConfigComponent implements OnInit, OnDestroy {
           this.topicConfigService.retrieveSessionData();
         }
       });
-      this.botSubscription = this.sharedService.getCurrentBot().subscribe( data => {
+      this.botSubscription = this.sharedService.getBotAction().subscribe( data => {
         this.botConfig = this.sharedService.currentBot;
       });
       this.topicSubscription = this.topicConfigService.getTopicAction().subscribe (data => {
@@ -72,7 +72,7 @@ export class TopicConfigComponent implements OnInit, OnDestroy {
     for (let i = 0; i < _.get(this.botConfig, 'value.topics.length', 0); i++) {
       if (this.botConfig.value.topics[i].name === this.currentTopic.name) {
         this.botConfig.value.topics[i] = this.currentTopic;
-        this.sharedService.sendCurrentBot(this.botConfig);
+        this.sharedService.sendBotAction(BotAction.UPDATE, this.botConfig);
         return;
       }
     }

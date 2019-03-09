@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AppService } from '../app.service';
-import { SharedService } from '../shared/shared.service';
+import { SharedService, BotAction } from '../shared/shared.service';
 import { menu } from '../constants/menu.constants';
 import { BotConfigRepository } from '../shared/model/bot-config-repository.model';
 
@@ -59,7 +59,7 @@ export class BotDashboardComponent implements OnInit {
   }
 
   updateCurrentBot(botConfig): void {
-    this.sharedService.sendCurrentBot(botConfig);
+    this.sharedService.sendBotAction(BotAction.ADD, botConfig);
   }
 
   deleteBot(botConfig): void {
