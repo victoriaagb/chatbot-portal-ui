@@ -16,7 +16,7 @@ export class TopicResponseTextComponent implements OnInit {
 
   ngOnInit() {
     if (_.isUndefined(this.payload)) {
-      this.payload = {
+      this.payload = <Payload>{
         text: ''
       };
     }

@@ -16,7 +16,7 @@
                           <div class="width100 float-left">
                               <div class="col-p-12 col-d-12 col-x-12 float-left mt-2 mb-2">
                                   <div class="border1 float-left width100">
-                                      <textarea class="width100 height80 p-2 color354052 font16 float-left border-0" name="" [(ngModel)]="payload.text" [ngModelOptions]="{standalone: true}" placeholder="Enter text response"></textarea>
+                                      <textarea class="width100 height80 p-2 color354052 font16 float-left border-0" name="" [ngModel]="payload?.text" (ngModelChange)="payload.text=$event" [ngModelOptions]="{standalone: true}" placeholder="Enter text response"></textarea>
                                       <div class="width100 p-1 backgrounddadcdd float-left">
                                           <div class="col-md-12">
                                               <a href="" class="mr-2"><b class="colorababab">B</b></a>
