@@ -56,4 +56,8 @@ export class TopicAnswersComponent implements OnInit, OnDestroy {
     this.answerIndex = $event;
   }
 
+  resetResponse() {
+    this.answerIndex = undefined;
+  }
+
 }
