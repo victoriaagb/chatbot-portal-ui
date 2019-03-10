@@ -9,7 +9,7 @@
       </div>
       <div class="col-md-12" [ngSwitch]="topic?.answers[answerIndex]?.response_type">
         <ng-container *ngSwitchCase="TopicResponseType.TEXT">
-          <topic-response-text></topic-response-text>
+          <topic-response-text (cancelEvent)="setAnswerIndex(undefined)"(saveResponseEvent)="saveResponse($event)"[payload]="topic.answers[answerIndex].payload"></topic-response-text>
         </ng-container>
         <ng-container *ngSwitchDefault>
           <topic-answers-home (addResponseEvent)="addResponse($event)"></topic-answers-home>
@@ -17,14 +17,7 @@
       </div>
 
       <topic-answers-slider [answerList]="topic.answers" (selectResponseEvent)="setAnswerIndex($event)"></topic-answers-slider>
-<!--TODO : Update the styling of buttons in the page-->
 
-      <div class="col-md-12">
-          <div class="form-group mt-2 float-left">
-              <button class="btn btn-success pr-4 pl-4 text-white">Save </button>
-              <button class="btn btn-default pr-4 pl-4">Cancel </button>
-          </div>
-      </div>
       <div class="col-d-12 col-x-12 col-p-12 float-left topic-slider-bg-under mt-2">
         <div class="col-md-12">
             <p class="mb-0 pt-2 pb-2 color2695ea bottom-text-response-page"><img class="mr-2" src="./assets/images/plus.png" /> CHOOSE ANOTHER RESPONCE TYPE FOR ABOVE QUESTION</p>
