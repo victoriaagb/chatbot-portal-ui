@@ -6,8 +6,8 @@ export interface Response {
 }
 
 export enum TopicResponseType {
-  MEDIA = 'RESPONSE_TYPE_MEDIA',
-  TEXT = 'RESPONSE_TYPE_TEXT',
-  BUTTON = 'RESPONSE_TYPE_BUTTON',
-  ELEMENT = 'RESPONSE_TYPE_ELEMENT'
+  MEDIA = 'MEDIA',
+  TEXT = 'TEXT',
+  BUTTON = 'BUTTON',
+  ELEMENT = 'ELEMENT'
 }
