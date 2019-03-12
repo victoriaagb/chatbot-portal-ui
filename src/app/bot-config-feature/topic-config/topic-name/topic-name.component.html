@@ -12,21 +12,20 @@
               <img class="mt-5" src="./assets/images/illustration.png">
             </div>
           </div>
-        </div>
-        <form>
-          <div class="col-md-10">
-              <div class="form-group">
-                  <label>Topic Name</label>
-                  <input [(ngModel)]="topicName" type="text" [ngModelOptions]="{standalone: true}" class="form-control"  placeholder="Enter new Topic name">
+          <form>
+              <div class="col-md-10">
+                  <div class="form-group">
+                      <label>Topic Name</label>
+                      <input [(ngModel)]="topicName" type="text" [ngModelOptions]="{standalone: true}" class="form-control"  placeholder="Enter new Topic name">
+                  </div>
               </div>
-          </div>
-            <div class="col-md-10 button-bottom mt-auto pt-2">
-              <button (click)="createNewTopic()" class="btn btn-default px-5 my-2 px-sm-2 px-md-5 border-green mt-auto">
-                <b>Continue</b>
-              </button>
-            </div>
-      </form>
-
+                <div class="col-md-10 button-bottom mt-auto pt-2">
+                  <button (click)="createNewTopic()" class="btn btn-default px-5 my-2 px-sm-2 px-md-5 border-green mt-auto">
+                    <b>Continue</b>
+                  </button>
+                </div>
+          </form>
+        </div>
       </div>
     </div>
     <div class="card mb-4 box-shadow col-md-2 hidden-md-divider">
