@@ -9,7 +9,7 @@
                               <div (click)="selectResponse(i)" *ngFor="let answer of answerList; let i = index" class="mt-2 mb-2 mr-2 ml-2">
                                   <div [ngSwitch]="answer.response_type" class="pr-2">
                                     <ng-container *ngSwitchCase="TopicResponseType.TEXT">
-                                        <button class="bg-white text-center font12 aftertir">
+                                        <button class="bg-white text-center font12 {{ isArrowNeeded(i) ? 'aftertir' : '' }}">
                                             <img class="p-2 pointer" src="./assets/images/tcolor.png"  />
                                         </button>
                                     </ng-container>
