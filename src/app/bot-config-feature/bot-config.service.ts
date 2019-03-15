@@ -1,7 +1,7 @@
-import { Injectable } from "@angular/core";
-import { BotConfigRepository } from "../shared/model/bot-config-repository.model";
-import { Observable } from "rxjs/Observable";
-import { HttpClient } from "@angular/common/http";
+import { Injectable } from '@angular/core';
+import { BotConfigRepository } from '../shared/model/bot-config-repository.model';
+import { Observable } from 'rxjs/Observable';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class BotConfigService {
