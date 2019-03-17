@@ -31,17 +31,17 @@ export class SharedService {
   }
 
   // Message Events for Current Bot
-  sendCurrentBot(currentBot: BotConfigRepository) {
+  sendBotAction(botAction: BotAction, currentBot: BotConfigRepository) {
     this.currentBot = currentBot;
     this.storeSessionData('currentBot', currentBot);
-    this._botSubject.next({ botconfig: currentBot });
+    this._botSubject.next({ action: botAction });
   }
 
   clearMessage() {
     this._botSubject.next();
   }
 
-  getCurrentBot(): Observable<any> {
+  getBotAction(): Observable<any> {
     return this._botSubject.asObservable();
   }
 
@@ -55,3 +55,5 @@ export class SharedService {
   }
 
 }
+
+export enum BotAction {CREATE, UPDATE, REMOVE, ADD}

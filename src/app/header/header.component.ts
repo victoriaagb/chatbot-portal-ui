@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { SharedService } from '../shared/shared.service';
+import { SharedService, BotAction } from '../shared/shared.service';
 import { Router, ActivatedRoute, NavigationEnd, Event } from '@angular/router';
 import { BotConfigRepository } from '../shared/model/bot-config-repository.model';
 import { Subscription } from 'rxjs/Subscription';
@@ -17,8 +17,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
   constructor(private sharedService: SharedService,
               private router: Router,
               private route: ActivatedRoute) {
-    this.subscription = this.sharedService.getCurrentBot().subscribe( data => {
-      this.currentBot = data.botconfig;
+    this.subscription = this.sharedService.getBotAction().subscribe( data => {
+      this.currentBot = this.sharedService.currentBot;
       if (this.currentBot) {
         this.activeIndex = 3;
       } else {
@@ -42,11 +42,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   createBot() {
     this.selectHeaderItem(1);
+    this.sharedService.sendBotAction(BotAction.ADD, undefined);
     this.router.navigate(['/bot-config']);
   }
 
   selectHeaderItem(index) {
-    this.sharedService.sendCurrentBot(null);
+    this.sharedService.sendBotAction(BotAction.REMOVE, undefined);
     this.activeIndex = index;
     this.sharedService.storeSessionData('currentPage', this.activeIndex);
   }

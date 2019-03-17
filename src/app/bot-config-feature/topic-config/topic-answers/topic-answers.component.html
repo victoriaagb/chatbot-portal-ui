@@ -1,35 +1,36 @@
 <div class="col-md-12 float-left">
   <div class="px-0 pt-3 pb-5 px-md-3 px-lg-3 px-xl-3 col-8-box col-box-asla float-left width100">
-      <div class="col-md-12">
+    <div class="col-md-12">
+      <div class="row">
+        <div class="col-6">
           <div class="pb-3">
-              <img class="float-left mr-2 icon-top-form" src="./assets/images/edit-with-circle@3x.png">
-              <p class="mb-0 bot-name text-uppercase">Topic Name</p>
-              <p class="mt-0 mb-0 store-hour color354052">{{topic.name}}</p>
+            <img class="float-left mr-2 icon-top-form" src="./assets/images/edit-with-circle@3x.png">
+            <p class="mb-0 bot-name text-uppercase">Topic Name</p>
+            <p class="mt-0 mb-0 store-hour color354052">{{topic.name}}</p>
           </div>
-      </div>
-      <div class="col-md-12" [ngSwitch]="currentAnswer?.response_type">
-        <ng-container *ngSwitchCase="TopicResponseType.TEXT">
-          <topic-response-text></topic-response-text>
-        </ng-container>
-        <ng-container *ngSwitchDefault>
-          <topic-answers-home (addResponseEvent)="addResponse($event)"></topic-answers-home>
-        </ng-container>
-      </div>
-
-      <topic-answers-slider></topic-answers-slider>
-<!--TODO : Update the styling of buttons in the page-->
-
-      <div class="col-md-12">
-          <div class="form-group mt-2 float-left">
-              <button class="btn btn-success pr-4 pl-4 text-white">Save </button>
-              <button class="btn btn-default pr-4 pl-4">Cancel </button>
-          </div>
-      </div>
-      <div class="col-d-12 col-x-12 col-p-12 float-left topic-slider-bg-under mt-2">
-        <div class="col-md-12">
-            <p class="mb-0 pt-2 pb-2 color2695ea bottom-text-response-page"><img class="mr-2" src="./assets/images/plus.png" /> CHOOSE ANOTHER RESPONCE TYPE FOR ABOVE QUESTION</p>
         </div>
+        <div *ngIf="topic?.answers[answerIndex]?.response_type" class="col-6 text-right text-md-right mt-2">
+          <a class=" back-link-nav-color no-hover pointer" (click) ="resetResponse()">
+            <i class="fas fa-arrow-left back-link-nav-color" ></i> Back</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12" [ngSwitch]="topic?.answers[answerIndex]?.response_type">
+      <ng-container *ngSwitchCase="TopicResponseType.TEXT">
+        <topic-response-text [payload]="topic.answers[this.answerIndex].payload"(saveResponseEvent)="saveResponse($event)"></topic-response-text>
+      </ng-container>
+      <ng-container *ngSwitchDefault>
+        <topic-answers-home (addResponseEvent)="addResponse($event)"></topic-answers-home>
+      </ng-container>
+    </div>
+
+    <topic-answers-slider [answerList]="topic.answers" (selectResponseEvent)="setAnswerIndex($event)"></topic-answers-slider>
+
+    <div class="col-d-12 col-x-12 col-p-12 float-left topic-slider-bg-under mt-2">
+      <div class="col-md-12">
+        <p class="mb-0 pt-2 pb-2 color2695ea bottom-text-response-page">
+          <img class="mr-2" src="./assets/images/plus.png" /> CHOOSE ANOTHER RESPONCE TYPE FOR ABOVE QUESTION</p>
+      </div>
     </div>
   </div>
 </div>
-

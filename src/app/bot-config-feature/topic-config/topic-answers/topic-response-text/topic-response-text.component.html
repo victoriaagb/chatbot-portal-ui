@@ -2,7 +2,7 @@
           <form>
               <div class="col-md-12">
                   <div class="col-d-12">
-                      <p class="text-uppercase mb-0 font12 color68768c">RESPONCE TYPE </p>
+                      <p class="text-uppercase mb-0 font12 color68768c">RESPONSE TYPE </p>
                   </div>
                   <div class="col-d-12">
                       <div class="col-d-6 float-left">
@@ -16,7 +16,7 @@
                           <div class="width100 float-left">
                               <div class="col-p-12 col-d-12 col-x-12 float-left mt-2 mb-2">
                                   <div class="border1 float-left width100">
-                                      <textarea class="width100 height80 p-2 color354052 font16 float-left border-0" name="">We are open  9am - 6pm M - F and 11am - 4pm on Sat.  We are closed on Sunday.</textarea>
+                                      <textarea class="width100 height80 p-2 color354052 font16 float-left border-0" name="" [ngModel]="payload?.text" (ngModelChange)="payload.text=$event" [ngModelOptions]="{standalone: true}" placeholder="Enter text response"></textarea>
                                       <div class="width100 p-1 backgrounddadcdd float-left">
                                           <div class="col-md-12">
                                               <a href="" class="mr-2"><b class="colorababab">B</b></a>
@@ -35,5 +35,13 @@
               </div>
           </form>
       </div>
+      <!--TODO : Update the styling of buttons in the page-->
+
+      <div class="col-md-12">
+        <div class="form-group mt-2 float-left">
+            <button class="btn btn-success pr-4 pl-4 text-white" (click)="saveResponse()">Save</button>
+            <button class="btn btn-default pr-4 pl-4" (click)="cancel()">Cancel</button>
+        </div>
+    </div>
 
 
