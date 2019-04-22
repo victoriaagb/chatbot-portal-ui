@@ -11,7 +11,11 @@ export class TopicResponseTextComponent implements OnInit {
 
   @Input() payload: Payload;
   @Output() saveResponseEvent = new EventEmitter<Payload>();
+  @Output() deleteResponseEvent = new EventEmitter<Payload>();
   @Output() cancelEvent = new EventEmitter();
+
+  isNewResponse: Boolean = true;
+
   constructor() { }
 
   ngOnInit() {
@@ -19,11 +23,17 @@ export class TopicResponseTextComponent implements OnInit {
       this.payload = <Payload>{
         text: ''
       };
+    } else {
+      this.isNewResponse = false;
     }
   }
 
   saveResponse() {
     this.saveResponseEvent.emit(this.payload);
+  }
+
+  deleteResponse() {
+    this.deleteResponseEvent.emit(this.payload);
   }
 
   cancel() {

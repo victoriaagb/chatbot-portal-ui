@@ -22,6 +22,7 @@ export class TopicNameComponent implements OnInit {
 
   ngOnInit() {
     this.topicName = '';
+    this.topicConfigService.removeSessionData();
   }
 
   createNewTopic() {
