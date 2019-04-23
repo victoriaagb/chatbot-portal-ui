@@ -17,8 +17,17 @@
     </div>
     <div class="col-md-12" [ngSwitch]="topic?.answers[answerIndex]?.response_type">
       <ng-container *ngSwitchCase="TopicResponseType.TEXT">
-        <topic-response-text [payload]="topic.answers[this.answerIndex].payload"(saveResponseEvent)="saveResponse($event)"></topic-response-text>
+        <topic-response-text [payload]="topic.answers[this.answerIndex].payload"
+          (saveResponseEvent)="saveResponse($event)"
+          (deleteResponseEvent)="deleteResponse($event)"
+          (cancelEvent)="removeResponse($event)">
+        </topic-response-text>
       </ng-container>
+
+      <!-- <ng-container *ngSwitchCase="TopicResponseType.BUTTON">
+        <topic-response-button [payload]="topic.answers[this.answerIndex].payload"(saveResponseEvent)="saveResponse($event)"></topic-response-button>
+      </ng-container> -->
+
       <ng-container *ngSwitchDefault>
         <topic-answers-home (addResponseEvent)="addResponse($event)"></topic-answers-home>
       </ng-container>

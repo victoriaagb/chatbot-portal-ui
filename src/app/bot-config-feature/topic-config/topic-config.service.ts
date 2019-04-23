@@ -40,6 +40,6 @@ export class TopicConfigService {
   }
 }
 
-export enum TopicAction {CREATE, UPDATE, REMOVE}
+export enum TopicAction {CREATE, UPDATE, REMOVE, NONE}
 
 
