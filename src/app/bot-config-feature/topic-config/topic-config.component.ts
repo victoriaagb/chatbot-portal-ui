@@ -39,7 +39,7 @@ export class TopicConfigComponent implements OnInit, OnDestroy {
         if (data.action === TopicAction.CREATE) {
           this.createNewTopic(this.currentTopic);
           this.updateTopicList();
-        } else if (data.action === TopicAction.UPDATE || data.action === TopicAction.REMOVE){
+        } else if (data.action === TopicAction.UPDATE || data.action === TopicAction.REMOVE) {
           this.updateTopicList();
         }
       });

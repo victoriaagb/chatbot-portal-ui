@@ -58,7 +58,7 @@ export class TopicAnswersComponent implements OnInit, OnDestroy {
   }
 
   removeResponse($event: Response) {
-    this.topic.answers.splice(this.answerIndex);
+    this.topic.answers.splice(this.answerIndex, 1);
     this.answerIndex = undefined;
   }
 
@@ -69,7 +69,7 @@ export class TopicAnswersComponent implements OnInit, OnDestroy {
   }
 
   deleteResponse($event: Payload) {
-    this.topic.answers.splice(this.answerIndex);
+    this.topic.answers.splice(this.answerIndex, 1);
     this.topicConfigService.sendTopicAction(TopicAction.REMOVE, this.topic);
     this.answerIndex = undefined;
   }
