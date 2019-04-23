@@ -24,9 +24,13 @@
         </topic-response-text>
       </ng-container>
 
-      <!-- <ng-container *ngSwitchCase="TopicResponseType.BUTTON">
-        <topic-response-button [payload]="topic.answers[this.answerIndex].payload"(saveResponseEvent)="saveResponse($event)"></topic-response-button>
-      </ng-container> -->
+      <ng-container *ngSwitchCase="TopicResponseType.BUTTON">
+        <topic-response-button [payload]="topic.answers[this.answerIndex].payload"
+          (saveResponseEvent)="saveResponse($event)"
+          (deleteResponseEvent)="deleteResponse($event)"
+          (cancelEvent)="removeResponse($event)">
+      </topic-response-button>
+      </ng-container>
 
       <ng-container *ngSwitchDefault>
         <topic-answers-home (addResponseEvent)="addResponse($event)"></topic-answers-home>

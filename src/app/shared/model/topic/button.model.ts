@@ -1,7 +1,7 @@
 
 export interface Button {
     title?: string;
-    type?: string;
+    type?: ButtonType;
     url?: string;
     payload?: string;
 }
