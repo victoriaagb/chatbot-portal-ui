@@ -102,12 +102,10 @@
       <!--TODO : Update the styling of buttons in the page-->
 
       <div class="col-md-12">
-          <div *ngIf="isNewResponse; else responseSaved" class="form-group mt-2 float-left">
-              <button class="btn btn-success pr-4 pl-4 text-white" (click)="saveResponse()">Save</button>
-              <button class="btn btn-default pr-4 pl-4" (click)="cancel()">Cancel</button>
-          </div>
-          <ng-template #responseSaved>
+        <div class="form-group mt-2 float-left">
             <button class="btn btn-success pr-4 pl-4 text-white" (click)="saveResponse()">Save</button>
-            <button class="btn btn-default pr-4 pl-4" (click)="deleteResponse()">Delete</button>
-          </ng-template>
-      </div>
+            <button *ngIf="isNewResponse" class="btn btn-default pr-4 pl-4" (click)="cancel()">Cancel</button>
+            <button *ngIf="!isNewResponse" class="btn btn-default pr-4 pl-4" (click)="deleteResponse()">Delete</button>
+        </div>
+    </div>
+
