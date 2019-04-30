@@ -20,17 +20,26 @@ export const menu = {
         CREATE_BOT: {
             displayName: 'Name Your Bot',
             routerLink: 'bot-name',
-            type: 'link'
+            type: 'link',
+            rules: []
         },
         CREATE_TOPIC: {
             displayName: 'Configure Topics',
             routerLink: 'topic-config',
-            type: 'link'
+            type: 'link',
+          rules: ['BOT_NAME_PRESENT']
         },
+        BUILD: {
+          displayName: 'Build',
+          routerLink: 'build-the-bot',
+          type: 'button',
+          rules: ['BOT_NAME_PRESENT', 'ONE_TOPIC_COMPLETE']
+      },
         PUBLISH: {
             displayName: 'Publish',
             routerLink: '',
-            type: 'button'
+            type: 'button',
+            rules: ['BUILD_COMPLETE']
         }
     }
 };
