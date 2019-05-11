@@ -7,6 +7,7 @@ import { BotDesignComponent } from './bot-design/bot-design.component';
 import { TopicQuestionsComponent } from './topic-config/topic-questions/topic-questions.component';
 import { TopicAnswersComponent } from './topic-config/topic-answers/topic-answers.component';
 import { TopicNameComponent } from './topic-config/topic-name/topic-name.component';
+import { BuildTheBotComponent } from './build-the-bot/build-the-bot.component';
 
 const routes: Routes = [
   { path: 'bot-config',
@@ -22,7 +23,7 @@ const routes: Routes = [
           ] },
       { path: 'bot-name', component: BotNameComponent },
       // { path: ':botName', component: BotNameComponent },
-      { path: 'bot-design', component: BotDesignComponent }
+      { path: 'build-the-bot', component: BuildTheBotComponent }
     ]
   }
 ];
