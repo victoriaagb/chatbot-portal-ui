@@ -1,5 +1,5 @@
 
-export interface Button {
+export interface KycButton {
     title?: string;
     type?: string;
     url?: string;

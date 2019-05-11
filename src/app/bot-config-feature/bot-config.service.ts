@@ -8,7 +8,8 @@ export class BotConfigService {
   // TODO: Add into project constants
   // private botConfigURL = 'http://18.223.226.83:8080/smart-chat-portal-0.0.1/botconfig';
   private botConfigURL = 'http://localhost:8080/smart-chat-portal/botconfig';
-  constructor(private http: HttpClient) {}
+  private botKycUrl = 'http://localhost:8080/smart-chat-portal/kyc';
+  constructor(private http: HttpClient) { }
 
   createBotConfig(
     configInput: BotConfigRepository
@@ -23,6 +24,32 @@ export class BotConfigService {
   ): Observable<number> {
     return this.http
       .put<number>(this.botConfigURL, botConfigRespository)
+      .map(result => result);
+  }
+
+  postForSynset(topic: any, questionsObject: any): Observable<any> {
+    return this.http
+      .post<Array<String>>(this.botKycUrl + '/synset', questionsObject)
+      .map(questions => {
+        const value = {};
+        const text = {
+          text: 'follow message'
+        };
+        topic['sample_request'] = topic.questions.concat(questions).join('|');
+        topic['slotted'] = false;
+        topic['follow'] = 'appreciate';
+        topic['fulfill'] = 'internal';
+        topic['response'] = topic.answers;
+        topic['fulfill_status'] = true;
+        topic['follow_message'] = [text];
+        value[(topic.name).toLowerCase()] = topic;
+        return value;
+      });
+  }
+
+  updateBotKyc(botConfigRespository: any): Observable<number> {
+    return this.http
+      .put<number>(this.botKycUrl, botConfigRespository)
       .map(result => result);
   }
 }

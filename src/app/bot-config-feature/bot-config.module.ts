@@ -16,6 +16,7 @@ import { TopicConfigService } from './topic-config/topic-config.service';
 import { TopicResponseTextComponent } from './topic-config/topic-answers/topic-response-text/topic-response-text.component';
 import { TopicResponseFollowComponent } from './topic-config/topic-answers/topic-response-follow/topic-response-follow.component';
 import { TopicResponseButtonComponent } from './topic-config/topic-answers/topic-response-button/topic-response-button.component';
+import { BotHeaderComponent } from './bot-header/bot-header.component';
 
 @NgModule({
   imports: [
@@ -36,6 +37,7 @@ import { TopicResponseButtonComponent } from './topic-config/topic-answers/topic
     TopicResponseTextComponent,
     TopicResponseFollowComponent,
     TopicResponseButtonComponent,
+    BotHeaderComponent,
   ],
   providers: [
     BotConfigService,

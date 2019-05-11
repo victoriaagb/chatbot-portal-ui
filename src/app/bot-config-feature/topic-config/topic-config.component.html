@@ -1,19 +1,7 @@
 <topic-slider (gotoQuestionEvent)="gotoTopicQuestion($event)" (gotoAnswerEvent)="gotoTopicAnswer($event)" [topicList]="botConfig.value.topics"></topic-slider>
+<bot-header></bot-header>
 <div class="container">
   <div class="row justify-content-end align-items-center main-card-topic">
-    <div class="col-md-12">
-      <div class="col-md-12">
-        <div class="pt-3 row">
-          <img class="icon-top" src="./assets/images/icon@3x.png">
-          <div class="col-md-10 ">
-            <p class="mb-0 bot-name text-uppercase">
-              <strong>bot name</strong>
-            </p>
-            <p class="mt-0 mb-0 store-hour">{{botConfig.value.name.botName}}</p>
-          </div>
-        </div>
-      </div>
-    </div>
     <div class="col-md-12">
       <div class="pt-3 row">
         <div class="col-md-12 col-lg-8 ">
