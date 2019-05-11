@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { menu } from '../../constants/menu.constants';
 import { BotConfigRepository } from '../../shared/model/bot-config-repository.model';
 import { BotConfigService } from '../bot-config.service';
@@ -10,7 +10,7 @@ import { SharedService, BotAction } from '../../shared/shared.service';
   templateUrl: './bot-config.component.html',
   styleUrls: ['./bot-config.component.scss']
 })
-export class BotConfigComponent implements OnInit {
+export class BotConfigComponent implements OnInit, OnDestroy {
   public botConfigMenu: Array<any>;
   public step: string;
   private subscription: Subscription;
@@ -28,6 +28,10 @@ export class BotConfigComponent implements OnInit {
         this.updateBot();
       }
     });
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
   ngOnInit() {
