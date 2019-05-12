@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { BotConfigRepository } from '../shared/model/bot-config-repository.model';
 import { Observable } from 'rxjs/Observable';
 import { HttpClient } from '@angular/common/http';
+import { KycResponse } from '../shared/model/topic/kyc/response.model';
+import { Response , TopicResponseType } from '../shared/model/topic/response.model';
 
 @Injectable()
 export class BotConfigService {
@@ -39,7 +41,7 @@ export class BotConfigService {
         topic['slotted'] = false;
         topic['follow'] = 'appreciate';
         topic['fulfill'] = 'internal';
-        topic['response'] = topic.answers;
+        topic['response'] = this.mapTopicToKycFormat(topic.answers) ;
         topic['fulfill_status'] = true;
         topic['follow_message'] = [text];
         value[(topic.name).toLowerCase()] = topic;
@@ -51,5 +53,18 @@ export class BotConfigService {
     return this.http
       .put<number>(this.botKycUrl, botConfigRespository)
       .map(result => result);
+  }
+
+  mapTopicToKycFormat(responses: Response[]) {
+    const kycResponses: KycResponse[] = [];
+    responses.forEach(response => {
+      if (response.response_type === TopicResponseType.TEXT) {
+        const kycResponse: KycResponse = {};
+        kycResponse.text = response.payload.text;
+        kycResponse.attachment = {};
+        kycResponses.push(kycResponse);
+      }
+    });
+    return kycResponses;
   }
 }
