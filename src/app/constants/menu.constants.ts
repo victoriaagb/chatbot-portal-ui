@@ -29,12 +29,6 @@ export const menu = {
             type: 'link',
           rules: ['BOT_NAME_PRESENT']
         },
-        BUILD: {
-          displayName: 'Build',
-          routerLink: 'build-the-bot',
-          type: 'button',
-          rules: ['BOT_NAME_PRESENT', 'ONE_TOPIC_COMPLETE']
-      },
         PUBLISH: {
             displayName: 'Publish',
             routerLink: '',
