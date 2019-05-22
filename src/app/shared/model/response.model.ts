@@ -1,6 +1,6 @@
-import { Attachment } from './topic/old/attachment.model';
+import { KycAttachment } from './topic/kyc/attachment.model';
 
 export interface Response {
     text?: string;
-    attachment?: Attachment;
+    attachment?: KycAttachment;
 }

@@ -1,4 +1,4 @@
-export interface Action {
+export interface KycAction {
   webview_height_ratio?: string;
   fallback_url?: string;
   type?: string;

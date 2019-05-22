@@ -16,6 +16,7 @@ import { TopicConfigService } from './topic-config/topic-config.service';
 import { TopicResponseTextComponent } from './topic-config/topic-answers/topic-response-text/topic-response-text.component';
 import { TopicResponseFollowComponent } from './topic-config/topic-answers/topic-response-follow/topic-response-follow.component';
 import { TopicResponseButtonComponent } from './topic-config/topic-answers/topic-response-button/topic-response-button.component';
+import { BotHeaderComponent } from './bot-header/bot-header.component';
 import { BuildTheBotComponent } from './build-the-bot/build-the-bot.component';
 import { ChatSimulatorComponent } from './chat-simulator/chat-simulator.component';
 
@@ -38,6 +39,7 @@ import { ChatSimulatorComponent } from './chat-simulator/chat-simulator.componen
     TopicResponseTextComponent,
     TopicResponseFollowComponent,
     TopicResponseButtonComponent,
+    BotHeaderComponent,
     BuildTheBotComponent,
     ChatSimulatorComponent,
   ],
