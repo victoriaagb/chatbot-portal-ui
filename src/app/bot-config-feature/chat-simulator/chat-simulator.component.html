@@ -6,7 +6,20 @@
         <p class="mt-0 mb-0 font12">Not Active</p>
       </div>
     </div>
-    <div class="pr-4 pl-4 pt-2 pb-1 inner-box-second"></div>
+    <div class="pr-4 pl-4 pt-2 pb-1 inner-box-second">
+      <div *ngFor="let chatSet of conversationList; let i = index">
+        <div class="chat-width float-right text-right">
+            <div  *ngIf="chatSet && chatSet[1] === 'user'" class="chat-box right">
+                <div class="chat-text mt-1 mb-1">{{chatSet[0]}}</div>
+            </div>
+        </div>
+        <div class="chat-width float-left text-left">
+            <div *ngIf="chatSet && chatSet[1] === 'text' && chatSet[0]?.text" class="chat-box left">
+                <div class="chat-text float-left mt-1 mb-1">>{{chatSet[0]?.text}}</div>
+            </div>
+        </div>
+      </div>
+    </div>
     <div class="bg-white">
       <div class="pr-2 pl-2 pt-4 pb-1 inner-box">
         <form>

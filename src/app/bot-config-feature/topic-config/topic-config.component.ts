@@ -20,6 +20,7 @@ export class TopicConfigComponent implements OnInit, OnDestroy {
   botSubscription: Subscription;
   topicSubscription: Subscription;
   navigationSubscription: Subscription;
+  topicList: Topic[];
 
   constructor(private sharedService: SharedService,
     private botConfigService: BotConfigService,
@@ -50,6 +51,7 @@ export class TopicConfigComponent implements OnInit, OnDestroy {
     if (_.isEmpty(this.botConfig.value.topics)) {
       this.botConfig.value.topics = [];
     }
+    this.topicList = this.botConfig.value.topics;
   }
 
   ngOnDestroy() {
