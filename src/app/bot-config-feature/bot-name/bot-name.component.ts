@@ -7,6 +7,7 @@ import { BotConfig } from '../../shared/model/bot-config.model';
 import { BotStatus } from '../../shared/model/bot-status.enum';
 import { Router, ActivatedRoute } from '@angular/router';
 import { BotStepConfig } from '../../shared/model/bot-step-config.enum';
+import { Topic } from '../../shared/model/topic.model';
 
 @Component({
   selector: 'app-bot-name',
@@ -18,6 +19,7 @@ export class BotNameComponent implements OnInit, OnDestroy {
   private subscription: Subscription;
   BotAction = BotAction;
   currentBot: BotConfigRepository;
+  topicList: Topic[];
 
   constructor(private sharedService: SharedService,
               private router: Router,
@@ -47,6 +49,7 @@ export class BotNameComponent implements OnInit, OnDestroy {
       };
     }
     this.currentBot = this.sharedService.currentBot;
+    this.topicList = this.currentBot.value.topics;
   }
 
   saveName(botAction: BotAction) {
