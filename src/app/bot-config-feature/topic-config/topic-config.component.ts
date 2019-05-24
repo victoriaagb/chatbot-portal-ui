@@ -43,6 +43,7 @@ export class TopicConfigComponent implements OnInit, OnDestroy {
         } else if (data.action === TopicAction.UPDATE || data.action === TopicAction.REMOVE) {
           this.updateTopicList();
         }
+        this.topicList = _.clone(this.topicList);
       });
     }
 
@@ -76,6 +77,7 @@ export class TopicConfigComponent implements OnInit, OnDestroy {
     for (let i = 0; i < _.get(this.botConfig, 'value.topics.length', 0); i++) {
       if (this.botConfig.value.topics[i].name === this.currentTopic.name) {
         this.botConfig.value.topics[i] = this.currentTopic;
+        this.topicList[i] = this.currentTopic;
         this.sharedService.sendBotAction(BotAction.UPDATE, this.botConfig);
         return;
       }
