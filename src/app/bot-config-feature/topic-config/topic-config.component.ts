@@ -73,6 +73,13 @@ export class TopicConfigComponent implements OnInit, OnDestroy {
     this.router.navigate(['./topic-answers'], {relativeTo: this.route});
   }
 
+  removeTopic(i: number) {
+    this.botConfig.value.topics.splice(i, 1);
+    this.sharedService.sendBotAction(BotAction.UPDATE, this.botConfig);
+    this.currentTopic = undefined;
+    this.router.navigate(['./topic-name'], {relativeTo: this.route});
+  }
+
   updateTopicList() {
     for (let i = 0; i < _.get(this.botConfig, 'value.topics.length', 0); i++) {
       if (this.botConfig.value.topics[i].name === this.currentTopic.name) {
