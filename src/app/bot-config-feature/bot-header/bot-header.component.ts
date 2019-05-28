@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { SharedService } from '../../shared/shared.service';
+import { SharedService, BotAction } from '../../shared/shared.service';
 import { BotConfigRepository } from '../../shared/model/bot-config-repository.model';
 import { Response, TopicResponseType } from '../../shared/model/topic/response.model';
 import { KycResponse } from '../../shared/model/topic/kyc/response.model';
 import { Observable } from 'rxjs/Observable';
+import { Subscription } from 'rxjs/Subscription';
 import { BotConfigService } from '../bot-config.service';
+import { BotConfigRulesService } from '../bot-config-rules.service';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/observable/forkJoin';
 import 'rxjs/add/operator/delay';
@@ -18,13 +20,22 @@ import 'rxjs/add/operator/mergeMap';
 })
 export class BotHeaderComponent implements OnInit {
 
+  private subscription: Subscription;
   currentBot: BotConfigRepository;
   publishLoading: Boolean = false;
+  canBuild: Boolean = false;
 
   constructor(private sharedService: SharedService,
-    private botConfigService: BotConfigService) { }
+    private ruleService: BotConfigRulesService,
+    private botConfigService: BotConfigService) {
+      this.subscription = this.sharedService.getBotAction().subscribe(data => {
+        this.currentBot = this.sharedService.currentBot;
+        this.canBuild = this.ruleService.canBuild(this.sharedService.currentBot);
+      });
+    }
 
   ngOnInit() {
+    this.canBuild = this.ruleService.canBuild(this.sharedService.currentBot);
   }
 
   buildBot() {
