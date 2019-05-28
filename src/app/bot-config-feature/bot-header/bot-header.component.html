@@ -18,7 +18,7 @@
 
             </div>
           </div>
-          <div class="col-md-6 col-xs-12">
+          <div *ngIf="canBuild" class="col-md-6 col-xs-12">
             <div class="pt-3 pl-6">
               <button type="button" (click)="buildBot()" class="btn text-right btn-success btn-sm pr-4 pl-4 text-white">Build</button>
             </div>
