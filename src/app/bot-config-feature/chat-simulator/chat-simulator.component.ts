@@ -20,7 +20,11 @@ export class ChatSimulatorComponent implements OnInit {
   @Input()
   set topicList(topicList: Topic[]) {
     this._topicList = topicList;
-    this.updateTopicList();
+    if (this._topicList) {
+      this.updateTopicList();
+    } else {
+      this.conversationList = [];
+    }
   }
   conversationList = [];
 
