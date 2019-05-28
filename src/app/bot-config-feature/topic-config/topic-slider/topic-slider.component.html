@@ -20,7 +20,7 @@
                       </div>
                     </div>
                   </div>
-                  <div *ngFor="let topic of topicList" class="col-md-2 text-center inner-boxes-slider border-top-slider-plane bangni-color">
+                  <div *ngFor="let topic of topicList; let i = index" class="col-md-2 text-center inner-boxes-slider border-top-slider-plane bangni-color">
                     <div class="row">
                       <div class="col-md-12 text-left">
                         <div class="row">
@@ -37,12 +37,12 @@
                           </div>
                           <div class="col-d-2 col-x-2 col-p-2  " style="background-color: #653dd2">
                             <div class="col-d-12 col-x-12 col-p-12 text-center height39 border-line-1 ">
-                              <a href="" class="my-auto-custom">
+                              <a [routerLink]="" class="my-auto-custom">
                                 <i class="far fa-copy colordadada "></i>
                               </a>
                             </div>
                             <div class="col-d-12 col-x-12 col-p-12 text-center height39">
-                              <a href="" class="my-auto-custom">
+                              <a (click)="removeTopic(i)"[routerLink]="" class="my-auto-custom">
                                 <i class="far fa-trash-alt colordadada"></i>
                               </a>
                             </div>
