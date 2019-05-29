@@ -9,6 +9,9 @@ export class BotConfigRulesService {
 
   canBuild(botConfig: BotConfigRepository) {
     let isBuildable = true;
+    if (!botConfig) {
+      return false;
+    }
     let name = botConfig.value.name.botName;
     let topics = botConfig.value.topics;
 
@@ -20,20 +23,20 @@ export class BotConfigRulesService {
     if (_.isUndefined(topics) ||
         _.isEmpty(topics)) {
           isBuildable = false;
-    }
+    } else {
+      topics.forEach(function (topic) {
 
-    topics.forEach(function(topic) {
-
-      if (_.isUndefined(topic.questions) ||
+        if (_.isUndefined(topic.questions) ||
           _.isEmpty(topic.questions)) {
-            isBuildable = false;
-      }
+          isBuildable = false;
+        }
 
-      if (_.isUndefined(topic.answers) ||
+        if (_.isUndefined(topic.answers) ||
           _.isEmpty(topic.answers)) {
-            isBuildable = false;
-          }
-    });
+          isBuildable = false;
+        }
+      });
+    }
     return isBuildable;
   }
 
