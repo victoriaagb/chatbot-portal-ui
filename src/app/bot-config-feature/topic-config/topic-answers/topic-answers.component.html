@@ -17,26 +17,25 @@
     </div>
     <div class="col-md-12" [ngSwitch]="topic?.answers[answerIndex]?.response_type">
       <ng-container *ngSwitchCase="TopicResponseType.TEXT">
-        <topic-response-text [payload]="topic.answers[this.answerIndex].payload"
-          (saveResponseEvent)="saveResponse($event)"
-          (deleteResponseEvent)="deleteResponse($event)"
-          (cancelEvent)="removeResponse($event)">
-        </topic-response-text>
+        <topic-response-text [payload]="topic.answers[this.answerIndex].payload"></topic-response-text>
       </ng-container>
 
       <ng-container *ngSwitchCase="TopicResponseType.BUTTON">
-        <topic-response-button [payload]="topic.answers[this.answerIndex].payload"
-          (saveResponseEvent)="saveResponse($event)"
-          (deleteResponseEvent)="deleteResponse($event)"
-          (cancelEvent)="removeResponse($event)">
-      </topic-response-button>
+        <topic-response-button [payload]="topic.answers[this.answerIndex].payload"></topic-response-button>
       </ng-container>
 
       <ng-container *ngSwitchDefault>
         <topic-answers-home (addResponseEvent)="addResponse($event)"></topic-answers-home>
       </ng-container>
-    </div>
 
+    </div>
+    <div class="col-md-12">
+      <div class="form-group mt-2 float-left">
+          <button class="btn btn-success pr-4 pl-4 text-white" (click)="saveResponse()">Save</button>
+          <button *ngIf="isNewResponse" class="btn btn-default pr-4 pl-4" (click)="cancel()">Cancel</button>
+          <button *ngIf="!isNewResponse" class="btn btn-default pr-4 pl-4" (click)="deleteResponse()">Delete</button>
+      </div>
+  </div>
     <topic-answers-slider [answerList]="topic.answers" (selectResponseEvent)="setAnswerIndex($event)"></topic-answers-slider>
 
     <div class="col-d-12 col-x-12 col-p-12 float-left topic-slider-bg-under mt-2">

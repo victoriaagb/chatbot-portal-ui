@@ -101,11 +101,3 @@
 
       <!--TODO : Update the styling of buttons in the page-->
 
-      <div class="col-md-12">
-        <div class="form-group mt-2 float-left">
-            <button class="btn btn-success pr-4 pl-4 text-white" (click)="saveResponse()">Save</button>
-            <button *ngIf="isNewResponse" class="btn btn-default pr-4 pl-4" (click)="cancel()">Cancel</button>
-            <button *ngIf="!isNewResponse" class="btn btn-default pr-4 pl-4" (click)="deleteResponse()">Delete</button>
-        </div>
-    </div>
-

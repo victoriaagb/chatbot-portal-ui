@@ -13,10 +13,6 @@ export class TopicResponseButtonComponent implements OnInit {
   ButtonType = ButtonType;
 
   @Input() payload: Payload;
-  @Output() saveResponseEvent = new EventEmitter<Payload>();
-  @Output() deleteResponseEvent = new EventEmitter<Payload>();
-  @Output() cancelEvent = new EventEmitter();
-
   isNewResponse: Boolean = true;
 
   constructor() { }
@@ -51,16 +47,5 @@ export class TopicResponseButtonComponent implements OnInit {
     this.payload.buttons.splice(index, 1);
   }
 
-  saveResponse() {
-    this.saveResponseEvent.emit(this.payload);
-  }
-
-  deleteResponse() {
-    this.deleteResponseEvent.emit(this.payload);
-  }
-
-  cancel() {
-    this.cancelEvent.emit();
-  }
 
 }
