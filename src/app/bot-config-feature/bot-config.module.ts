@@ -20,6 +20,7 @@ import { TopicResponseButtonComponent } from './topic-config/topic-answers/topic
 import { BotHeaderComponent } from './bot-header/bot-header.component';
 import { BuildTheBotComponent } from './build-the-bot/build-the-bot.component';
 import { ChatSimulatorComponent } from './chat-simulator/chat-simulator.component';
+import { TopicResponseElementComponent } from './topic-config/topic-answers/topic-response-element/topic-response-element.component';
 
 @NgModule({
   imports: [
@@ -43,6 +44,7 @@ import { ChatSimulatorComponent } from './chat-simulator/chat-simulator.componen
     BotHeaderComponent,
     BuildTheBotComponent,
     ChatSimulatorComponent,
+    TopicResponseElementComponent,
   ],
   providers: [
     BotConfigService,
