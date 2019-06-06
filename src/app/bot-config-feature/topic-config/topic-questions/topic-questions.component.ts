@@ -41,6 +41,7 @@ export class TopicQuestionsComponent implements OnInit, OnDestroy {
   addQuestion() {
     if (!_.isEmpty(this.question)) {
       this.topic.questions.push(this.question);
+      this.topicConfigService.sendTopicAction(TopicAction.UPDATE, this.topic);
       this.question = '';
     }
   }
@@ -55,6 +56,7 @@ export class TopicQuestionsComponent implements OnInit, OnDestroy {
   }
 
   saveQuestions() {
+    this.addQuestion();
     this.topicConfigService.sendTopicAction(TopicAction.UPDATE, this.topic);
     this.router.navigate(['../topic-answers'], {relativeTo: this.route});
   }
