@@ -13,7 +13,6 @@ export class TopicResponseButtonComponent implements OnInit {
   ButtonType = ButtonType;
 
   @Input() payload: Payload;
-  isNewResponse: Boolean = true;
 
   constructor() { }
 
@@ -25,8 +24,6 @@ export class TopicResponseButtonComponent implements OnInit {
       };
 
       this.addButton();
-    } else {
-      this.isNewResponse = false;
     }
   }
 
