@@ -44,5 +44,15 @@ export class TopicResponseButtonComponent implements OnInit {
     this.payload.buttons.splice(index, 1);
   }
 
+  handleChange(index: number) {
+    if (this.payload.buttons[index].type === ButtonType.URL) {
+      this.payload.buttons[index].url = this.payload.buttons[index].payload;
+      this.payload.buttons[index].payload = '';
+    } else {
+      this.payload.buttons[index].payload = this.payload.buttons[index].url;
+      this.payload.buttons[index].url = '';
+    }
+  }
+
 
 }
