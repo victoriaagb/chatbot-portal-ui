@@ -38,7 +38,7 @@ export class TopicConfigComponent implements OnInit, OnDestroy {
       this.topicSubscription = this.topicConfigService.getTopicAction().subscribe (data => {
         this.currentTopic = this.topicConfigService.currentTopic;
         if (data.action === TopicAction.CREATE) {
-          this.createNewTopic(this.currentTopic);
+          this.addNewTopic(this.currentTopic);
           this.updateTopicList();
         } else if (data.action === TopicAction.UPDATE || data.action === TopicAction.REMOVE) {
           this.updateTopicList();
@@ -73,6 +73,11 @@ export class TopicConfigComponent implements OnInit, OnDestroy {
     this.router.navigate(['./topic-answers'], {relativeTo: this.route});
   }
 
+  gotoTopicName() {
+    this.currentTopic = undefined;
+    this.router.navigate(['./topic-name'], {relativeTo: this.route});
+  }
+
   removeTopic(i: number) {
     this.botConfig.value.topics.splice(i, 1);
     this.sharedService.sendBotAction(BotAction.UPDATE, this.botConfig);
@@ -91,9 +96,9 @@ export class TopicConfigComponent implements OnInit, OnDestroy {
     }
   }
 
-  createNewTopic(topic: Topic) {
+  addNewTopic(topic: Topic) {
     this.topicConfigService.currentTopic = this.currentTopic = topic;
     this.botConfig.value.topics.push(this.currentTopic);
+    this.topicConfigService.sendTopicAction(TopicAction.UPDATE, this.currentTopic);
   }
-
 }
