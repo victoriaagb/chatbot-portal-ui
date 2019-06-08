@@ -33,7 +33,7 @@
                         <div class="col-md-4 float-left pl-0  my-2 my-md-0 my-lg-0">
                             <div class="input-group">
                                 <label for="button_{{i}}_URL" class="text-uppercase weight400 custom-radio-label">
-                                    <input id="button_{{i}}_URL" type="radio" name="{{i}}" [(ngModel)]="button.type" [value]="ButtonType.URL" [ngModelOptions]="{standalone: true}" class="custom-radio" placeholder="">
+                                    <input id="button_{{i}}_URL" type="radio" name="{{i}}" (change)="handleChange(i)" [(ngModel)]="button.type" [value]="ButtonType.URL" [ngModelOptions]="{standalone: true}" class="custom-radio" placeholder="">
                                     <span class="checkmark"></span>
                                     URL Button
                                 </label>
@@ -42,7 +42,7 @@
                         <div class="col-md-4 float-left pl-0  my-2 my-md-0 my-lg-0">
                             <div class="input-group">
                                 <label for="button_{{i}}_PAYLOAD" class="text-uppercase weight400 custom-radio-label">
-                                    <input id="button_{{i}}_PAYLOAD"type="radio" name="{{i}}" [(ngModel)]="button.type" [value]="ButtonType.PAYLOAD" [ngModelOptions]="{standalone: true}" class="custom-radio" placeholder="">
+                                    <input id="button_{{i}}_PAYLOAD" type="radio" name="{{i}}" (change)="handleChange(i)" [(ngModel)]="button.type" [value]="ButtonType.PAYLOAD" [ngModelOptions]="{standalone: true}" class="custom-radio" placeholder="">
                                     <span class="checkmark"></span>
                                     Postback Button
                                 </label>
@@ -73,7 +73,7 @@
                 </div>
             </div>
             <div class="col-md-6 float-left">
-                <div class="mt-1 mb-2 ">
+                <div *ngIf="button.type===ButtonType.URL" class="mt-1 mb-2 ">
                     <div class="input-group">
                         <label class="text-uppercase font11">url</label>
                     </div>
@@ -81,11 +81,19 @@
                         <input type="text" [(ngModel)]="button.url" name="" [ngModelOptions]="{standalone: true}" class="form-control" placeholder="">
                     </div>
                 </div>
+                <div *ngIf="button.type===ButtonType.PAYLOAD" class="mt-1 mb-2 ">
+                  <div class="input-group">
+                      <label class="text-uppercase font11">payload</label>
+                  </div>
+                  <div class="input-group">
+                      <input type="text" [(ngModel)]="button.payload" name="" [ngModelOptions]="{standalone: true}" class="form-control" placeholder="">
+                  </div>
+              </div>
             </div>
             <div (click)="removeButton(i)" class="col-md-2 float-left">
                 <div class="mt-1 mb-2 ">
                     <div class="input-group">
-                        <a [routerLink]=""><img class="mt-1" src="./assets/images/forma-1.png"></a>
+                        <a><img class="mt-1" src="./assets/images/forma-1.png"></a>
                     </div>
                 </div>
             </div>
