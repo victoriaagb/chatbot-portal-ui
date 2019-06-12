@@ -7,6 +7,7 @@ import { Payload } from '../../../shared/model/topic/payload.model';
 import { Response, TopicResponseType } from '../../../shared/model/topic/response.model';
 import { TopicResponseTextComponent } from '../topic-answers/topic-response-text/topic-response-text.component';
 import { TopicResponseButtonComponent } from '../topic-answers/topic-response-button/topic-response-button.component';
+import {TopicResponseElementComponent } from '../topic-answers/topic-response-element/topic-response-element.component';
 import * as _ from 'lodash';
 
 @Component({
@@ -28,6 +29,9 @@ export class TopicAnswersComponent implements OnInit, OnDestroy {
 
   @ViewChild('topicResponseButtonComponent')
   buttonComponent: TopicResponseButtonComponent;
+
+  @ViewChild('topicResponseElementComponent')
+  elementComponent: TopicResponseElementComponent;
 
   constructor(private topicConfigService: TopicConfigService,
               private router: Router) {
@@ -81,6 +85,7 @@ export class TopicAnswersComponent implements OnInit, OnDestroy {
         this.topic.answers[this.answerIndex].payload = this.textComponent.payload;
         break;
       case TopicResponseType.BUTTON:
+        this.buttonComponent.updateButtons();
         this.topic.answers[this.answerIndex].payload = this.buttonComponent.payload;
         break;
       default:

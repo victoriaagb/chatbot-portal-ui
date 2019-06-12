@@ -24,6 +24,10 @@
         <topic-response-button #topicResponseButtonComponent [payload]="topic.answers[this.answerIndex].payload"></topic-response-button>
       </ng-container>
 
+      <ng-container *ngSwitchCase="TopicResponseType.ELEMENT">
+        <topic-response-element #topicResponseElementComponent [payload]="topic.answers[this.answerIndex].payload"></topic-response-element>
+      </ng-container>
+
       <ng-container *ngSwitchDefault>
         <topic-answers-home (addResponseEvent)="addNewResponse($event)"></topic-answers-home>
       </ng-container>
