@@ -1,7 +1,8 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild } from '@angular/core';
 import { Payload } from '../../../../shared/model/topic/payload.model';
 import { ButtonType, Button } from '../../../../shared/model/topic/button.model';
 import * as _ from 'lodash';
+import { ButtonsComponent } from '../buttons/buttons.component';
 
 @Component({
   selector: 'topic-response-button',
@@ -12,6 +13,8 @@ export class TopicResponseButtonComponent implements OnInit {
 
   ButtonType = ButtonType;
 
+  @ViewChild('buttonsComponent')
+  buttonsComponent: ButtonsComponent;
   @Input() payload: Payload;
 
   constructor() { }
@@ -22,37 +25,10 @@ export class TopicResponseButtonComponent implements OnInit {
         text: '',
         buttons: []
       };
-
-      this.addButton();
     }
   }
 
-  addButton() {
-    let newButton: Button;
-    newButton = {
-      title: '',
-      type: ButtonType.URL,
-      url: '',
-      payload: ''
-    };
-
-    this.payload.buttons.push(newButton);
-    console.log(this.payload);
+  updateButtons() {
+    this.payload.buttons = this.buttonsComponent.buttons;
   }
-
-  removeButton(index: number) {
-    this.payload.buttons.splice(index, 1);
-  }
-
-  handleChange(index: number) {
-    if (this.payload.buttons[index].type === ButtonType.URL) {
-      this.payload.buttons[index].url = this.payload.buttons[index].payload;
-      this.payload.buttons[index].payload = '';
-    } else {
-      this.payload.buttons[index].payload = this.payload.buttons[index].url;
-      this.payload.buttons[index].url = '';
-    }
-  }
-
-
 }
