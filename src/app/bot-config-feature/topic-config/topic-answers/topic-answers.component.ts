@@ -88,6 +88,10 @@ export class TopicAnswersComponent implements OnInit, OnDestroy {
         this.buttonComponent.updateButtons();
         this.topic.answers[this.answerIndex].payload = this.buttonComponent.payload;
         break;
+        case TopicResponseType.ELEMENT:
+        this.elementComponent.updateButtons();
+        this.topic.answers[this.answerIndex].payload = this.elementComponent.payload;
+        break;
       default:
         action = TopicAction.NONE;
     }
