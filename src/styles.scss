@@ -11,8 +11,8 @@ html {
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600');
 
 body {
-    font-family: 'Source Sans Pro', sans-serif;
-    background: #eff3f6;
+    font-family: 'Source Sans Pro', sans-serif !important;
+    background: #eff3f6 !important;
     min-height: 100%;
     position: relative;
 }
