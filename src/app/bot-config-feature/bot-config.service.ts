@@ -8,10 +8,10 @@ import { Response , TopicResponseType } from '../shared/model/topic/response.mod
 @Injectable()
 export class BotConfigService {
   // TODO: Add into project constants
-  // private botConfigURL = 'http://18.223.226.83:8080/smart-chat-portal-0.0.1/botconfig';
-   private botConfigURL = 'http://localhost:8080/smart-chat-portal/botconfig';
-  // private botKycUrl = 'http://18.223.226.83:8080/smart-chat-portal-0.0.1/kyc';
-   private botKycUrl = 'http://localhost:8080/smart-chat-portal/kyc';
+   private botConfigURL = 'http://18.223.226.83:8080/smart-chat-portal-0.0.1/botconfig';
+  // private botConfigURL = 'http://localhost:8080/smart-chat-portal/botconfig';
+   private botKycUrl = 'http://18.223.226.83:8080/smart-chat-portal-0.0.1/kyc';
+  // private botKycUrl = 'http://localhost:8080/smart-chat-portal/kyc';
   constructor(private http: HttpClient) { }
 
   createBotConfig(
