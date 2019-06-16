@@ -5,6 +5,11 @@ ul {
     overflow: hidden;
     background-color: white;
     li {
+        a {
+          &.nav-link {
+            cursor : pointer !important;
+          }
+        }
         &:first-child {
             margin-left: 0px !important;
         }
