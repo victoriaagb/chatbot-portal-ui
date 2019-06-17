@@ -12,6 +12,7 @@ export class ButtonsComponent implements OnInit {
   ButtonType = ButtonType;
 
   @Input() buttons: Button[];
+  @Input() id: number;
 
   constructor() { }
 
