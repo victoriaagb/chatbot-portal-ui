@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { Payload } from '../../../../shared/model/topic/payload.model';
 import { ButtonType, Button } from '../../../../shared/model/topic/button.model';
 import * as _ from 'lodash';

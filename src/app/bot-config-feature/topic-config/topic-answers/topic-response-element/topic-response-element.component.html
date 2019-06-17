@@ -6,10 +6,10 @@
       </div>
   </div>
   <div class="col-md-12 float-left">
-      <div class="float-left width100 bg-white pt-3">
+      <div *ngFor="let element of payload.elements; let i = index" class="float-left width100 bg-white pt-3">
           <div class="col-md-12">
               <div class="input-group">
-                  <label class="text-uppercase col-d-2">carousel 01</label>
+                  <label class="text-uppercase col-d-2">carousel {{i}}</label>
                   <div class="st-line float-left col-d-10 mt-2"></div>
               </div>
               <div class="col-md-12 p-0 p-md-2">
@@ -20,7 +20,7 @@
                                   <label class="text-uppercase">Image URL</label>
                               </div>
                               <div class="input-group">
-                                  <input [(ngModel)]="payload.elements[0].image_url" type="text" name="" class="form-control" placeholder=" ">
+                                  <input [(ngModel)]="payload.elements[i].image_url" type="text" name="" class="form-control" placeholder=" ">
                               </div>
                           </div>
                       </div>
@@ -30,7 +30,7 @@
                                   <label class="text-uppercase">Title</label>
                               </div>
                               <div class="input-group">
-                                  <input [(ngModel)]="payload.elements[0].title" type="text" name="" class="form-control" placeholder=" ">
+                                  <input [(ngModel)]="payload.elements[i].title" type="text" name="" class="form-control" placeholder=" ">
                               </div>
                           </div>
                       </div>
@@ -40,16 +40,16 @@
                                   <label class="text-uppercase">Subtitle</label>
                               </div>
                               <div class="input-group">
-                                  <input [(ngModel)]="payload.elements[0].subtitle" type="text" name="" class="form-control" placeholder=" ">
+                                  <input [(ngModel)]="payload.elements[i].subtitle" type="text" name="" class="form-control" placeholder=" ">
                               </div>
                           </div>
                       </div>
                   </div>
               </div>
           </div>
-          <buttons #buttonsComponent [buttons]="payload.elements[0].buttons"></buttons>
+          <buttons #buttonsComponent [id]="i" [buttons]="payload.elements[i].buttons"></buttons>
           <div class="col-d-12 col-x-12 col-p-12 float-left topic-slider-bg-under mt-3  bg-white border-top-1">
-              <div class="col-md-12">
+              <div class="col-md-12" (click)="addElement()">
                   <p class="mb-0 py-3 color2695ea text-uppercase"><img class="mr-2" src="./assets/images/plus.png" />  Add Carousel Element</p>
               </div>
           </div>

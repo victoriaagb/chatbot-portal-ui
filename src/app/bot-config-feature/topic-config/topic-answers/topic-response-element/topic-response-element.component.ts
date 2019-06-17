@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, ViewChildren, AfterViewInit, QueryList } from '@angular/core';
 import { Payload } from '../../../../shared/model/topic/payload.model';
 import { ButtonsComponent } from '../buttons/buttons.component';
 import { Element } from '../../../../shared/model/topic/element.model';
@@ -9,10 +9,10 @@ import * as _ from 'lodash';
   templateUrl: './topic-response-element.component.html',
   styleUrls: ['./topic-response-element.component.scss']
 })
-export class TopicResponseElementComponent implements OnInit {
+export class TopicResponseElementComponent implements OnInit, AfterViewInit {
 
-  @ViewChild('buttonsComponent')
-  buttonsComponent: ButtonsComponent;
+  @ViewChildren('buttonsComponent')
+  buttonsComponents: QueryList<ButtonsComponent>;
   @Input() payload: Payload;
 
   constructor() { }
@@ -20,18 +20,29 @@ export class TopicResponseElementComponent implements OnInit {
   ngOnInit() {
     if (_.isUndefined(this.payload)) {
       this.payload = <Payload>{
-        elements: [<Element> {
-            image_url: '',
-            title: '',
-            subtitle: '',
-            buttons: []
-          }]
+        elements: []
       };
+      this.addElement();
     }
   }
 
+  ngAfterViewInit() {
+    console.log(this.buttonsComponents.toArray());
+}
+
+  addElement() {
+    this.payload.elements.push(<Element> {
+      image_url: '',
+      title: '',
+      subtitle: '',
+      buttons: []
+    });
+  }
+
   updateButtons() {
-    this.payload.elements[0].buttons = this.buttonsComponent.buttons;
+    this.buttonsComponents.toArray().forEach((bComp) => {
+      this.payload.elements[bComp.id].buttons = bComp.buttons;
+    });
   }
 
 }
