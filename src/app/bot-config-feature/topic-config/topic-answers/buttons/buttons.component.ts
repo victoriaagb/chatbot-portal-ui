@@ -28,8 +28,7 @@ export class ButtonsComponent implements OnInit {
     newButton = {
       title: '',
       type: ButtonType.URL,
-      url: '',
-      payload: ''
+      url: ''
     };
 
     this.buttons.push(newButton);
@@ -43,10 +42,10 @@ export class ButtonsComponent implements OnInit {
   handleChange(index: number) {
     if (this.buttons[index].type === ButtonType.URL) {
       this.buttons[index].url = this.buttons[index].payload;
-      this.buttons[index].payload = '';
+      delete this.buttons[index].payload;
     } else {
       this.buttons[index].payload = this.buttons[index].url;
-      this.buttons[index].url = '';
+      delete this.buttons[index].url;
     }
   }
 }
