@@ -74,6 +74,17 @@ export class BotConfigService {
         kycResponse.attachment.payload.text = response.payload.text;
         kycResponse.attachment.payload.buttons = response.payload.buttons;
         kycResponses.push(kycResponse);
+      } else if (response.response_type === TopicResponseType.ELEMENT) {
+        const kycResponse: KycResponse = {};
+        // kycResponse.text = response.payload.text;
+        kycResponse.attachment = {};
+        kycResponse.attachment.type = 'template';
+        kycResponse.attachment.payload = {};
+        kycResponse.attachment.payload.template_type = 'generic';
+        kycResponse.attachment.payload.elements = response.payload.elements;
+        // kycResponse.attachment.payload.text = response.payload.text;
+        kycResponse.attachment.payload.buttons = response.payload.buttons;
+        kycResponses.push(kycResponse);
       }
     });
     console.log('kycResponses' + JSON.stringify(kycResponses));
