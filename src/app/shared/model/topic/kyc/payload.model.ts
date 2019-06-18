@@ -4,7 +4,7 @@ export interface KycPayload {
     sharable?: string;
     template_type?: string;
     text?: string;
-    elements?: Element[];
+    elements?: KycElement[];
     buttons?: KycButton[];
     isReusable?: string;
     url?: string;
