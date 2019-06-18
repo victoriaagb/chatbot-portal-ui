@@ -8,9 +8,9 @@ import { Response , TopicResponseType } from '../shared/model/topic/response.mod
 @Injectable()
 export class BotConfigService {
   // TODO: Add into project constants
-   private botConfigURL = 'http://18.223.226.83:8080/smart-chat-portal-0.0.1/botconfig';
+   private botConfigURL = 'https://botz.chat/smart-chat-portal-0.0.1/botconfig';
   // private botConfigURL = 'http://localhost:8080/smart-chat-portal/botconfig';
-   private botKycUrl = 'http://18.223.226.83:8080/smart-chat-portal-0.0.1/kyc';
+   private botKycUrl = 'https://botz.chat/smart-chat-portal-0.0.1/kyc';
   // private botKycUrl = 'http://localhost:8080/smart-chat-portal/kyc';
   constructor(private http: HttpClient) { }
 
@@ -62,7 +62,7 @@ export class BotConfigService {
       if (response.response_type === TopicResponseType.TEXT) {
         const kycResponse: KycResponse = {};
         kycResponse.text = response.payload.text;
-        kycResponse.attachment = {};
+        // kycResponse.attachment = {};
         kycResponses.push(kycResponse);
       } else if (response.response_type === TopicResponseType.BUTTON) {
         const kycResponse: KycResponse = {};

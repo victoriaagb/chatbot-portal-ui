@@ -7,6 +7,6 @@ export interface Button {
 }
 
 export enum ButtonType {
-  PAYLOAD = 'PAYLOAD',
-  URL = 'URL'
+  PAYLOAD = 'postback',
+  URL = 'web_url'
 }
