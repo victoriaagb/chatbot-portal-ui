@@ -1,0 +1,29 @@
+.loading-screen-wrapper {
+  z-index: 100000;
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.473);
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.loading-screen-icon {
+  font: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+$bg: #111;
+$fg: #97e2dd;
+$ds: #335696;
+$txt: #fff;
+
+@mixin cc(){
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+

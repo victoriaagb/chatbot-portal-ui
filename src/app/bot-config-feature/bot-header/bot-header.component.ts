@@ -12,6 +12,7 @@ import 'rxjs/add/observable/forkJoin';
 import 'rxjs/add/operator/delay';
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/mergeMap';
+import { LoadingScreenService } from '../../shared/services/loading-screen.service';
 
 @Component({
   selector: 'bot-header',
@@ -27,7 +28,8 @@ export class BotHeaderComponent implements OnInit {
 
   constructor(private sharedService: SharedService,
     private ruleService: BotConfigRulesService,
-    private botConfigService: BotConfigService) {
+    private botConfigService: BotConfigService,
+    private loadingScreenService: LoadingScreenService) {
       this.subscription = this.sharedService.getBotAction().subscribe(data => {
         this.currentBot = this.sharedService.currentBot;
         this.canBuild = this.ruleService.canBuild(this.sharedService.currentBot);
@@ -39,6 +41,7 @@ export class BotHeaderComponent implements OnInit {
   }
 
   buildBot() {
+    this.loadingScreenService.startLoading();
     this.sharedService.retrieveSessionData();
     this.currentBot = this.sharedService.currentBot;
     this.buildKycModel(this.currentBot);
@@ -70,6 +73,7 @@ export class BotHeaderComponent implements OnInit {
 
       this.botConfigService.updateBotKyc(kyc).subscribe(data => {
         this.publishLoading = false;
+        this.loadingScreenService.stopLoading();
       });
     });
   }
