@@ -1,0 +1,13 @@
+.carousel-wrapper {
+  overflow: hidden;
+}
+
+.carousel-inner {
+  display: flex;
+  padding-left: 0;
+}
+
+.carousel-item {
+  display: block;
+  width: 100%;
+}

@@ -27,8 +27,7 @@ export class TopicResponseElementComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    console.log(this.buttonsComponents.toArray());
-}
+  }
 
   addElement() {
     this.payload.elements.push(<Element> {
