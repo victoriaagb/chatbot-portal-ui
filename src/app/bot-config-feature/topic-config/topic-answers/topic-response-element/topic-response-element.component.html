@@ -7,7 +7,7 @@
   </div>
   <div class="col-md-12 float-left">
 
-<carousel #carousel="carousel" class="carousel" [showControls]="true" [itemsLength]="payload.elements.length">
+<carousel #carousel="carousel" class="carousel" [showControls]="false" [currentSlide]="currentElement" [itemsLength]="payload.elements.length">
   <ng-container *ngFor="let element of payload.elements; let i = index" >
     <ng-container *carouselItem>
         <div class="float-left width100 bg-white pt-3">
@@ -61,5 +61,6 @@
     </ng-container>
   </ng-container>
 </carousel>
+<pagination (gotoPageEvent)="gotoPage($event)" [itemsLength]="payload.elements.length"></pagination>
     </div>
 </div>

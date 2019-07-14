@@ -1,0 +1,7 @@
+<ul class="pagination justify-content-center">
+  <li *ngIf="currentPage > 0" (click)="gotoPage(currentPage-1)" class="page-item"><a class="page-link" [routerLink]=""><i class="fas fa-caret-left"></i></a></li>
+ <ng-container *ngFor="let i of counter(itemsLength)">
+      <li (click)="gotoPage(i)" [ngClass]="{'active': i === currentPage}" class="page-item"><a class="page-link" [routerLink]="">{{i+1}}</a></li>
+  </ng-container>
+  <li *ngIf="currentPage < itemsLength - 1" (click)="gotoPage(currentPage+1)" class="page-item"><a class="page-link" [routerLink]=""><i class="fas fa-caret-right"></i></a></li>
+</ul>

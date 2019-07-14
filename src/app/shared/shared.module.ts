@@ -13,6 +13,7 @@ import { CarouselComponent } from './carousel/carousel.component';
 import { CarouselItemElement } from './carousel/carousel-item-element.directive';
 import { CarouselItemDirective } from './carousel/carousel-item.directive';
 import { BrowserModule } from '@angular/platform-browser';
+import { PaginationComponent } from './pagination/pagination.component';
 
 @NgModule({
   imports: [
@@ -27,7 +28,8 @@ import { BrowserModule } from '@angular/platform-browser';
     LoadingScreenComponent,
     CarouselComponent,
     CarouselItemElement,
-    CarouselItemDirective
+    CarouselItemDirective,
+    PaginationComponent
   ],
   exports: [
     CommonModule,
@@ -36,6 +38,7 @@ import { BrowserModule } from '@angular/platform-browser';
     MenuComponent,
     StorageServiceModule,
     LoadingScreenComponent,
+    PaginationComponent,
     BrowserAnimationsModule,
     CarouselComponent,
     CarouselItemElement,
