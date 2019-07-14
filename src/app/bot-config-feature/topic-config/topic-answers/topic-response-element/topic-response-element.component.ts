@@ -14,6 +14,7 @@ export class TopicResponseElementComponent implements OnInit, AfterViewInit {
   @ViewChildren('buttonsComponent')
   buttonsComponents: QueryList<ButtonsComponent>;
   @Input() payload: Payload;
+  private currentElement: Number = 0;
 
   constructor() { }
 
@@ -42,6 +43,10 @@ export class TopicResponseElementComponent implements OnInit, AfterViewInit {
     this.buttonsComponents.toArray().forEach((bComp) => {
       this.payload.elements[bComp.id].buttons = bComp.buttons;
     });
+  }
+
+  gotoPage($event: number) {
+    this.currentElement = $event;
   }
 
 }

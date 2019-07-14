@@ -2,6 +2,7 @@ import { Component, AfterViewInit, ContentChildren, QueryList, ViewChildren, Ele
 import { CarouselItemDirective } from './carousel-item.directive';
 import { CarouselItemElement } from './carousel-item-element.directive';
 import { AnimationFactory, AnimationBuilder, AnimationPlayer, animate, style } from '@angular/animations';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'carousel',
@@ -27,7 +28,7 @@ export class CarouselComponent implements AfterViewInit {
 
   private player: AnimationPlayer;
   private itemWidth: number;
-  private currentSlide = 0;
+  private _currentSlide = 0;
 
   carouselWrapperStyle = {};
 
@@ -36,13 +37,13 @@ export class CarouselComponent implements AfterViewInit {
 
   ngAfterViewInit() {
     setTimeout(() => {
-      console.log("ngAfterViewInit");
+      console.log('ngAfterViewInit');
       this.updateItems();
     });
   }
 
   ngOnChanges(changes: SimpleChanges){
-    console.log("ngOnChanges");
+    console.log('ngOnChanges');
     this.updateItems();
 
   }
@@ -51,6 +52,27 @@ export class CarouselComponent implements AfterViewInit {
     return this.builder.build([
       animate(this.timing, style({ transform: `translateX(-${offset}px)` }))
     ]);
+  }
+
+  get currentSlide() {
+    return this._currentSlide;
+  }
+
+  @Input()
+  set currentSlide(currentSlide: number){
+    this._currentSlide = currentSlide;
+    this.moveToCurrentSlide();
+  }
+
+  moveToCurrentSlide() {
+    if (_.get(this.itemsElements, 'first.nativeElement')) {
+      this.itemWidth = this.itemsElements.first.nativeElement.getBoundingClientRect().width;
+      const offset = this._currentSlide * (this.itemWidth);
+      const myAnimation: AnimationFactory = this.buildAnimation(offset);
+      this.player = myAnimation.create(this.carousel.nativeElement);
+      this.player.play();
+      console.log('next items.length: ' +  this.items.length);
+    }
   }
 
   next() {
