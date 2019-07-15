@@ -18,9 +18,12 @@ import * as _ from 'lodash';
 export class TopicAnswersComponent implements OnInit, OnDestroy {
 
   TopicResponseType = TopicResponseType;
+
   answerIndex: number;
   topic: Topic;
+  topicPayloadMap: Map<string, string>;
   isNewResponse: boolean;
+
   private subscription: Subscription;
   private navigationSubscription: Subscription;
 
@@ -59,7 +62,9 @@ export class TopicAnswersComponent implements OnInit, OnDestroy {
 
   initializeInvites() {
     this.topic = this.topicConfigService.currentTopic;
-    if (_.isEmpty(this.topic.answers)) {
+    this.topicPayloadMap = this.topicConfigService.topicMap;
+    this.topicPayloadMap.delete(this.topic.name);
+    if (_.isUndefined(this.topic.answers) || _.isNull(this.topic.answers)) {
       this.topic.answers = [];
     }
     this.answerIndex = undefined;

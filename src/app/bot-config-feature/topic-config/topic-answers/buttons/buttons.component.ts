@@ -13,6 +13,7 @@ export class ButtonsComponent implements OnInit {
 
   @Input() buttons: Button[];
   @Input() id: number;
+  @Input() data: Map<string, string>;
 
   constructor() { }
 
@@ -39,13 +40,28 @@ export class ButtonsComponent implements OnInit {
     this.buttons.splice(index, 1);
   }
 
-  handleChange(index: number) {
-    if (this.buttons[index].type === ButtonType.URL) {
-      this.buttons[index].url = this.buttons[index].payload;
-      delete this.buttons[index].payload;
-    } else {
-      this.buttons[index].payload = this.buttons[index].url;
-      delete this.buttons[index].url;
+  setPostback(index: number, key: string) {
+    this.buttons[index].payload = this.data.get(key);
+    this.buttons[index].title = key;
+
+    if (_.isUndefined(this.buttons[index].payload)) {
+      this.buttons[index].payload = '';
     }
   }
+
+  getDataMap() {
+    const dataMap = Array.from(this.data.entries());
+    return dataMap;
+  }
+
+  handleChange(index: number) {
+    if (this.buttons[index].type === ButtonType.URL) {
+      delete this.buttons[index].payload;
+    } else {
+      delete this.buttons[index].url;
+      this.buttons[index].payload = '';
+      this.buttons[index].title = '';
+    }
+  }
+
 }

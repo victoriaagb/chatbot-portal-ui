@@ -9,6 +9,8 @@ export class TopicConfigService {
 
   private _topicSubject = new Subject<any>();
   currentTopic: Topic;
+  topicMap: Map<string, string>;
+
   constructor(@Inject(SESSION_STORAGE) private sessionData: WebStorageService) { }
 
   // Session Data Manipulation

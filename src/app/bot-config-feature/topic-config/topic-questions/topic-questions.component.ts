@@ -15,7 +15,7 @@ import { Subscription } from 'rxjs/Subscription';
 export class TopicQuestionsComponent implements OnInit, OnDestroy {
 
   topic: Topic;
-  question: String;
+  question: string;
   subscription: Subscription;
 
   constructor(private topicConfigService: TopicConfigService,
@@ -29,7 +29,7 @@ export class TopicQuestionsComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.question = '';
     this.topic = this.topicConfigService.currentTopic;
-    if (_.isEmpty(this.topic.questions)) {
+    if ((_.isNull(this.topic.questions) || _.isUndefined(this.topic.questions))) {
       this.topic.questions = [];
     }
   }
