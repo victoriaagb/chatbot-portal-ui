@@ -25,7 +25,7 @@
       </ng-container>
 
       <ng-container *ngSwitchCase="TopicResponseType.ELEMENT">
-        <topic-response-element #topicResponseElementComponent [payload]="topic.answers[this.answerIndex].payload"></topic-response-element>
+        <topic-response-element #topicResponseElementComponent [payloadMap]="topicPayloadMap" [payload]="topic.answers[this.answerIndex].payload"></topic-response-element>
       </ng-container>
 
       <ng-container *ngSwitchDefault>
