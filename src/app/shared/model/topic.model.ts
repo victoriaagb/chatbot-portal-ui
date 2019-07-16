@@ -4,7 +4,7 @@ import { Response } from './topic/response.model';
 export interface Topic {
     name: string;
     status?: string;
-    questions?: String[];
+    questions?: string[];
     answers?: Response[];
     additionalDisplay?: AdditionalDisplay;
 }

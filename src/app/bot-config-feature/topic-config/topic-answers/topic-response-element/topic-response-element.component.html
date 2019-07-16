@@ -51,7 +51,7 @@
                     </div>
                 </div>
             </div>
-            <buttons #buttonsComponent [id]="i" [buttons]="payload.elements[i].buttons"></buttons>
+            <buttons #buttonsComponent [id]="i" [data]="payloadMap" [buttons]="payload.elements[i].buttons"></buttons>
             <div class="col-d-12 col-x-12 col-p-12 float-left topic-slider-bg-under mt-3  bg-white border-top-1">
                 <div class="col-md-12" (click)="addElement()">
                     <p class="mb-0 py-3 color2695ea text-uppercase"><img class="mr-2" src="./assets/images/plus.png" />  Add Carousel Element</p>

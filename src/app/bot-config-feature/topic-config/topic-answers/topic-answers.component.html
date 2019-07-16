@@ -21,11 +21,11 @@
       </ng-container>
 
       <ng-container *ngSwitchCase="TopicResponseType.BUTTON">
-        <topic-response-button #topicResponseButtonComponent [payload]="topic.answers[this.answerIndex].payload"></topic-response-button>
+        <topic-response-button #topicResponseButtonComponent [payloadMap]="topicPayloadMap" [payload]="topic.answers[this.answerIndex].payload"></topic-response-button>
       </ng-container>
 
       <ng-container *ngSwitchCase="TopicResponseType.ELEMENT">
-        <topic-response-element #topicResponseElementComponent [payload]="topic.answers[this.answerIndex].payload"></topic-response-element>
+        <topic-response-element #topicResponseElementComponent [payloadMap]="topicPayloadMap" [payload]="topic.answers[this.answerIndex].payload"></topic-response-element>
       </ng-container>
 
       <ng-container *ngSwitchDefault>

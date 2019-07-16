@@ -16,6 +16,7 @@ export class TopicResponseButtonComponent implements OnInit {
   @ViewChild('buttonsComponent')
   buttonsComponent: ButtonsComponent;
   @Input() payload: Payload;
+  @Input() payloadMap: Map<string, string>;
 
   constructor() { }
 

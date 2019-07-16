@@ -43,6 +43,7 @@ export class TopicConfigComponent implements OnInit, OnDestroy {
         } else if (data.action === TopicAction.UPDATE || data.action === TopicAction.REMOVE) {
           this.updateTopicList();
         }
+        this.updateTopicPayloadMap();
         this.topicList = _.clone(this.topicList);
       });
     }
@@ -53,6 +54,7 @@ export class TopicConfigComponent implements OnInit, OnDestroy {
       this.botConfig.value.topics = [];
     }
     this.topicList = this.botConfig.value.topics;
+    this.updateTopicPayloadMap();
   }
 
   ngOnDestroy() {
@@ -86,6 +88,7 @@ export class TopicConfigComponent implements OnInit, OnDestroy {
   }
 
   updateTopicList() {
+    const topicMap: Map<String, String> = new Map();
     for (let i = 0; i < _.get(this.botConfig, 'value.topics.length', 0); i++) {
       if (this.botConfig.value.topics[i].name === this.currentTopic.name) {
         this.botConfig.value.topics[i] = this.currentTopic;
@@ -93,7 +96,19 @@ export class TopicConfigComponent implements OnInit, OnDestroy {
         this.sharedService.sendBotAction(BotAction.UPDATE, this.botConfig);
         return;
       }
+      const value: String = _.get(this.topicList[i], 'questions', []).length === 0 ? '' : this.topicList[i].questions[0];
+      topicMap.set(this.topicList[i].name, value);
     }
+    this.topicConfigService.storeSessionData('topicMap', topicMap);
+  }
+
+  updateTopicPayloadMap() {
+    const topicMap: Map<string, string> = new Map();
+    this.topicList.forEach(function (topic: Topic) {
+      const value: string = _.get(topic, 'questions.length', 0) === 0 ? '' : topic.questions[0];
+      topicMap.set(topic.name, value);
+    });
+    this.topicConfigService.topicMap = topicMap;
   }
 
   addNewTopic(topic: Topic) {
