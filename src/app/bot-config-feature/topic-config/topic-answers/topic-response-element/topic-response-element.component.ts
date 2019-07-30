@@ -15,7 +15,7 @@ export class TopicResponseElementComponent implements OnInit, AfterViewInit {
   buttonsComponents: QueryList<ButtonsComponent>;
   @Input() payload: Payload;
   @Input() payloadMap: Map<string, string>;
-  private currentElement: Number = 0;
+  public currentElement: Number = 0;
 
   constructor() { }
 
