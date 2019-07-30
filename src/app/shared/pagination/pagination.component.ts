@@ -7,6 +7,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class PaginationComponent implements OnInit {
 
+  @Input()
   private currentPage: number;
 
   @Input()
@@ -17,11 +18,9 @@ export class PaginationComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.currentPage = 0;
   }
 
   gotoPage(index: number) {
-    this.currentPage = index;
     this.gotoPageEvent.emit(index);
   }
 

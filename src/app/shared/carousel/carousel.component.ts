@@ -42,7 +42,7 @@ export class CarouselComponent implements AfterViewInit {
     });
   }
 
-  ngOnChanges(changes: SimpleChanges){
+  ngOnChanges(changes: SimpleChanges) {
     console.log('ngOnChanges');
     this.updateItems();
 
@@ -104,10 +104,10 @@ export class CarouselComponent implements AfterViewInit {
 
    updateItems() {
     //TODO
-    if(this.itemsElements){
+    if (this.itemsElements) {
       this.carouselWrapperStyle = {
         width: `${this.itemsLength * 100}%`
-      }
+      };
     }
   }
 

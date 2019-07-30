@@ -61,6 +61,6 @@
     </ng-container>
   </ng-container>
 </carousel>
-<pagination (gotoPageEvent)="gotoPage($event)" [itemsLength]="payload.elements.length"></pagination>
+<pagination (gotoPageEvent)="gotoPage($event)" [currentPage]="currentElement" [itemsLength]="payload.elements.length"></pagination>
     </div>
 </div>

@@ -38,6 +38,7 @@ export class TopicResponseElementComponent implements OnInit, AfterViewInit {
       subtitle: '',
       buttons: []
     });
+    this.gotoPage(this.payload.elements.length - 1);
   }
 
   updateButtons() {
