@@ -15,7 +15,7 @@ export class TopicResponseElementComponent implements OnInit, AfterViewInit {
   buttonsComponents: QueryList<ButtonsComponent>;
   @Input() payload: Payload;
   @Input() payloadMap: Map<string, string>;
-  public currentElement: Number = 0;
+  public currentElement: number = 0;
 
   constructor() { }
 
@@ -38,6 +38,14 @@ export class TopicResponseElementComponent implements OnInit, AfterViewInit {
       subtitle: '',
       buttons: []
     });
+    this.gotoPage(this.payload.elements.length - 1);
+  }
+
+  removeElement() {
+    this.payload.elements.splice(this.currentElement, 1);
+    if (this.currentElement !== 0) {
+      this.gotoPage(this.currentElement - 1);
+    }
   }
 
   updateButtons() {
