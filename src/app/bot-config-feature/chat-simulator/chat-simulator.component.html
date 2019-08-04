@@ -10,12 +10,12 @@
       <div *ngFor="let chatSet of conversationList; let i = index">
         <div class="chat-width float-right text-right">
             <div  *ngIf="chatSet && chatSet[1] === 'user'" class="chat-box right">
-                <div class="chat-text mt-1 mb-1">{{chatSet[0]}}</div>
+                <div class="chat-text right-text mt-1 mb-1">{{chatSet[0]}}</div>
             </div>
         </div>
         <div class="chat-width float-left text-left">
             <div *ngIf="chatSet && chatSet[1] === 'text' && chatSet[0]?.text" class="chat-box left">
-                <div class="chat-text float-left mt-1 mb-1">{{chatSet[0]?.text}}</div>
+                <div class="chat-text left-text float-left mt-1 mb-1">{{chatSet[0]?.text}}</div>
             </div>
         </div>
       </div>
