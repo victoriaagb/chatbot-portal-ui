@@ -1,0 +1,27 @@
+.simulator-button-box {
+  margin-top:10px;
+  border :1px solid#f0e8e8;
+  overflow : hidden;
+  padding-inline-start : 0px !important;
+  background-color: white;
+  border-radius : 10px;
+  max-width: 240px;
+  font-size: 14px;
+  font-weight: 400;
+  li {
+    list-style-type: none;
+    &.button-item {
+      border-top : .5px solid #f0e8e8;
+      padding : 6px 10px;
+      text-align: center;
+      color : blue;
+    }
+    &.button-text {
+      border-bottom : .5px solid #f0e8e8;
+      padding : 6px 10px;
+      text-align: center;
+      background-color: #f7f7f9;
+    }
+  }
+
+}
