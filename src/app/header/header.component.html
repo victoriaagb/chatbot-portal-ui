@@ -18,8 +18,33 @@
     </div>
   </nav> -->
 
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-  <nav class="navbar navbar-expand-xl bg-darker navbar-dark pb-2 pt-2 pt-md-2 pb-md-2 pt-lg-2 pb-lg-2 pt-xl-0 pb-xl-0 md-hide-nav">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav secondnav mr-auto">
+          <li class="nav-item active">
+              <a class="nav-link" [class.active]="activeIndex === 0" href="#" routerLink="/bot-dashboard" (click)="selectHeaderItem(0)">Your Bots <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" [class.active]="activeIndex === 1" (click)="createBot()">Create Bot</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="#">Design</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="#">Channels</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="#">Analytics</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+  <!-- <nav class="navbar navbar-expand-xl bg-darker navbar-dark pb-2 pt-2 pt-md-2 pb-md-2 pt-lg-2 pb-lg-2 pt-xl-0 pb-xl-0">
             <div class="collapse navbar-collapse" id="collapsibleNavbar">
                 <div class="container">
                     <ul class="navbar-nav secondnav">
@@ -28,7 +53,7 @@
                         </li>
                         <li class="nav-item" >
                           <a class="nav-link" [class.active]="activeIndex === 1" (click)="createBot()">Create Bot</a>
-                        </li>
+                        </li> -->
                         <!-- <li class="nav-item">
                             <a class="nav-link" [class.active]="activeIndex === 2" href="#">Error</a>
                         </li>
@@ -38,7 +63,7 @@
                         <li class="nav-item">
                             <a class="nav-link" href="#">Ask a Question</a>
                         </li> -->
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a class="nav-link" href="#">Design</a>
                         </li>
                         <li class="nav-item">
@@ -50,14 +75,14 @@
                         <li *ngIf="currentBot" class="nav-item" >
                           <a class="nav-link" [class.active]="activeIndex === 3">{{currentBot.value.name.botName}}</a>
                         </li>
-                        <form class="form-inline my-0 ml-xl-auto ml-lg-0 ml-md-0">
+                        <form class="form-inline my-0 ml-xl-auto ml-lg-0 ml-md-0"> -->
                             <!--TODO :review and remove the commented out line.Keeping it ommented just in case the build button is needed later -->
                             <!-- <button class="btn btn-default my-2 my-sm-0 pl-4 pr-4" type="button">Build</button> -->
-                            <li class="nav-item ml-auto">
+                            <!-- <li class="nav-item ml-auto">
                                 <a class="nav-link back-link-nav-color no-hover" href="#"><i class="fas fa-arrow-left back-link-nav-color"></i>  Back</a>
                             </li>
                         </form>
                     </ul>
                 </div>
             </div>
-        </nav>
+        </nav> -->
