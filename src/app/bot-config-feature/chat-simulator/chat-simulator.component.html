@@ -14,8 +14,16 @@
             </div>
         </div>
         <div class="chat-width float-left text-left">
-            <div *ngIf="chatSet && chatSet[1] === 'text' && chatSet[0]?.text" class="chat-box left">
+            <div *ngIf="chatSet && chatSet[1] === 'TEXT' && chatSet[0]?.text" class="chat-box left">
                 <div class="chat-text left-text float-left mt-1 mb-1">{{chatSet[0]?.text}}</div>
+            </div>
+            <div *ngIf="chatSet && chatSet[1] === 'BUTTON' && chatSet[0]?.text" class="simulator-button">
+              <div class="float-left mt-1 mb-1">
+                <ul class="simulator-button-box">
+                  <li class="button-text" >{{chatSet[0]?.text}}</li>
+                  <li class="button-item" *ngFor="let button of chatSet[0]?.buttons; let i = index">{{button.title}}</li>
+                </ul>
+                </div>
             </div>
         </div>
       </div>

@@ -41,7 +41,7 @@ export class ChatSimulatorComponent implements OnInit {
     this._topicList.forEach(topic => {
       const response: Response = _.get(topic, 'answers[0]', {});
       const userQuestion = (_.isArray(topic.questions) && topic.questions.length) ? topic.questions[topic.questions.length - 1] : '...';
-      const responseType = this.getResponseType(response);
+      const responseType = response.response_type;
       const payload = response.payload;
       chatSetUser = [userQuestion, 'user'];
       chatSetBot = [payload, responseType];
