@@ -252,8 +252,10 @@ a:hover {
 
 .navbar-nav.secondnav .nav-link:hover {
     color: #fff !important;
-    border-bottom: 5px solid #1a92eb;
-    transition: 0.2s ease-in-out
+    border-bottom: 5px solid #2576b4;
+  //  background-color:rgba(0, 0, 0, 0.205);
+    transition: 0.2s ease-in-out;
+    cursor: pointer;
 }
 
 .navbar-nav.secondnav .nav-link.active {
