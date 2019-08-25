@@ -24,23 +24,21 @@
       </button>
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav secondnav mr-auto">
-          <li class="nav-item active">
-              <a class="nav-link" [class.active]="activeIndex === 0" href="#" routerLink="/bot-dashboard" (click)="selectHeaderItem(0)">Your Bots <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
+        <div class="container">
+          <ul class="navbar-nav secondnav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" [class.active]="activeIndex === 0 || !activeIndex" href="#" routerLink="/bot-dashboard" (click)="selectHeaderItem(0)">Your Bots
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link" [class.active]="activeIndex === 1" (click)="createBot()">Create Bot</a>
-          </li>
-          <li class="nav-item">
-              <a class="nav-link" href="#">Design</a>
-          </li>
-          <li class="nav-item">
-              <a class="nav-link" href="#">Channels</a>
-          </li>
-          <li class="nav-item">
-              <a class="nav-link" href="#">Analytics</a>
-          </li>
-        </ul>
+            </li>
+            <li *ngIf="currentBot" class="nav-item" >
+                <a class="nav-link" [class.active]="activeIndex === 3">{{currentBot.value.name.botName}}</a>
+              </li>
+          </ul>
+        </div>
       </div>
     </nav>
 
@@ -53,8 +51,8 @@
                         </li>
                         <li class="nav-item" >
                           <a class="nav-link" [class.active]="activeIndex === 1" (click)="createBot()">Create Bot</a>
-                        </li> -->
-                        <!-- <li class="nav-item">
+                        </li>
+                         <li class="nav-item">
                             <a class="nav-link" [class.active]="activeIndex === 2" href="#">Error</a>
                         </li>
                         <li class="nav-item">
@@ -62,8 +60,8 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Ask a Question</a>
-                        </li> -->
-                        <!-- <li class="nav-item">
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="#">Design</a>
                         </li>
                         <li class="nav-item">
@@ -80,8 +78,8 @@
                             <!-- <button class="btn btn-default my-2 my-sm-0 pl-4 pr-4" type="button">Build</button> -->
                             <!-- <li class="nav-item ml-auto">
                                 <a class="nav-link back-link-nav-color no-hover" href="#"><i class="fas fa-arrow-left back-link-nav-color"></i>  Back</a>
-                            </li>
-                        </form>
+                            </li> -->
+                        <!-- </form>
                     </ul>
                 </div>
             </div>

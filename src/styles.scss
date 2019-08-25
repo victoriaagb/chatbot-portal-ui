@@ -234,10 +234,6 @@ a:hover {
         padding: 0 !important;
     }
 
-    .navbar-nav .nav-link {
-        margin: 0 !important;
-    }
-
     .md-hide-nav {
         display: none
     }
@@ -256,14 +252,26 @@ a:hover {
 
 .navbar-nav.secondnav .nav-link:hover {
     color: #fff !important;
-    border-bottom: 5px solid #1a92eb;
-    transition: 0.2s ease-in-out
+    border-bottom: 5px solid #2576b4;
+  //  background-color:rgba(0, 0, 0, 0.205);
+    transition: 0.2s ease-in-out;
+    cursor: pointer;
 }
 
 .navbar-nav.secondnav .nav-link.active {
-    color: #fff !important;
-    border-bottom: 5px solid #1a92eb;
+  color: #fff !important;
+  border-bottom: 5px solid #1a92eb;
 }
+
+@media only screen and (max-width: 992px) {
+    .navbar-nav.secondnav .nav-link:hover {
+        border-bottom: 1px solid #1a92eb;
+    }
+    .navbar-nav.secondnav .nav-link.active {
+        border-bottom: 1px solid #1a92eb;
+    }
+}
+
 
 .no-hover:hover {
     border-bottom: 0 !important;
