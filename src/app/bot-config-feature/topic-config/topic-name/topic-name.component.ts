@@ -27,7 +27,9 @@ export class TopicNameComponent implements OnInit {
 
   createNewTopic() {
     if (!_.isEmpty(this.topicName)) {
+      let topicId = this.topicConfigService.createUniqueTopicId(this.topicName);
       const topic: Topic = {
+        topicId: topicId,
         name: this.topicName
       };
       this.topicConfigService.sendTopicAction(TopicAction.CREATE, topic);

@@ -9,7 +9,7 @@ import 'rxjs/add/operator/map';
 export class AppService {
 
   private botConfigURL = 'https://botz.chat/smart-chat-portal-0.0.1/botconfig';
-  // private botConfigURL = 'http://localhost:8080/smart-chat-portal/botconfig';
+ // private botConfigURL = 'http://localhost:8080/smart-chat-portal/botconfig';
     constructor(private http: HttpClient) { }
 
     getBotConfigList(): Observable<BotConfigRepository[]> {

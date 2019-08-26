@@ -4,6 +4,7 @@ export interface Button {
     type?: ButtonType;
     url?: string;
     payload?: string;
+    payloadTopicId?: string;
 }
 
 export enum ButtonType {

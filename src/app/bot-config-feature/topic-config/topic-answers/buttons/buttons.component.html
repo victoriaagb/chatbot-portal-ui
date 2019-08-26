@@ -43,14 +43,8 @@
               <div class="input-group">
                   <label class="text-uppercase font11">title</label>
               </div>
-              <div *ngIf="button.type===ButtonType.URL" class="input-group">
+              <div class="input-group">
                   <input type="text" [(ngModel)]="button.title" name="" [ngModelOptions]="{standalone: true}" class="form-control" placeholder="">
-              </div>
-              <div *ngIf="button.type===ButtonType.PAYLOAD" class="input-group">
-                  <select class="form-control" (ngModelChange)="setPostback(i, $event)" [ngModel]="button.title">
-                      <option [value]="">-- Select Postback Topic --</option>
-                      <option *ngFor="let entry of getDataMap()" [value]="entry[0]">{{entry[0]}}</option>
-                    </select>
               </div>
           </div>
       </div>
@@ -65,12 +59,23 @@
           </div>
           <div *ngIf="button.type===ButtonType.PAYLOAD" class="mt-1 mb-2 ">
             <div class="input-group">
+                <label class="text-uppercase font11">Postback Topic</label>
+            </div>
+            <div *ngIf="button.type===ButtonType.PAYLOAD" class="input-group">
+              <select class="form-control" (ngModelChange)="setPostback(i, $event)" [ngModel]="button.payloadTopicId">
+                  <option [value]="">-- Select Postback Topic --</option>
+                  <option *ngFor="let entry of getDataMap()" [value]="entry[0]">{{entry[0]}}</option>
+                </select>
+          </div>
+        </div>
+          <!-- <div *ngIf="button.type===ButtonType.PAYLOAD" class="mt-1 mb-2 ">
+            <div class="input-group">
                 <label class="text-uppercase font11">payload</label>
             </div>
             <div class="input-group">
                 <input disabled type="text" [value]="button.payload" name="" class="form-control" placeholder="">
             </div>
-        </div>
+        </div> -->
       </div>
       <div (click)="removeButton(i)" class="col-md-2 float-left">
           <div class="mt-1 mb-2 ">

@@ -13,6 +13,7 @@ import 'rxjs/add/operator/delay';
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/mergeMap';
 import { LoadingScreenService } from '../../shared/services/loading-screen.service';
+import { BotStatus } from '../../shared/model/bot-status.enum';
 
 @Component({
   selector: 'bot-header',
@@ -45,6 +46,7 @@ export class BotHeaderComponent implements OnInit {
     this.sharedService.retrieveSessionData();
     this.currentBot = this.sharedService.currentBot;
     this.buildKycModel(this.currentBot);
+    //TODO: retrieve updated BOT status.
     console.log('Testing the currentBot in session' + this.currentBot);
   }
 
