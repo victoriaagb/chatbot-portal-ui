@@ -38,16 +38,18 @@ export class ChatSimulatorComponent implements OnInit {
     this.conversationList = [];
     let chatSetUser: [String, String];
     let chatSetBot: [Payload, String];
-    this._topicList.forEach(topic => {
-      const response: Response = _.get(topic, 'answers[0]', {});
-      const userQuestion = (_.isArray(topic.questions) && topic.questions.length) ? topic.questions[topic.questions.length - 1] : '...';
-      const responseType = response.response_type;
-      const payload = response.payload;
-      chatSetUser = [userQuestion, 'user'];
-      chatSetBot = [payload, responseType];
-      this.conversationList.push(chatSetUser);
-      this.conversationList.push(chatSetBot);
-    });
+    if (this._topicList && this._topicList.length > 0) {
+      this._topicList.forEach(topic => {
+        const response: Response = _.get(topic, 'answers[0]', {});
+        const userQuestion = (_.isArray(topic.questions) && topic.questions.length) ? topic.questions[topic.questions.length - 1] : '...';
+        const responseType = response.response_type;
+        const payload = response.payload;
+        chatSetUser = [userQuestion, 'user'];
+        chatSetBot = [payload, responseType];
+        this.conversationList.push(chatSetUser);
+        this.conversationList.push(chatSetBot);
+      });
+    }
   }
 
   getResponseType(response: Response) {
