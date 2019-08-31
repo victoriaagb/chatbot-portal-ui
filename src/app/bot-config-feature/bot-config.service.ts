@@ -50,6 +50,13 @@ export class BotConfigService {
       });
   }
 
+  createBotKyc(
+    botConfigRespository: any): Observable<number> {
+    return this.http
+      .post<number>(this.botKycUrl, botConfigRespository)
+      .map(result => result);
+  }
+
   updateBotKyc(botConfigRespository: any): Observable<number> {
     return this.http
       .put<number>(this.botKycUrl, botConfigRespository)

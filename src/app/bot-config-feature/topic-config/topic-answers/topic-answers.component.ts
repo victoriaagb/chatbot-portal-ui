@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { TopicConfigService, TopicAction } from '../topic-config.service';
-import { Router, NavigationStart } from '@angular/router';
+import { Router, NavigationStart, NavigationEnd } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 import { Topic } from '../../../shared/model/topic.model';
 import { Payload } from '../../../shared/model/topic/payload.model';
@@ -46,7 +46,7 @@ export class TopicAnswersComponent implements OnInit, OnDestroy {
       if (e instanceof NavigationStart &&
           this.answerIndex !== undefined &&
           _.get(this.topic, 'answers[this.answerIndex].payload', undefined) === undefined) {
-            this.removeResponse(undefined);
+            this.cancelResponse(undefined);
       }
     });
   }
@@ -62,8 +62,15 @@ export class TopicAnswersComponent implements OnInit, OnDestroy {
 
   initializeInvites() {
     this.topic = this.topicConfigService.currentTopic;
-    this.topicPayloadMap = this.topicConfigService.topicMap;
-    this.topicPayloadMap.delete(this.topic.name);
+    this.topicPayloadMap = new Map();
+    for (let i in this.topicConfigService.topicList) {
+      const theTopic: Topic = this.topicConfigService.topicList[i];
+      if (this.topic.name !== theTopic.name) {
+        this.topicPayloadMap.set(theTopic.topicId, theTopic.name);
+      }
+    }
+
+
     if (_.isUndefined(this.topic.answers) || _.isNull(this.topic.answers)) {
       this.topic.answers = [];
     }
@@ -76,7 +83,7 @@ export class TopicAnswersComponent implements OnInit, OnDestroy {
     this.answerIndex = this.topic.answers.length - 1;
   }
 
-  removeResponse($event: Response) {
+  cancelResponse($event: Response) {
     this.topic.answers.splice(this.answerIndex, 1);
     this.answerIndex = undefined;
   }

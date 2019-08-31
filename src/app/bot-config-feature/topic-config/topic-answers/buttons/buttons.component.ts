@@ -41,8 +41,8 @@ export class ButtonsComponent implements OnInit {
   }
 
   setPostback(index: number, key: string) {
-    this.buttons[index].payload = this.data.get(key);
-    this.buttons[index].title = key;
+    this.buttons[index].payloadTopicId = key;
+    // this.buttons[index].payload = this.data.get(key);
 
     if (_.isUndefined(this.buttons[index].payload)) {
       this.buttons[index].payload = '';
@@ -60,7 +60,6 @@ export class ButtonsComponent implements OnInit {
     } else {
       delete this.buttons[index].url;
       this.buttons[index].payload = '';
-      this.buttons[index].title = '';
     }
   }
 

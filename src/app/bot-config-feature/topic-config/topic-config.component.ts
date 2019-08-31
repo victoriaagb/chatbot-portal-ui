@@ -20,7 +20,6 @@ export class TopicConfigComponent implements OnInit, OnDestroy {
   botSubscription: Subscription;
   topicSubscription: Subscription;
   navigationSubscription: Subscription;
-  topicList: Topic[];
 
   constructor(private sharedService: SharedService,
     private botConfigService: BotConfigService,
@@ -43,8 +42,7 @@ export class TopicConfigComponent implements OnInit, OnDestroy {
         } else if (data.action === TopicAction.UPDATE || data.action === TopicAction.REMOVE) {
           this.updateTopicList();
         }
-        this.updateTopicPayloadMap();
-        this.topicList = _.clone(this.topicList);
+       this.botConfig.value.topics = _.clone(this.botConfig.value.topics);
       });
     }
 
@@ -53,8 +51,7 @@ export class TopicConfigComponent implements OnInit, OnDestroy {
     if (_.isEmpty(this.botConfig.value.topics)) {
       this.botConfig.value.topics = [];
     }
-    this.topicList = this.botConfig.value.topics;
-    this.updateTopicPayloadMap();
+    this.topicConfigService.topicList = this.botConfig.value.topics;
   }
 
   ngOnDestroy() {
@@ -82,38 +79,32 @@ export class TopicConfigComponent implements OnInit, OnDestroy {
 
   removeTopic(i: number) {
     this.botConfig.value.topics.splice(i, 1);
-    this.sharedService.sendBotAction(BotAction.UPDATE, this.botConfig);
+    this.topicConfigService.topicList =  this.botConfig.value.topics;
     this.currentTopic = undefined;
+    this.sharedService.sendBotAction(BotAction.UPDATE, this.botConfig);
+    this.topicConfigService.storeSessionData('topicList', this.botConfig.value.topics);
     this.router.navigate(['./topic-name'], {relativeTo: this.route});
   }
 
   updateTopicList() {
-    const topicMap: Map<String, String> = new Map();
     for (let i = 0; i < _.get(this.botConfig, 'value.topics.length', 0); i++) {
       if (this.botConfig.value.topics[i].name === this.currentTopic.name) {
         this.botConfig.value.topics[i] = this.currentTopic;
-        this.topicList[i] = this.currentTopic;
         this.sharedService.sendBotAction(BotAction.UPDATE, this.botConfig);
         return;
       }
-      const value: String = _.get(this.topicList[i], 'questions', []).length === 0 ? '' : this.topicList[i].questions[0];
-      topicMap.set(this.topicList[i].name, value);
+      const value: String = _.get(this.botConfig.value.topics[i], 'questions', []).length === 0
+      ? '' : this.botConfig.value.topics[i].questions[0];
     }
-    this.topicConfigService.storeSessionData('topicMap', topicMap);
-  }
-
-  updateTopicPayloadMap() {
-    const topicMap: Map<string, string> = new Map();
-    this.topicList.forEach(function (topic: Topic) {
-      const value: string = _.get(topic, 'questions.length', 0) === 0 ? '' : topic.questions[0];
-      topicMap.set(topic.name, value);
-    });
-    this.topicConfigService.topicMap = topicMap;
+    this.topicConfigService.topicList = this.botConfig.value.topics;
+    this.topicConfigService.storeSessionData('topicList', this.botConfig.value.topics);
   }
 
   addNewTopic(topic: Topic) {
+    topic.topicId = this.topicConfigService.createUniqueTopicId(topic.name);
     this.topicConfigService.currentTopic = this.currentTopic = topic;
     this.botConfig.value.topics.push(this.currentTopic);
-    this.topicConfigService.sendTopicAction(TopicAction.UPDATE, this.currentTopic);
+    this.topicConfigService.topicList = this.botConfig.value.topics;
+    this.topicConfigService.sendTopicAction(TopicAction.NONE, this.currentTopic);
   }
 }
