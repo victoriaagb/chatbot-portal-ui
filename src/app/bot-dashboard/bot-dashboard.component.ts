@@ -78,4 +78,10 @@ export class BotDashboardComponent implements OnInit {
     this.sharedService.clearMessage();
   }
 
+  getFormattedDate(date): String {
+    const lastUpdated = new Date(date);
+    return lastUpdated.toLocaleDateString('en-US') +
+      ' at ' + lastUpdated.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
+  }
+
 }
