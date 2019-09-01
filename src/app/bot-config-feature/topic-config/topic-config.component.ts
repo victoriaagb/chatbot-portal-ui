@@ -60,14 +60,14 @@ export class TopicConfigComponent implements OnInit, OnDestroy {
     this.navigationSubscription.unsubscribe();
   }
 
-  gotoTopicQuestion($event: Topic) {
-    this.currentTopic = $event;
+  gotoTopicQuestion($event: number) {
+    this.currentTopic = this.topicConfigService.topicList[$event];
     this.topicConfigService.sendTopicAction(TopicAction.NONE, this.currentTopic);
     this.router.navigate(['./topic-questions'], {relativeTo: this.route});
   }
 
-  gotoTopicAnswer($event: Topic) {
-    this.currentTopic = $event;
+  gotoTopicAnswer($event: number) {
+    this.currentTopic = this.topicConfigService.topicList[$event];
     this.topicConfigService.sendTopicAction(TopicAction.NONE, this.currentTopic);
     this.router.navigate(['./topic-answers'], {relativeTo: this.route});
   }
@@ -78,8 +78,8 @@ export class TopicConfigComponent implements OnInit, OnDestroy {
   }
 
   removeTopic(i: number) {
-    this.botConfig.value.topics.splice(i, 1);
-    this.topicConfigService.topicList =  this.botConfig.value.topics;
+    this.topicConfigService.topicList.splice(i, 1);
+    this.botConfig.value.topics = this.topicConfigService.topicList;
     this.currentTopic = undefined;
     this.sharedService.sendBotAction(BotAction.UPDATE, this.botConfig);
     this.topicConfigService.storeSessionData('topicList', this.botConfig.value.topics);
@@ -87,24 +87,22 @@ export class TopicConfigComponent implements OnInit, OnDestroy {
   }
 
   updateTopicList() {
-    for (let i = 0; i < _.get(this.botConfig, 'value.topics.length', 0); i++) {
-      if (this.botConfig.value.topics[i].name === this.currentTopic.name) {
-        this.botConfig.value.topics[i] = this.currentTopic;
+    for (let i = 0; i < _.get(this.topicConfigService, 'topicList.length', 0); i++) {
+      if (this.topicConfigService.topicList[i].topicId === this.currentTopic.topicId) {
+        this.topicConfigService.topicList[i] = this.currentTopic;
+        this.botConfig.value.topics = this.topicConfigService.topicList;
         this.sharedService.sendBotAction(BotAction.UPDATE, this.botConfig);
         return;
       }
-      const value: String = _.get(this.botConfig.value.topics[i], 'questions', []).length === 0
-      ? '' : this.botConfig.value.topics[i].questions[0];
     }
-    this.topicConfigService.topicList = this.botConfig.value.topics;
     this.topicConfigService.storeSessionData('topicList', this.botConfig.value.topics);
   }
 
   addNewTopic(topic: Topic) {
     topic.topicId = this.topicConfigService.createUniqueTopicId(topic.name);
     this.topicConfigService.currentTopic = this.currentTopic = topic;
-    this.botConfig.value.topics.push(this.currentTopic);
-    this.topicConfigService.topicList = this.botConfig.value.topics;
+    this.topicConfigService.topicList.push(this.currentTopic);
+    this.botConfig.value.topics = this.topicConfigService.topicList;
     this.topicConfigService.sendTopicAction(TopicAction.NONE, this.currentTopic);
   }
 }
