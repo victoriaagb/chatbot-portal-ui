@@ -1,5 +1,5 @@
 <topic-slider (gotoQuestionEvent)="gotoTopicQuestion($event)" (gotoAnswerEvent)="gotoTopicAnswer($event)"
-(removeTopicEvent)="removeTopic($event)" (createTopicEvent)="gotoTopicName()" [topicList]="botConfig.value.topics"></topic-slider>
+(removeTopicEvent)="removeTopic($event)" (createTopicEvent)="gotoTopicName()" [topicList]="botConfig?.value?.topics"></topic-slider>
 <bot-header></bot-header>
 <div class="container">
   <div class="row justify-content-end align-items-center main-card-topic">
@@ -9,7 +9,7 @@
           <router-outlet></router-outlet>
         </div>
         <div class="col-md-12 col-lg-4 ">
-          <chat-simulator [topicList] = "botConfig.value.topics"></chat-simulator>
+          <chat-simulator [topicList] = "botConfig?.value?.topics"></chat-simulator>
         </div>
       </div>
     </div>

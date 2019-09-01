@@ -13,7 +13,9 @@ import 'rxjs/add/operator/delay';
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/mergeMap';
 import { LoadingScreenService } from '../../shared/services/loading-screen.service';
-import { BotStatus } from '../../shared/model/bot-status.enum';
+import { Button, ButtonType } from '../../shared/model/topic/button.model';
+import * as _ from 'lodash';
+import { Topic } from '../../shared/model/topic.model';
 
 @Component({
   selector: 'bot-header',
@@ -24,6 +26,7 @@ export class BotHeaderComponent implements OnInit {
 
   private subscription: Subscription;
   currentBot: BotConfigRepository;
+  topicMap: Map<string, Topic>;
   publishLoading: Boolean = false;
   canBuild: Boolean = false;
 
@@ -45,6 +48,7 @@ export class BotHeaderComponent implements OnInit {
     this.loadingScreenService.startLoading();
     this.sharedService.retrieveSessionData();
     this.currentBot = this.sharedService.currentBot;
+
     this.buildKycModel(this.currentBot);
     //TODO: retrieve updated BOT status.
     console.log('Testing the currentBot in session' + this.currentBot);
@@ -57,6 +61,13 @@ export class BotHeaderComponent implements OnInit {
     kyc['key'] = 'key';
     const value = {};
     const arrayOfMethodCall = [];
+
+    this.topicMap = new Map();
+
+    // build topic map to fill out the payload of each button
+    botConfigRepo.value.topics.forEach((topic) => {
+      this.topicMap.set(topic.topicId, topic);
+    });
 
     /*
      *Push all the method calls for each topic in to an array.
@@ -80,7 +91,6 @@ export class BotHeaderComponent implements OnInit {
     });
   }
 
-
   constructTopic(topic): any {
     const currentTopic = {};
     const value = {};
@@ -90,15 +100,29 @@ export class BotHeaderComponent implements OnInit {
       questions: topic.questions
     };
 
-    // return this.botConfigService.postForSynset(topicQuestion).flatMap(questions => {
-    //   currentTopic['sample_request'] = topic.questions.concat(questions).join('|');
-    //   currentTopic['slotted'] = false;
-    //   currentTopic['follow'] = 'appreciate';
-    //   currentTopic['fulfill'] = 'internal';
-    //   currentTopic['response'] = this.mapTopicToKycFormat(topic.answers);
-    //   value[(topic.name).toLowerCase()] = currentTopic;
-    //   return Observable.of(value);
-    // });
+    const buttons: Button[] = [];
+    topic.answers.forEach((answer) => {
+      if (answer.response_type === TopicResponseType.BUTTON) {
+        buttons.push(..._.get(answer, 'payload.buttons', []));
+      }
+      if (answer.response_type === TopicResponseType.ELEMENT) {
+        buttons.push(..._.get(answer, 'payload.element.buttons', []));
+      }
+    });
+
+    buttons.forEach((button) => {
+      if (button.type === ButtonType.PAYLOAD) {
+        let theTopic: Topic;
+        let question: string;
+        theTopic = this.topicMap.get(button.payloadTopicId);
+
+        if (_.get(theTopic, 'questions.length', 0) > 0) {
+          question = theTopic.questions[0];
+          button.payload = question;
+        }
+
+      }
+    });
 
     return this.botConfigService.postForSynset(topic , topicQuestion);
   }

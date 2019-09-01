@@ -21,8 +21,8 @@ import { trigger, transition, animate, style } from '@angular/animations';
 export class TopicSliderComponent implements OnInit {
 
   @Input() topicList: Topic[];
-  @Output() gotoAnswerEvent = new EventEmitter<Topic>();
-  @Output() gotoQuestionEvent = new EventEmitter<Topic>();
+  @Output() gotoAnswerEvent = new EventEmitter<number>();
+  @Output() gotoQuestionEvent = new EventEmitter<number>();
   @Output() removeTopicEvent = new EventEmitter<number>();
   @Output() createTopicEvent = new EventEmitter();
   slideOut: boolean;
@@ -36,12 +36,12 @@ export class TopicSliderComponent implements OnInit {
     this.slideOut = !this.slideOut;
   }
 
-  editQuestions(topic: Topic) {
-    this.gotoQuestionEvent.emit(topic);
+  editQuestions(i: number) {
+    this.gotoQuestionEvent.emit(i);
   }
 
-  editAnswers(topic: Topic) {
-    this.gotoAnswerEvent.emit(topic);
+  editAnswers(i: number) {
+    this.gotoAnswerEvent.emit(i);
   }
 
   removeTopic(i: number) {

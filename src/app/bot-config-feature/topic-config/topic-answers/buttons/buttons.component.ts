@@ -60,7 +60,6 @@ export class ButtonsComponent implements OnInit {
     } else {
       delete this.buttons[index].url;
       this.buttons[index].payload = '';
-      this.buttons[index].title = '';
     }
   }
 
