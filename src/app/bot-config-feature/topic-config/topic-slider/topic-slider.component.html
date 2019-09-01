@@ -26,7 +26,11 @@
                         <div class="row">
                           <div class="col-d-10 col-x-10 col-p-10  ">
                             <div class="p-2">
-                              <p class="text-white mb-0">{{topic.name}}</p>
+                              <p class="text-white mb-0">{{topic.name}}
+                                  <span class="pb-10"><a [routerLink]="" class="my-auto-custom">
+                                      <i class="far fa-edit colordadada"></i>
+                                    </a></span>
+                              </p>
                               <p class="mb-0 ">
                                 <a class="colordadada font12" (click)="editQuestions(i)" [routerLink]="">Edit Question</a>
                               </p>
