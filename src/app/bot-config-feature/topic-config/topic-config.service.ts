@@ -15,8 +15,10 @@ export class TopicConfigService {
   constructor(@Inject(SESSION_STORAGE) private sessionData: WebStorageService) { }
 
   // Session Data Manipulation
-  storeSessionData(key: string, val: any) {
-    this.sessionData.set(key, val);
+
+  storeSessionData() {
+    this.sessionData.set('currentTopic', this.currentTopic);
+    this.sessionData.set('topicList', this.topicList);
   }
 
   retrieveSessionData() {
@@ -35,8 +37,7 @@ export class TopicConfigService {
   // Message Events for Current topic
   sendTopicAction(topicAction: TopicAction, topic: Topic) {
     this.currentTopic = topic;
-    this.storeSessionData('currentTopic', this.currentTopic);
-    this.storeSessionData('topicList', this.topicList);
+    this.storeSessionData();
     this._topicSubject.next({ action: topicAction });
   }
 
