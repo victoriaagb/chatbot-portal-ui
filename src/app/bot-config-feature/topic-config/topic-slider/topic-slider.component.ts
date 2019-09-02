@@ -23,6 +23,7 @@ export class TopicSliderComponent implements OnInit {
   @Input() topicList: Topic[];
   @Output() gotoAnswerEvent = new EventEmitter<number>();
   @Output() gotoQuestionEvent = new EventEmitter<number>();
+  @Output() gotoNameEvent = new EventEmitter<number>();
   @Output() removeTopicEvent = new EventEmitter<number>();
   @Output() createTopicEvent = new EventEmitter();
   slideOut: boolean;
@@ -42,6 +43,10 @@ export class TopicSliderComponent implements OnInit {
 
   editAnswers(i: number) {
     this.gotoAnswerEvent.emit(i);
+  }
+
+  editName(i: number) {
+    this.gotoNameEvent.emit(i);
   }
 
   removeTopic(i: number) {
