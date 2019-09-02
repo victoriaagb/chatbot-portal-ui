@@ -8,5 +8,5 @@ export interface BotConfigRepository {
   stepConfig: BotStepConfig;
   value: BotConfig;
   status: BotStatus;
-  update_ts?: string;
+  updatedTimestamp?: string;
 }
