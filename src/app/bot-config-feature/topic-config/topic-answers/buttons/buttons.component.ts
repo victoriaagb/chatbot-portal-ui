@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Button, ButtonType } from '../../../../shared/model/topic/button.model';
 import * as _ from 'lodash';
 
@@ -14,6 +14,7 @@ export class ButtonsComponent implements OnInit {
   @Input() buttons: Button[];
   @Input() id: number;
   @Input() data: Map<string, string>;
+  @Output() createTopicEvent = new EventEmitter<string>();
 
   constructor() { }
 
@@ -61,6 +62,10 @@ export class ButtonsComponent implements OnInit {
       delete this.buttons[index].url;
       this.buttons[index].payload = '';
     }
+  }
+
+  createPostbackTopic(title: string) {
+    this.createTopicEvent.emit(title);
   }
 
 }

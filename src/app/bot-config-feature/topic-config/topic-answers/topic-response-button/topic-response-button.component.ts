@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, Output, EventEmitter } from '@angular/core';
 import { Payload } from '../../../../shared/model/topic/payload.model';
 import { ButtonType, Button } from '../../../../shared/model/topic/button.model';
 import * as _ from 'lodash';
@@ -17,6 +17,7 @@ export class TopicResponseButtonComponent implements OnInit {
   buttonsComponent: ButtonsComponent;
   @Input() payload: Payload;
   @Input() payloadMap: Map<string, string>;
+  @Output() createTopicEvent = new EventEmitter<string>();
 
   constructor() { }
 
@@ -31,5 +32,9 @@ export class TopicResponseButtonComponent implements OnInit {
 
   updateButtons() {
     this.payload.buttons = this.buttonsComponent.buttons;
+  }
+
+  createTopic(topicName: string) {
+    this.createTopicEvent.emit(topicName);
   }
 }
