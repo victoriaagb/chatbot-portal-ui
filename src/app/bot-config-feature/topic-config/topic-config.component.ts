@@ -31,6 +31,9 @@ export class TopicConfigComponent implements OnInit, OnDestroy {
     private router: Router,
     private route: ActivatedRoute) {
       this.navigationSubscription = this.router.events.subscribe((e: any) => {
+        if (e instanceof NavigationStart) {
+          this.topicConfigService.storeSessionData();
+        }
         if (e instanceof NavigationEnd) {
           this.topicConfigService.retrieveSessionData();
         }
@@ -109,9 +112,21 @@ export class TopicConfigComponent implements OnInit, OnDestroy {
 
   addNewTopic(topic: Topic) {
     topic.topicId = this.topicConfigService.createUniqueTopicId(topic.name);
+    topic.name = topic.topicId;
     this.topicConfigService.currentTopic = this.currentTopic = topic;
     this.topicConfigService.topicList.push(this.currentTopic);
     this.botConfig.value.topics = this.topicConfigService.topicList;
     this.topicConfigService.sendTopicAction(TopicAction.NONE, this.currentTopic);
+  }
+
+  copyTopic(i: number) {
+      if (this.topicConfigService.topicList.length > 0) {
+      const topic: Topic = this.topicConfigService.topicList[i];
+      const copyTopic: Topic = JSON.parse(JSON.stringify(topic));
+
+      this.addNewTopic(copyTopic);
+      this.updateTopicList();
+      this.gotoTopicName(i + 1);
+    }
   }
 }

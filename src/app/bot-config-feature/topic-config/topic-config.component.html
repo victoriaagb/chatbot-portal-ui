@@ -1,5 +1,6 @@
 <topic-slider (gotoQuestionEvent)="gotoTopicQuestion($event)" (gotoAnswerEvent)="gotoTopicAnswer($event)"
 (removeTopicEvent)="removeTopic($event)" (createTopicEvent)="gotoTopicName()" (gotoNameEvent)="gotoTopicName($event)"
+(copyTopicEvent)="copyTopic($event)"
 [topicList]="botConfig?.value?.topics"></topic-slider>
 <bot-header></bot-header>
 <div class="container">
