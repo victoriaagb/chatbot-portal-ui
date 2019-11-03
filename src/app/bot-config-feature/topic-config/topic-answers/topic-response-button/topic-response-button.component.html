@@ -22,7 +22,7 @@
               </div>
           </div>
       </div>
-      <buttons #buttonsComponent [id]="0" [data]="payloadMap" [buttons]="payload.buttons"></buttons>
+      <buttons #buttonsComponent [id]="0" [data]="payloadMap" [buttons]="payload.buttons" (createTopicEvent)="createTopic($event)"></buttons>
   </form>
 </div>
 

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChildren, AfterViewInit, QueryList } from '@angular/core';
+import { Component, OnInit, Input, ViewChildren, AfterViewInit, QueryList, Output, EventEmitter } from '@angular/core';
 import { Payload } from '../../../../shared/model/topic/payload.model';
 import { ButtonsComponent } from '../buttons/buttons.component';
 import { Element } from '../../../../shared/model/topic/element.model';
@@ -15,6 +15,7 @@ export class TopicResponseElementComponent implements OnInit, AfterViewInit {
   buttonsComponents: QueryList<ButtonsComponent>;
   @Input() payload: Payload;
   @Input() payloadMap: Map<string, string>;
+  @Output() createTopicEvent = new EventEmitter<string>();
   public currentElement: number = 0;
 
   constructor() { }
@@ -56,6 +57,10 @@ export class TopicResponseElementComponent implements OnInit, AfterViewInit {
 
   gotoPage($event: number) {
     this.currentElement = $event;
+  }
+
+  createTopic(topicName: string) {
+    this.createTopicEvent.emit(topicName);
   }
 
 }

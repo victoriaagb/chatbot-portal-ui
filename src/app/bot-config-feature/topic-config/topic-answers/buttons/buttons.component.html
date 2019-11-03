@@ -24,15 +24,6 @@
                           </label>
                       </div>
                   </div>
-                  <!-- <div class="col-md-4 float-left pl-0  my-2 my-md-0 my-lg-0">
-                      <div class="input-group">
-                          <label class="text-uppercase weight400 custom-radio-label">
-                              <input type="radio" name="1" class="custom-radio" placeholder="">
-                              <span class="checkmark"></span>
-                              Choose Topic
-                          </label>
-                      </div>
-                  </div> -->
               </div>
           </div>
       </div>
@@ -44,7 +35,7 @@
                   <label class="text-uppercase font11">title</label>
               </div>
               <div class="input-group">
-                  <input type="text" [(ngModel)]="button.title" name="" [ngModelOptions]="{standalone: true}" class="form-control" placeholder="">
+                  <input #payloadTopicName type="text" [(ngModel)]="button.title" name="" [ngModelOptions]="{standalone: true}" class="form-control" placeholder="">
               </div>
           </div>
       </div>
@@ -57,27 +48,24 @@
                   <input type="text" [(ngModel)]="button.url" name="" [ngModelOptions]="{standalone: true}" class="form-control" placeholder="">
               </div>
           </div>
-          <div *ngIf="button.type===ButtonType.PAYLOAD" class="mt-1 mb-2 ">
-            <div class="input-group">
-                <label class="text-uppercase font11">Postback Topic</label>
-            </div>
-            <div *ngIf="button.type===ButtonType.PAYLOAD" class="input-group">
-              <select class="form-control" (ngModelChange)="setPostback(i, $event)" [ngModel]="button.payloadTopicId">
-                  <option [value]="">-- Select Postback Topic --</option>
-                  <option *ngFor="let entry of getDataMap()" [value]="entry[0]">{{entry[0]}}</option>
-                </select>
-          </div>
-        </div>
-          <!-- <div *ngIf="button.type===ButtonType.PAYLOAD" class="mt-1 mb-2 ">
-            <div class="input-group">
-                <label class="text-uppercase font11">payload</label>
-            </div>
-            <div class="input-group">
-                <input disabled type="text" [value]="button.payload" name="" class="form-control" placeholder="">
-            </div>
-        </div> -->
       </div>
-      <div (click)="removeButton(i)" class="col-md-2 float-left">
+      <div class="col-md-6 float-left">
+          <div *ngIf="button.type===ButtonType.PAYLOAD" class="mt-1 mb-2 ">
+              <div class="input-group">
+                  <label class="text-uppercase font11">Postback Topic</label>
+              </div>
+              <div *ngIf="data.size > 0" class="input-group">
+                <select class="form-control" (ngModelChange)="setPostback(i, $event)" [ngModel]="button.payloadTopicId">
+                    <option [value]="">-- Select Postback Topic --</option>
+                    <option *ngFor="let entry of getDataMap()" [value]="entry[0]">{{entry[0]}}</option>
+                  </select>
+            </div>
+            <div (click)="createPostbackTopic(button.title)" class="pointer mt-1 mb-2">
+                <p class="mb-0 pb-2 color2695ea text-uppercase"><img class="mr-2" src="./assets/images/plus.png" /> create postback topic</p>
+            </div>
+          </div>
+      </div>
+      <div *ngIf="buttons.size > 1" (click)="removeButton(i)" class="col-md-12 float-left">
           <div class="mt-1 mb-2 ">
               <div class="input-group">
                   <a><img class="mt-1" src="./assets/images/forma-1.png"></a>
