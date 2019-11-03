@@ -54,7 +54,18 @@ export class TopicConfigService {
     if (existingTopic === undefined) {
       return topicName;
     } else {
-      return this.createUniqueTopicId(topicName + '_1');
+      const names: string[] = topicName.split('_');
+      const lastItem: string = names.pop();
+      const lastItemNum: number = parseInt(lastItem, 10);
+
+      if (lastItemNum) {
+        names.push((lastItemNum + 1).toString());
+        topicName = names.join('_');
+      } else {
+        topicName += '_1';
+      }
+
+      return this.createUniqueTopicId(topicName);
     }
   }
 

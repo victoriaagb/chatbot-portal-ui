@@ -58,11 +58,20 @@ export class BotDashboardComponent implements OnInit {
     this.router.navigate(['/bot-config']);
   }
 
-  updateCurrentBot(botConfig): void {
+  updateCurrentBot(botConfig: BotConfigRepository): void {
     this.sharedService.sendBotAction(BotAction.ADD, botConfig);
   }
 
-  deleteBot(botConfig): void {
+  copyBot(botConfig: BotConfigRepository): void {
+    const copyBot: BotConfigRepository = JSON.parse(JSON.stringify(botConfig));
+    copyBot.botId = undefined;
+    copyBot.status = undefined;
+
+    this.sharedService.sendBotAction(BotAction.ADD, copyBot);
+    this.router.navigate(['/bot-config']);
+  }
+
+  deleteBot(botConfig: BotConfigRepository): void {
     this.appService.deleteBotConfig(botConfig).subscribe(
       data => {
         if (data >= 1) {
