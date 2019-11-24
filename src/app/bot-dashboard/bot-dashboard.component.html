@@ -18,7 +18,7 @@
                             <div class="col-md-12 col-lg-12 float-left p-r-m">
                                 <div class="p-0 col-8-box">
                                     <div class="card-deck">
-                                        <div  *ngFor="let botConfig of botConfigList" class="col-lg-3 col-md-6 col-12 ">
+                                        <div  *ngFor="let botConfig of botConfigList; let i = index" class="col-lg-3 col-md-6 col-12 ">
                                             <div class="card m-0 mb-4 ">
                                                 <div class="card-header">
                                                     <p class="card-title mb-0"><b>{{botConfig?.value?.name?.botName}}</b></p>
@@ -33,7 +33,7 @@
                                                         <div (click)="editBotConfig(botConfig)" class="col-md-3 col-4  t-align p-r-d p-r-m t-align-left">
                                                             <a [routerLink]=""><img class="" src="./assets/images/edit.png"></a>
                                                         </div>
-                                                        <div (click)="copyBot(botConfig)" class="col-md-3 col-4  t-align p-r-d p-r-m">
+                                                        <div (click)="copyBot(botConfig, i)" class="col-md-3 col-4  t-align p-r-d p-r-m">
                                                             <a [routerLink]=""> <img class="" src="./assets/images/2.png"></a>
                                                         </div>
                                                         <div (click)="deleteBot(botConfig)" class="col-md-3 col-4  t-align p-r-d p-r-m t-align-right">
