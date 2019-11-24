@@ -50,7 +50,7 @@ export class BotHeaderComponent implements OnInit {
     this.currentBot = this.sharedService.currentBot;
 
     this.buildKycModel(this.currentBot);
-    //TODO: retrieve updated BOT status.
+    // TODO: retrieve updated BOT status.
     console.log('Testing the currentBot in session' + this.currentBot);
   }
 
@@ -88,6 +88,10 @@ export class BotHeaderComponent implements OnInit {
         this.publishLoading = false;
         this.loadingScreenService.stopLoading();
       });
+    },
+    error => {
+      console.log('Test');
+      this.loadingScreenService.stopLoading();
     });
   }
 
