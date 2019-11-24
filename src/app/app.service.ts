@@ -8,8 +8,8 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class AppService {
 
-  private botConfigURL = 'https://botz.chat/smart-chat-portal-0.0.1/botconfig';
- // private botConfigURL = 'http://localhost:8080/smart-chat-portal/botconfig';
+  // private botConfigURL = 'https://botz.chat/smart-chat-portal-0.0.1/botconfig';
+ private botConfigURL = 'http://localhost:8080/smart-chat-portal/botconfig';
     constructor(private http: HttpClient) { }
 
     getBotConfigList(): Observable<BotConfigRepository[]> {
@@ -23,6 +23,14 @@ export class AppService {
       return this.http
       .put<number>(this.botConfigURL + '/delete', botConfig)
       .map(result => result);
+    }
+
+    createBotConfig(
+      configInput: BotConfigRepository
+    ): Observable<BotConfigRepository> {
+      return this.http
+        .post<BotConfigRepository>(this.botConfigURL, configInput)
+        .map(result => result);
     }
 
 }
