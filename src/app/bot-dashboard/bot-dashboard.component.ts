@@ -62,13 +62,15 @@ export class BotDashboardComponent implements OnInit {
     this.sharedService.sendBotAction(BotAction.ADD, botConfig);
   }
 
-  copyBot(botConfig: BotConfigRepository): void {
+  copyBot(botConfig: BotConfigRepository, index: number): void {
     const copyBot: BotConfigRepository = JSON.parse(JSON.stringify(botConfig));
     copyBot.botId = undefined;
     copyBot.status = undefined;
 
-    this.sharedService.sendBotAction(BotAction.ADD, copyBot);
-    this.router.navigate(['/bot-config']);
+    copyBot.value.name.botName = this.createUniqueBotName(botConfig.value.name.botName);
+
+    this.appService.createBotConfig(copyBot);
+    this.botConfigList.splice(index, 0, copyBot);
   }
 
   deleteBot(botConfig: BotConfigRepository): void {
@@ -91,6 +93,26 @@ export class BotDashboardComponent implements OnInit {
     const lastUpdated = new Date(date);
     return lastUpdated.toLocaleDateString('en-US') +
       ' at ' + lastUpdated.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
+  }
+
+  createUniqueBotName(botName: String) {
+    const existingBot = this.botConfigList.find(bot => bot.value.name.botName === botName );
+    if (existingBot === undefined) {
+      return botName;
+    } else {
+      const names: string[] = botName.split('_');
+      const lastItem: string = names.pop();
+      const lastItemNum: number = parseInt(lastItem, 10);
+
+      if (lastItemNum) {
+        names.push((lastItemNum + 1).toString());
+        botName = names.join('_');
+      } else {
+        botName += '_1';
+      }
+
+      return this.createUniqueBotName(botName);
+    }
   }
 
 }
