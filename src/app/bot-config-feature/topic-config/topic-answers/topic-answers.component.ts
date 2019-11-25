@@ -7,6 +7,7 @@ import { Response, TopicResponseType } from '../../../shared/model/topic/respons
 import { TopicResponseTextComponent } from '../topic-answers/topic-response-text/topic-response-text.component';
 import { TopicResponseButtonComponent } from '../topic-answers/topic-response-button/topic-response-button.component';
 import {TopicResponseElementComponent } from '../topic-answers/topic-response-element/topic-response-element.component';
+// import { TopicResponseMediaComponent } from './topic-response-media/topic-response-media.component';
 import * as _ from 'lodash';
 
 @Component({
@@ -34,6 +35,9 @@ export class TopicAnswersComponent implements OnInit, OnDestroy {
 
   @ViewChild('topicResponseElementComponent')
   elementComponent: TopicResponseElementComponent;
+
+  // @ViewChild('topicResponseMediaComponent')
+  // mediaComponent: TopicResponseMediaComponent;
 
   constructor(private topicConfigService: TopicConfigService,
               private router: Router,
@@ -107,6 +111,8 @@ export class TopicAnswersComponent implements OnInit, OnDestroy {
         this.elementComponent.updateButtons();
         this.topic.answers[this.answerIndex].payload = this.elementComponent.payload;
         break;
+      // case TopicResponseType.MEDIA:
+
       default:
         action = TopicAction.NONE;
     }
@@ -133,6 +139,10 @@ export class TopicAnswersComponent implements OnInit, OnDestroy {
   createTopic() {
     this.topicConfigService.sendTopicAction(TopicAction.NONE, undefined);
     this.router.navigate(['../topic-name'], {relativeTo: this.route});
+  }
+
+  gotoQuestions() {
+    this.router.navigate(['../topic-questions'], {relativeTo: this.route});
   }
 
 }
