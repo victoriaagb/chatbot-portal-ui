@@ -1,23 +1,34 @@
   <div class="topic-slider-bg pb-2 float-left width100">
       <form>
-          <div class="col-md-12">
+          <div *ngIf="questions && questions.length > 0" class="col-md-12">
+            <div class="col-d-12">
               <div class="col-d-12">
                   <p class="text-uppercase mb-0 font12 color68768c">QUESTION </p>
               </div>
               <div class="col-d-12">
-                  <div class="col-d-6 float-left">
-                      <p class="color68768c">Are You Still Open ?
+                  <div (click)="gotoQuestions()" class="col-d-6 float-left">
+                      <p class="color68768c">{{questions[0]}}
                           <img class="ml-2" src="./assets/images/edit.png"></p>
                   </div>
-                  <div class="col-d-6 float-right text-right">
+                  <div (click)="isCollapsed = !isCollapsed" *ngIf="questions.length > 1" class="col-d-6 float-right text-left ">
                       <p class="text-uppercase color2695ea ">VIEW OTHER QUESTIONS
-                          <img class="ml-2" src="./assets/images/expand.png"></p>
+                          <img [ngClass]="{'rotateimg180': isCollapsed}" class="ml-2" src="./assets/images/expand.png"></p>
+                          <div *ngIf="isCollapsed" class="bg-white text-left questions">
+                              <div *ngFor="let question of questions; let i = index">
+                                  <strong> Q{{i + 1}}.</strong> {{question}}
+                                  <span class="float-right active">
+                              </span>
+                              </div>
+                          </div>
                   </div>
               </div>
-          </div>
+            </div>
+              <!-- <div class="col-d-12">
+                <label *ngIf="questions && questions.length > 0" class="text-uppercase font11 m-0">RESPONSE TYPE FOR ABOVE QUESTION</label>
+              </div> -->
+            </div>
           <div class="col-md-12 mt-4">
               <div class="form-group">
-                  <label class="text-uppercase font11 m-0">RESPONSE TYPE FOR ABOVE QUESTION</label>
                   <div class="col-d-12">
                       <div class="col-d-12 float-left">
                           <div class="col-p-12 col-d-3 col-x-6 float-left mt-2 mb-2">
@@ -29,7 +40,7 @@
                           </div>
                           <div class="col-p-12 col-d-3 col-x-6 float-left mt-2 mb-2">
                               <div class="pr-2">
-                                  <button class="btn-default-custom col-md-12 text-left font12 pointer">
+                                  <button (click)="setResponseType(TopicResponseType.MEDIA)" class="btn-default-custom col-md-12 text-left font12 pointer">
                                       <img class="mr-2" src="./assets/images/media.png"  /> Media
                                   </button>
                               </div>
@@ -48,7 +59,7 @@
                                   </button>
                               </div>
                           </div>
-                          <div class="col-p-12 col-d-3 col-x-6 float-left mt-2 mb-2">
+                          <!-- <div class="col-p-12 col-d-3 col-x-6 float-left mt-2 mb-2">
                               <div class="pr-2">
                                   <button class="btn-default-custom col-md-12 text-left font12 pointer">
                                       <img class="mr-2" src="./assets/images/api.png"  /> Rest API
@@ -75,7 +86,7 @@
                                       <img class="mr-2" src="./assets/images/follow.png"  /> Follow Up Ques.
                                   </button>
                               </div>
-                          </div>
+                          </div> -->
                       </div>
                   </div>
               </div>

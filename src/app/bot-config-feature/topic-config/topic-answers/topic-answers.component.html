@@ -36,8 +36,14 @@
         </topic-response-element>
       </ng-container>
 
+      <!-- <ng-container *ngSwitchCase="TopicResponseType.MEDIA">
+          <topic-response-media #topicResponseMediaComponent
+            [payload]="topic.answers[this.answerIndex].payload">
+          </topic-response-media>
+        </ng-container> -->
+
       <ng-container *ngSwitchDefault>
-        <topic-answers-home (addResponseEvent)="addNewResponse($event)"></topic-answers-home>
+        <topic-answers-home [questions]="topic.questions" (gotoQuestionEvent)="gotoQuestions()" (addResponseEvent)="addNewResponse($event)"></topic-answers-home>
       </ng-container>
 
     </div>
